@@ -11,15 +11,15 @@
   <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
   <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css">
   -->
-  <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon" />
 
   {% if site.morea_google_analytics_tracking_id %}
   <script>
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r;
       i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-          }, i[r].l = 1 * new Date();
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
       a = s.createElement(o),
           m = s.getElementsByTagName(o)[0];
       a.async = 1;
@@ -44,12 +44,11 @@
 
 </head>
 <body>
-<!-- Responsive navbar -->
 
 <style>
-    body {
-        padding-top: 60px;
-    }
+  body {
+    padding-top: 60px;
+  }
 </style>
 
 <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
@@ -90,36 +89,36 @@
 <script src="{{ site.baseurl }}/js/scrollIfAnchor.js"></script>
 -->
 
-  <footer class="footer fixed-bottom">
-    <div class="container text-center">
-      {% if site.morea_footer_page %}
-      {{ site.morea_footer_page.content | markdownify }}
-      {% else %}
-      No footer page content supplied.
-      {% endif %}
-      <p style="margin: 0">Powered by the <a href="http://morea-framework.github.io/">Morea Framework</a> (Theme: {{ site.morea_theme }})<br>
-        Last update on: <span>{{ site.time }}</span></p>
+<footer class="footer">
+  <div class="container text-center">
+    {% if site.morea_footer_page %}
+    {{ site.morea_footer_page.content | markdownify }}
+    {% else %}
+    No footer page content supplied.
+    {% endif %}
+    <p style="margin: 0">Powered by the <a href="http://morea-framework.github.io/">Morea Framework</a> (Theme: {{ site.morea_theme }})<br>
+      Last update on: <span>{{ site.time }}</span></p>
 
-      <p style="margin: 0">
-        {% if site.morea_navbar_items contains 'Prerequisites' %}
-        {{ site.morea_prerequisite_pages.size }} prerequisites |
-        {% endif %}
-        {{ site.morea_module_pages.size }} modules
-        {% if site.morea_navbar_items contains 'Outcomes' %}
-        | {{ site.morea_outcome_pages.size }} outcomes
-        {% endif %}
-        {% if site.morea_navbar_items contains 'Readings' %}
-        | {{ site.morea_reading_pages.size }} readings
-        {% endif %}
-        {% if site.morea_navbar_items contains 'Experiences' %}
-        | {{ site.morea_experience_pages.size }} experiences
-        {% endif %}
-        {% if site.morea_navbar_items contains 'Assessments' %}
-        | {{ site.morea_assessment_pages.size }} assessments
-        {% endif %}
-      </p>
-    </div>
-  </footer>
+    <p style="margin: 0">
+      {% if site.morea_navbar_items contains 'Prerequisites' %}
+      {{ site.morea_prerequisite_pages.size }} prerequisites |
+      {% endif %}
+      {{ site.morea_module_pages.size }} modules
+      {% if site.morea_navbar_items contains 'Outcomes' %}
+      | {{ site.morea_outcome_pages.size }} outcomes
+      {% endif %}
+      {% if site.morea_navbar_items contains 'Readings' %}
+      | {{ site.morea_reading_pages.size }} readings
+      {% endif %}
+      {% if site.morea_navbar_items contains 'Experiences' %}
+      | {{ site.morea_experience_pages.size }} experiences
+      {% endif %}
+      {% if site.morea_navbar_items contains 'Assessments' %}
+      | {{ site.morea_assessment_pages.size }} assessments
+      {% endif %}
+    </p>
+  </div>
+</footer>
 
 
 <!-- Load Bootstrap JavaScript components -->

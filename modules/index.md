@@ -3,16 +3,16 @@ layout: default
 title: Modules
 ---
 
-<div class="breadcrumb-bar">
-  <div class="container">
+<div class="container">
+  <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        {% if site.morea_head_breadcrumb_link %}
-          <li><a href="{{ site.morea_head_breadcrumb_link }}">{{ site.morea_head_breadcrumb_label }}</a></li>
-          {% endif %}
-      <li><a href="{{ site.baseurl }}/">Home</a></li>
-      <li class="active">{{ page.title }}</li>
+      {% if site.morea_head_breadcrumb_link %}
+        <li class="breadcrumb-item"><a href="{{ site.morea_head_breadcrumb_link }}">{{ site.morea_head_breadcrumb_label }}</a></li>
+      {% endif %}
+      <li class="breadcrumb-item" aria-current="page"><a href="{{ site.baseurl }}/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
     </ol>
-  </div>
+  </nav>
 </div>
 
 <div class="container">
@@ -25,12 +25,11 @@ title: Modules
   <div class="row">
      {% for module in site.morea_module_pages %}
         <div class="col-sm-3">
-        
         {% if module.morea_coming_soon %}
-          <div class="thumbnail">
-            <img src="{{ site.baseurl }}{{ module.morea_icon_url }}" width="100" class="img-circle img-responsive">
-            <div class="caption">
-              <h3 style="text-align: center; margin-top: 0">{{ forloop.index }}. {{ module.title }}</h3>
+          <div class="card">
+            <img src="{{ site.baseurl }}{{ module.morea_icon_url }}" width="100" class="card-img-top  img-circle img-responsive">
+            <div class="card-body">
+              <h3 class="card-title">{{ forloop.index }}. {{ module.title }}</h3>
               {{ module.morea_summary | markdownify }}
               <p>
               {% for label in module.morea_labels %}
@@ -41,10 +40,10 @@ title: Modules
             </div>
           </div>
         {% else %}
-          <a href= "{{ module.morea_id }}" class="thumbnail">
-            <img src="{{ site.baseurl }}{{ module.morea_icon_url }}" width="100" class="img-circle img-responsive">
-            <div class="caption">
-              <h3 style="text-align: center; margin-top: 0">{{ forloop.index }}. {{ module.title }}</h3>
+          <a href= "{{ module.morea_id }}" class="card h-100">
+            <img src="{{ site.baseurl }}{{ module.morea_icon_url }}" width="100" class="card-img-top img-circle img-responsive">
+            <div class="card-body">
+              <h3 class="card-title">{{ forloop.index }}. {{ module.title }}</h3>
               {{ module.morea_summary | markdownify }}
               <p>
               {% for label in module.morea_labels %}
@@ -57,7 +56,7 @@ title: Modules
         {% endif %}
         </div>
          
-       {% cycle '', '', '', '</div><div class="row">' %}
+
      {% endfor %}
   </div>
 </div>

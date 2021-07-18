@@ -20,3 +20,11 @@ Things to do:
  - [ ] Demo site should be four weeks, one module per week, with prerequisites.
  - [ ] Include all include files into template, document in docusaurus.
  - [ ] Do we still need scrollIfAnchor.js? (core.html).
+
+
+Advantages of 2.0:
+
+ - [ ] No scripts
+ - [ ] Runs on Windows as well as Unix.
+ - [ ] Simpler install and development cycle.
+ - [ ] Less need to understand git and git branching.
