@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title> {{ page.title }} | {{ site.name }} </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +7,11 @@
 
   <!--  Load bootswatch-based Morea theme file. -->
   <link rel="stylesheet" href="{{ site.baseurl }}/css/themes/{{ site.morea_theme }}/bootstrap.min.css">
+  <!-- Don't load style or syntax until we are sure we know what we're doing.
   <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
   <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css">
+  -->
   <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon"/>
-
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
-  <![endif]-->
-
-  <!-- Load Bootstrap JavaScript components -->
-  <script src="//code.jquery.com/jquery.min.js"></script>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
-  {% if site.mathjax %}
-  <script type="text/javascript"
-          src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  {% endif %}
 
   {% if site.morea_google_analytics_tracking_id %}
   <script>
@@ -46,59 +33,65 @@
   </script>
   {% endif %}
 
+  <!-- Do we still need this?
   <script>
     $(window).load(function () {
       // If on a page associated with a navbar item, make its navbar item 'active'.
       $('.navbar-nav').find('a[href="' + location.pathname + '"]').parents('li').addClass('active');
     });
   </script>
+  -->
 
 </head>
 <body>
 <!-- Responsive navbar -->
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+<style>
+    body {
+        padding-top: 60px;
+    }
+</style>
+
+<div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <!--  Display three horizontal lines when navbar collapsed. -->
-        <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="{{ site.baseurl }}/index.html"> {{ site.name }} </a>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
+    <a class="navbar-brand" href="{{ site.baseurl }}/index.html"> {{ site.name }} </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav">
         {% if site.morea_navbar_items contains 'Prerequisites' %}
-        <li><a href="{{ site.baseurl }}/prerequisites/">Prerequisites</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/prerequisites/">Prerequisites</a></li>
         {% endif %}
-        <li><a href="{{ site.baseurl }}/modules/">Modules</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/modules/">Modules</a></li>
         {% if site.morea_navbar_items contains 'Outcomes' %}
-        <li><a href="{{ site.baseurl }}/outcomes/">Outcomes</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/outcomes/">Outcomes</a></li>
         {% endif %}
         {% if site.morea_navbar_items contains 'Readings' %}
-        <li><a href="{{ site.baseurl }}/readings/">Readings</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/readings/">Readings</a></li>
         {% endif %}
         {% if site.morea_navbar_items contains 'Experiences' %}
-        <li><a href="{{ site.baseurl }}/experiences/">Experiences</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/experiences/">Experiences</a></li>
         {% endif %}
         {% if site.morea_navbar_items contains 'Assessments' %}
-        <li><a href="{{ site.baseurl }}/assessments/">Assessments</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/assessments/">Assessments</a></li>
         {% endif %}
         {% if site.morea_navbar_items contains 'Schedule' %}
-        <li><a href="{{ site.baseurl }}/schedule/">Schedule</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ site.baseurl }}/schedule/">Schedule</a></li>
         {% endif %}
       </ul>
     </div>
   </div>
 </div>
 
-
 {{ content }}
 
+<!-- Maybe find a different way?
 <script src="{{ site.baseurl }}/js/scrollIfAnchor.js"></script>
+-->
 
-<div class="footer-background hidden-print">
-  <footer>
-    <div class="container page-footer">
+  <footer class="footer mt-auto py-3 bg-light fixed-bottom">
+    <div class="container">
       {% if site.morea_footer_page %}
       {{ site.morea_footer_page.content | markdownify }}
       {% else %}
@@ -127,6 +120,15 @@
       </p>
     </div>
   </footer>
-</div>
+
+
+<!-- Load Bootstrap JavaScript components -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+{% if site.mathjax %}
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+{% endif %}
 </body>
 </html>
