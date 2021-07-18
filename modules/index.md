@@ -16,7 +16,7 @@ title: Modules
 </div>
 
 <div class="container">
-  <h1>Modules <small>Topics covered in this class.</small></h1>
+  <h1>Modules</h1>
   
   {% if site.morea_overview_modules %}
     {{ site.morea_overview_modules.content | markdownify }}
@@ -26,8 +26,8 @@ title: Modules
      {% for module in site.morea_module_pages %}
         <div class="col-sm-3">
         {% if module.morea_coming_soon %}
-          <div class="card">
-            <img src="{{ site.baseurl }}{{ module.morea_icon_url }}" width="100" class="card-img-top  img-circle img-responsive">
+          <div class="card h-100">
+            <img src="{{ site.baseurl }}{{ module.morea_icon_url }}" width="100" class="card-img-top">
             <div class="card-body">
               <h3 class="card-title">{{ forloop.index }}. {{ module.title }}</h3>
               {{ module.morea_summary | markdownify }}
@@ -36,12 +36,14 @@ title: Modules
                 <span class="badge">{{ label }}</span>
               {% endfor %}
               </p>
-              <p class="text-center"><b>Coming soon...</b></p>
+            </div>
+            <div class="card-footer text-center">
+              <span class="btn btn-primary disabled">Coming soon...</span>
             </div>
           </div>
         {% else %}
-          <a href= "{{ module.morea_id }}" class="card h-100">
-            <img src="{{ site.baseurl }}{{ module.morea_icon_url }}" width="100" class="card-img-top img-circle img-responsive">
+          <div class="card h-100">
+            <img src="{{ site.baseurl }}{{ module.morea_icon_url }}" width="100" class="card-img-top">
             <div class="card-body">
               <h3 class="card-title">{{ forloop.index }}. {{ module.title }}</h3>
               {{ module.morea_summary | markdownify }}
@@ -50,13 +52,13 @@ title: Modules
                 <span class="badge">{{ label }}</span>
               {% endfor %}
               </p>
-              
             </div>
-          </a>
+            <div class="card-footer text-center">
+                <a href="{{ module.morea_id }}" class="btn btn-primary">Go to "{{ module.title}}""</a>
+            </div>
+          </div>
         {% endif %}
         </div>
-         
-
      {% endfor %}
   </div>
 </div>

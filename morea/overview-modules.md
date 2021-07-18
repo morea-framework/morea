@@ -6,5 +6,3 @@ published: true
 ---
 
 This page presents the "modules", or the topics that are covered in this course.  
-
-Click on the tile associated with a module to go to a page containing that module's contents. 
