@@ -1,4 +1,4 @@
-name: ICS 999
+name: ICS 199
 markdown: kramdown
 kramdown:
   hard_wrap: false
@@ -9,7 +9,7 @@ baseurl: /core
 exclude: [morea]
 morea_theme: spacelab5
 morea_navbar_items:
-  #- Prerequisites
+  - Prerequisites
   - Modules
   - Outcomes
   - Readings
