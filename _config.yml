@@ -5,7 +5,7 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
 mathjax: true
-baseurl: /core
+baseurl: /morea2
 exclude: [morea]
 morea_theme: spacelab5
 morea_navbar_items:
