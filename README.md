@@ -28,3 +28,12 @@ Advantages of 2.0:
  - [ ] Runs on Windows as well as Unix.
  - [ ] Simpler install and development cycle.
  - [ ] Less need to understand git and git branching.
+
+
+Deployment:
+
+ * Edit config.yml to make sure baseurl is the repo name.
+ * Settings | Pages, enable github pages.
+ * Push the repo.
+ * Check to see that the action completed successfully.
+ * Check the url (username.github.io/reponame)
