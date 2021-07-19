@@ -5,7 +5,7 @@ morea_type: home
 published: true
 ---
 
-## Welcome to ICS 199, Fall 2021
+## Welcome to ICS 199, Fall, 2021
 
 ICS 199 is a four week introduction to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), which will enable you to experience programming concepts including higher-order functions, closures, and functional programming idioms (map, reduce, filter).
 
