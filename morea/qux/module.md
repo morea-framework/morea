@@ -1,6 +1,6 @@
 ---
 title: "Learn to Qux"
-published: true
+published: false
 morea_coming_soon: true
 morea_id: qux
 morea_type: module

@@ -1,6 +1,6 @@
 ---
 title: "Learn to Baz"
-published: true
+published: false
 morea_id: baz
 morea_outcomes:
  - outcome3

@@ -1,6 +1,6 @@
 ---
 title: "Learn to Foo"
-published: true
+published: false
 morea_id: foo
 morea_outcomes:
  - outcome1

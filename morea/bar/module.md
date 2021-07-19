@@ -1,6 +1,6 @@
 ---
 title: "Learn to Bar"
-published: true
+published: false
 morea_id: bar
 morea_summary: "How to bar."
 morea_prerequisites:

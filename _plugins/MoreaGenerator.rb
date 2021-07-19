@@ -37,11 +37,15 @@ module Jekyll
     end
 
     def generate(site)
-      puts "\nStarting Morea page processing..."
+      if site.config['build_verbose'] == true
+        puts "\nStarting Morea page processing..."
+      end
       @fatal_errors = false
       configSite(site)
       #print_obj_info(site)
-      puts "Site destination:" + site.config['destination']
+      if site.config['build_verbose'] == true
+        puts "Site destination:" + site.config['destination']
+      end
       @summary = MoreaGeneratorSummary.new(site)
       morea_dir = site.config['morea_dir'] || 'morea'
       morea_file_paths = Dir["#{site.source}/#{morea_dir}/**/*"]
@@ -53,7 +57,9 @@ module Jekyll
           subdir = extract_directory(relative_file_path)
 
           @summary.total_files += 1
-          puts "  Processing file:  #{subdir}#{file_name}"
+          if site.config['build_verbose'] == true
+            puts "  Processing file:  #{subdir}#{file_name}"
+          end
           if File.extname(file_name) == '.md'
             @summary.morea_files += 1
             processMoreaFile(site, subdir, file_name, morea_dir)
@@ -216,14 +222,18 @@ module Jekyll
 
     def check_for_undefined_home_page(site)
       unless site.config['morea_home_page']
-        puts "  Warning:  no home page content. Define a page with 'morea_type: home' to fix."
+        if site.config['build_verbose'] == true
+          puts "  Warning:  no home page content. Define a page with 'morea_type: home' to fix."
+        end
         @summary.yaml_warnings += 1
       end
     end
 
     def check_for_undefined_footer_page(site)
       unless site.config['morea_footer_page']
-        puts "  Warning:  no footer content. Define a page with 'morea_type: footer' to fix."
+        if site.config['build_verbose'] == true
+          puts "  Warning:  no footer content. Define a page with 'morea_type: footer' to fix."
+        end
         @summary.yaml_warnings += 1
       end
     end
@@ -499,7 +509,9 @@ module Jekyll
         site.config['morea_fatal_errors'] = true
       end
       if @missing_optional.size > 0
-        puts "  Warning: #{@name} missing optional front matter: " + @missing_optional*", "
+        if site.config['build_verbose'] == true
+          puts "  Warning: #{@name} missing optional front matter: " + @missing_optional*", "
+        end
       end
       if @duplicate_id
         puts "  Error: #{@name} has duplicate id: #{@data['morea_id']}"
