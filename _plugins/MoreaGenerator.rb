@@ -1,12 +1,20 @@
 # Processes pages in the morea directory.
 # Adapted from: https://github.com/bbakersmith/jekyll-pages-directory
+#
+# This module contains the following classes:
+#   MoreaGenerator. Inherits from Generator. (https://jekyllrb.com/docs/plugins/generators/)
+#   ModulePage.  Class used to generate the Morea Module summary page.
+#   MoreaPage.  Class used to generate non-Module Morea pages.
+#   MarkdownPage. Class used to generate regular Markdown files.
+#   MoreaGeneratorSummary.  Generates the summary string at conclusion of processing.
+#   ScheduleInfoFile.  Generates the schedule-info.js file.
+#   ModuleInfoFile. Generates the module-info.js file for use in the review site.
 
 module Jekyll
-
   class MoreaGenerator < Generator
-
     attr_accessor :summary
 
+    # Set up the site.config variable with initial values.
     def configSite(site)
       site.config['morea_module_pages'] = []
       site.config['morea_prerequisite_pages'] = []
@@ -34,16 +42,19 @@ module Jekyll
           site.config['morea_domain'].chop!
         end
       end
+      if site.config['log_level'] >= 2
+        puts "Results from configSite: #{site.config.inspect()}"
+      end
     end
 
+    # Entry point for this plugin.
     def generate(site)
-      if site.config['build_verbose'] == true
+      if site.config['log_level'] >= 1
         puts "\nStarting Morea page processing..."
       end
       @fatal_errors = false
       configSite(site)
-      #print_obj_info(site)
-      if site.config['build_verbose'] == true
+      if site.config['log_level'] >= 1
         puts "Site destination:" + site.config['destination']
       end
       @summary = MoreaGeneratorSummary.new(site)
@@ -57,7 +68,7 @@ module Jekyll
           subdir = extract_directory(relative_file_path)
 
           @summary.total_files += 1
-          if site.config['build_verbose'] == true
+          if site.config['log_level'] >= 1
             puts "  Processing file:  #{subdir}#{file_name}"
           end
           if File.extname(file_name) == '.md'
@@ -92,9 +103,6 @@ module Jekyll
     end
 
     def hasIgnoreDirectory?(path)
-      #if Pathname(path).each_filename.to_a.include?("_ignore")
-      #  puts "  Ignoring " + path
-      #end
       return Pathname(path).each_filename.to_a.include?("_ignore")
     end
 
@@ -316,8 +324,12 @@ module Jekyll
         site.config['morea_page_table'][new_page.data['morea_id']] = new_page
         if new_page.data['morea_type'] == 'module'
           site.config['morea_module_pages'] << new_page
+          puts "Adding the following new page to morea_module_pages"
+          print_obj_info(new_page)
           module_page = ModulePage.new(site, site.source, new_page.data['morea_id'], new_page)
           site.pages << module_page
+          # puts 'About to print module page'
+          # print_obj_info(module_page)
         elsif new_page.data['morea_type'] == 'outcome'
           site.config['morea_outcome_pages'] << new_page
         elsif new_page.data['morea_type'] == "reading"
@@ -455,7 +467,9 @@ module Jekyll
       @site = site
       read_yaml(File.join(site.source, morea_dir, subdir), file_name)
       @base = site.source
-      @dir = morea_dir + "/" + subdir
+      #@dir = morea_dir + "/" + subdir
+      @dir = morea_dir + subdir
+      # puts "MoreaPage#Initialize subdir: #{subdir} file_name: #{file_name} morea_dir: #{morea_dir} dir: #{@dir}"
       #@dir = "modules" + "/" + subdir
       @name = file_name
       @missing_required = []
@@ -487,6 +501,7 @@ module Jekyll
         self.data['morea_referencing_assessments'] = []
       end
       process(file_name)
+      puts "About to render: file: #{@name} payload: #{site.site_payload}"
       self.render(site.layouts, site.site_payload)
 
     end
@@ -630,7 +645,9 @@ module Jekyll
   end
 
 
-  # Gathers module metadata and writes it to a top-level file (module-info.js)
+  # Gathers module metadata and writes it to a top-level file (module-info.js).
+  # Is invoked only when morea_course is set in _config.yml.
+  # Useful for sites that want to get metadata about a Morea site.
   class ModuleInfoFile
     def initialize(site)
       @site = site

@@ -6,24 +6,9 @@ morea_id: ethics
 morea_outcomes:
   - outcome-ethics
 morea_readings:
- - reading-screencast-guided-tour-ethics
- - reading-se-ethics-intro
  - reading-acm-code
- - reading-acm-se-code
 morea_experiences:
- - experience-se-ethics-codes
- - experience-se-ethics-harm
- - experience-se-ethics-good
- - experience-se-ethics-whom
- - experience-se-ethics-where
- - experience-se-ethics-how
- - experience-se-ethics-case-study-harrassment
- - experience-se-ethics-case-study-privacy
- - experience-se-ethics-case-study-autonomous-cars
- - experience-se-ethics-case-study-shameful-code
- - experience-se-ethics-case-study-facebook
- - experience-se-ethics-case-minnesota-linux
- # - experience-ethics-technical-essay
+ - experience-ethics-technical-essay
 morea_assessments:
 morea_icon_url: /morea/example-ethics/ethics.png
 morea_type: module
