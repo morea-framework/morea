@@ -1,4 +1,6 @@
-# Processes pages in the morea directory.
+# frozen_string_literal: true
+#
+# Processes pages in the morea/ directory and outputs them to the _site directory.
 # Adapted from: https://github.com/bbakersmith/jekyll-pages-directory
 #
 # This module contains the following classes:
@@ -9,74 +11,91 @@
 #   MoreaGeneratorSummary.  Generates the summary string at conclusion of processing.
 #   ScheduleInfoFile.  Generates the schedule-info.js file.
 #   ModuleInfoFile. Generates the module-info.js file for use in the review site.
+#
+#   Logging color conventions:
+#     `debug`: green, `info`: black `warn`: brown, `error`: red
+#     Possible colors: black, red, green, brown, blue, magenta, cyan, gray
 
-module Jekyll
-  class MoreaGenerator < Generator
+require 'pp'
+
+module Morea
+
+  # Define a logger for Morea plugin debugging.
+  require_relative './logger_factory.rb'
+  @log = LoggerFactory.new.create_logger('Morea', Jekyll.configuration({}), :warn, $stderr)
+  def self.log
+    @log
+  end
+
+  class MoreaGenerator < Jekyll::Generator
     attr_accessor :summary
 
+    # Return a hash containing only the config variables starting with 'morea_'
+    # Used for debugging because it makes it easy to track changes to morea variables during processing.
+    def logMoreaConfig()
+      keys = @config.keys
+      moreaKeys = keys.select { |key| key.start_with?('morea_')}
+      moreaConfig = @config.slice(*moreaKeys.sort)
+      Morea.log.debug "MOREA SITE CONFIG: \n#{moreaConfig.pretty_inspect()}".green
+    end
+
     # Set up the site.config variable with initial values.
-    def configSite(site)
-      site.config['morea_module_pages'] = []
-      site.config['morea_prerequisite_pages'] = []
-      site.config['morea_outcome_pages'] = []
-      site.config['morea_reading_pages'] = []
-      site.config['morea_experience_pages'] = []
-      site.config['morea_assessment_pages'] = []
-      site.config['morea_home_page'] = nil
-      site.config['morea_footer_page'] = nil
-      site.config['morea_page_table'] = {}
-      site.config['morea_fatal_errors'] = false
-      if (site.config['morea_navbar_items'] == nil)
-        site.config['morea_navbar_items'] = ["Modules", "Outcomes", "Readings", "Experiences", "Assessments"]
+    def configSite()
+      @config['morea_module_pages'] = []
+      @config['morea_prerequisite_pages'] = []
+      @config['morea_outcome_pages'] = []
+      @config['morea_reading_pages'] = []
+      @config['morea_experience_pages'] = []
+      @config['morea_assessment_pages'] = []
+      @config['morea_home_page'] = nil
+      @config['morea_footer_page'] = nil
+      @config['morea_page_table'] = {}
+      @config['morea_fatal_errors'] = false
+      if (@config['morea_navbar_items'] == nil)
+        @config['morea_navbar_items'] = ["Modules", "Outcomes", "Readings", "Experiences", "Assessments"]
       end
-      if (site.config['morea_course'] == nil)
-        site.config['morea_course'] = ''
-      else
-        site.config['morea_course'] = site.config['morea_course'].to_s
+      if (@config['morea_dir'] == nil)
+        @config['morea_dir'] = 'morea'
       end
-      if (site.config['morea_domain'] == nil)
-        site.config['morea_domain'] = ''
+      if (@config['morea_course'] == nil)
+        @config['morea_course'] = ''
       else
-        site.config['morea_domain'] = site.config['morea_domain'].to_s
-        if site.config['morea_domain'].end_with?("/")
-          site.config['morea_domain'].chop!
+        @config['morea_course'] = site.config['morea_course'].to_s
+      end
+      if (@config['morea_domain'] == nil)
+        @config['morea_domain'] = ''
+      else
+        @config['morea_domain'] = @config['morea_domain'].to_s
+        if @config['morea_domain'].end_with?("/")
+          @config['morea_domain'].chop!
         end
       end
-      if site.config['log_level'] >= 2
-        puts "Results from configSite: #{site.config.inspect()}"
-      end
+      # Morea.log.debug "SITE CONFIG \n#{@config.pretty_inspect()}".green
+      logMoreaConfig()
     end
 
     # Entry point for this plugin.
     def generate(site)
-      if site.config['log_level'] >= 1
-        puts "\nStarting Morea page processing..."
-      end
-      @fatal_errors = false
-      configSite(site)
-      if site.config['log_level'] >= 1
-        puts "Site destination:" + site.config['destination']
-      end
+      Morea.log.info "Starting Morea page processing..."
+      @config = site.config
+      configSite()
       @summary = MoreaGeneratorSummary.new(site)
-      morea_dir = site.config['morea_dir'] || 'morea'
-      morea_file_paths = Dir["#{site.source}/#{morea_dir}/**/*"]
+      morea_file_paths = Dir["#{site.source}/#{@config['morea_dir']}/**/*"]
       morea_file_paths.each do |f|
         if File.file?(f) and !hasIgnoreDirectory?(f)
           file_name = f.match(/[^\/]*$/)[0]
-          relative_file_path = f.gsub(/^#{morea_dir}\//, '')
-          relative_file_path = relative_file_path[(site.source.size + morea_dir.size + 1)..relative_file_path.size]
+          relative_file_path = f.gsub(/^#{@config['morea_dir']}\//, '')
+          relative_file_path = relative_file_path[(site.source.size + @config['morea_dir'].size + 1)..relative_file_path.size]
           subdir = extract_directory(relative_file_path)
-
           @summary.total_files += 1
-          if site.config['log_level'] >= 1
-            puts "  Processing file:  #{subdir}#{file_name}"
-          end
           if File.extname(file_name) == '.md'
             @summary.morea_files += 1
-            processMoreaFile(site, subdir, file_name, morea_dir)
+            Morea.log.info "Processing file: #{subdir}#{file_name} (Morea)"
+            processMoreaFile(site, subdir, file_name, @config['morea_dir'])
           else
             @summary.non_morea_files += 1
-            processNonMoreaFile(site, subdir, file_name, morea_dir)
+            Morea.log.info "Processing file: #{subdir}#{file_name} (non-Morea)"
+            processNonMoreaFile(site, subdir, file_name, @config['morea_dir'])
           end
         end
       end
@@ -91,14 +110,16 @@ module Jekyll
       fix_morea_urls(site)
       set_due_date(site)
       sort_pages(site)
-      unless (site.config['morea_course'] == '')
+      unless (@config['morea_course'] == '')
         ModuleInfoFile.new(site).write_module_info_file
       end
       ScheduleInfoFile.new(site).write_schedule_info_file
-      puts @summary
-      if site.config['morea_fatal_errors']
-        puts "Errors found. Exiting."
-        exit
+
+      logMoreaConfig()
+      Morea.log.info @summary
+      if @config['morea_fatal_errors']
+        Morea.log.error "Errors found. Exiting".red
+        exit(false)
       end
     end
 
@@ -460,7 +481,7 @@ module Jekyll
 
 
   # Every .md file in the morea directory becomes a MoreaPage.
-  class MoreaPage < Page
+  class MoreaPage < Jekyll::Page
     attr_accessor :missing_required, :missing_optional, :duplicate_id, :undefined_id
 
     def initialize(site, subdir, file_name, morea_dir)
@@ -540,7 +561,7 @@ module Jekyll
   end
 
   # Module pages are dynamically generated, one per MoreaPage with morea_type = module.
-  class ModulePage < Page
+  class ModulePage < Jekyll::Page
     def initialize(site, base, dir, morea_page)
       @site = site
       self.read_yaml(File.join(base, '_layouts'), 'module.html')
@@ -562,7 +583,7 @@ module Jekyll
   end
 
   # Markdown pages have the .markdown suffix. We add a default layout and topdiv value.
-  class MarkdownPage < Page
+  class MarkdownPage < Jekyll::Page
     def initialize(site, base, dir, file_name)
       @site = site
       self.read_yaml(File.join(base, '_layouts'), 'default.html')

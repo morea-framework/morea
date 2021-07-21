@@ -10,6 +10,8 @@ baseurl: /morea
 exclude: [morea]
 build_verbose: true
 log_level: 2
+logger_factory:
+  Morea: debug    #possible values: `debug`, `info`, `warn`, `error`
 morea_theme: spacelab5
 morea_navbar_items:
   - Prerequisites
