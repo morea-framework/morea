@@ -115,7 +115,7 @@ module Morea
       end
       ScheduleInfoFile.new(site).write_schedule_info_file
 
-      logMoreaConfig()
+      # logMoreaConfig()
       Morea.log.info @summary
       if @config['morea_fatal_errors']
         Morea.log.error "Errors found. Exiting".red
@@ -136,6 +136,7 @@ module Morea
     end
 
     # Prepend site.baseurl to reading pages and prerequisites containing a morea_url that does not start with http.
+    # TODO: What if the external site contains the string "morea"!  This seems brittle to me.  Why not check directly for lack of http?
     def fix_morea_urls(site)
       site.config['morea_reading_pages'].each do |reading_page|
         reading_url = reading_page.data['morea_url']
@@ -251,18 +252,14 @@ module Morea
 
     def check_for_undefined_home_page(site)
       unless site.config['morea_home_page']
-        if site.config['build_verbose'] == true
-          puts "  Warning:  no home page content. Define a page with 'morea_type: home' to fix."
-        end
+        Morea.log.warn "Warning:  no home page content. Define a page with 'morea_type: home' to fix.".brown
         @summary.yaml_warnings += 1
       end
     end
 
     def check_for_undefined_footer_page(site)
       unless site.config['morea_footer_page']
-        if site.config['build_verbose'] == true
-          puts "  Warning:  no footer content. Define a page with 'morea_type: footer' to fix."
-        end
+        Morea.log.warn "Warning: no footer content. Define a page with 'morea_type: footer' to fix.".brown
         @summary.yaml_warnings += 1
       end
     end
@@ -336,8 +333,8 @@ module Morea
 
     def processMoreaFile(site, subdir, file_name, morea_dir)
       new_page = MoreaPage.new(site, subdir, file_name, morea_dir)
+      Morea.log.info "Processing #{file_name}:\n#{new_page.inspect()}\n-------------------------------"
       validate(new_page, site)
-      # Ruby Newbie Alert. There is definitely a one liner to do the following:
       # Note that even pages with errors are going to try to be published.
       if new_page.published?
         @summary.published_files += 1
@@ -345,12 +342,9 @@ module Morea
         site.config['morea_page_table'][new_page.data['morea_id']] = new_page
         if new_page.data['morea_type'] == 'module'
           site.config['morea_module_pages'] << new_page
-          puts "Adding the following new page to morea_module_pages"
-          print_obj_info(new_page)
+          Morea.log.info "Adding #{file_name} to morea_module_pages"
           module_page = ModulePage.new(site, site.source, new_page.data['morea_id'], new_page)
           site.pages << module_page
-          # puts 'About to print module page'
-          # print_obj_info(module_page)
         elsif new_page.data['morea_type'] == 'outcome'
           site.config['morea_outcome_pages'] << new_page
         elsif new_page.data['morea_type'] == "reading"
@@ -522,7 +516,7 @@ module Morea
         self.data['morea_referencing_assessments'] = []
       end
       process(file_name)
-      puts "About to render: file: #{@name} payload: #{site.site_payload}"
+      # puts "About to render: file: #{@name} payload: #{site.site_payload}"
       self.render(site.layouts, site.site_payload)
 
     end
@@ -533,28 +527,33 @@ module Morea
       !(self.data.has_key?('published') && self.data['published'] == false)
     end
 
-    # Print out variables associated with obj. For debugging.
-    def print_obj_info(obj)
-      obj.instance_variables.map{|var| puts [var, obj.instance_variable_get(var)].join(":")}
+    def truncate(string, max)
+      string.length > max ? "#{string[0...max]}..." : string
+    end
+
+    # Return a pretty printed string containing all of this page's instance variables, one per line.
+    # Instance variables are converted to strings and truncated at 50 chas.
+    def inspect()
+      contents = ''
+      self.instance_variables.map{|var| contents += "\n" + [var, truncate(self.instance_variable_get(var).to_s(), 50)].join(": ")}
+      "[MoreaPage #{self.name}" + contents + "\n]"
     end
 
     # Prints a string listing warnings or errors if there were any, otherwise does nothing.
     def print_problems_if_any
       if @missing_required.size > 0
-        puts "  Error: #{@name} missing required front matter: " + @missing_required*", "
+        Morea.log.error "Error: #{@name} missing required front matter: #{@missing_required}".red
         site.config['morea_fatal_errors'] = true
       end
       if @missing_optional.size > 0
-        if site.config['build_verbose'] == true
-          puts "  Warning: #{@name} missing optional front matter: " + @missing_optional*", "
-        end
+        Morea.log.warn "Warning: #{@name} missing optional front matter #{@missing_optional}".blue
       end
       if @duplicate_id
-        puts "  Error: #{@name} has duplicate id: #{@data['morea_id']}"
+        Morea.log.error "Error: #{@name} has duplicate id: #{@data['morea_id']}".red
         site.config['morea_fatal_errors'] = true
       end
       if @undefined_id.size > 0
-        puts "  Error: #{@name} references undefined morea_id: " + @undefined_id*", "
+        Morea.log.error "Error: #{@name} references undefined morea_id: #{@undefined_id}"
         site.config['morea_fatal_errors'] = true
       end
     end
