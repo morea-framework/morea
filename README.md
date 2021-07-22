@@ -37,3 +37,8 @@ Deployment:
  * Push the repo.
  * Check to see that the action completed successfully.
  * Check the url (username.github.io/reponame)
+
+Next debugging steps:
+ * Get rid of overviews.
+ * Check to see that content is correct for all pages.
+ * Check to see that Morea pages are written to the correct place.
