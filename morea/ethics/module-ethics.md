@@ -4,9 +4,9 @@ published: true
 morea_coming_soon: false
 morea_id: ethics
 morea_outcomes:
-  - outcome-ethics
+  # - outcome-ethics
 morea_readings:
- - reading-acm-code
+ # - reading-acm-code
 morea_experiences:
  - experience-ethics-technical-essay
 morea_assessments:

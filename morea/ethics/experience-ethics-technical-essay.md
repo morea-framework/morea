@@ -9,8 +9,7 @@ morea_start_date: "2020-04-23T23:30"
 morea_labels:
   - Technical Essay
 ---
-
-# E60: Reflect on Ethics
+# E61: Reflect on Ethics
 
 Before starting this essay, read through the "Foundations" experiences in the Ethics module, and the two "Code of Ethics" readings.
 

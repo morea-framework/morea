@@ -75,8 +75,7 @@ module Morea
           @config['morea_domain'].chop!
         end
       end
-      # Morea.log.debug "SITE CONFIG \n#{@config.pretty_inspect()}".green
-      logMoreaConfig()
+      # logMoreaConfig()
     end
 
     # Entry point for this plugin.
@@ -95,15 +94,17 @@ module Morea
           @summary.total_files += 1
           if File.extname(file_name) == '.md'
             @summary.morea_files += 1
-            Morea.log.info "Processing file: #{subdir}#{file_name} (Morea)"
+            Morea.log.info "In generate, processing file: #{subdir}#{file_name} (Morea)"
             processMoreaFile(site, subdir, file_name, @config['morea_dir'])
           else
             @summary.non_morea_files += 1
-            Morea.log.info "Processing file: #{subdir}#{file_name} (non-Morea)"
+            Morea.log.info "In generate, processing file: #{subdir}#{file_name} (non-Morea)"
             processNonMoreaFile(site, subdir, file_name, @config['morea_dir'])
           end
         end
       end
+
+      puts "Finished processing files. Site Pages:\n" + site.pages.pretty_inspect()
 
       # Now that all Morea files are read in, do analyses that require access to all files.
       check_for_undeclared_morea_id_references(site)
@@ -337,43 +338,54 @@ module Morea
 
     def processMoreaFile(site, subdir, file_name, morea_dir)
       new_page = MoreaPage.new(site, subdir, file_name, morea_dir)
-      Morea.log.info "Processing #{file_name}:\n#{new_page.inspect()}\n-------------------------------"
+      Morea.log.info "Created a MoreaPage:\n#{new_page.inspect()}\n-------------------------------"
       validate(new_page, site)
       # Note that even pages with errors are going to try to be published.
       if new_page.published?
         @summary.published_files += 1
-        site.pages << new_page
         site.config['morea_page_table'][new_page.data['morea_id']] = new_page
         if new_page.data['morea_type'] == 'module'
           site.config['morea_module_pages'] << new_page
           Morea.log.info "Adding #{file_name} to morea_module_pages"
           module_page = ModulePage.new(site, site.source, new_page.data['morea_id'], new_page)
-          Morea.log.info "MODULE PAGE: \n#{module_page.inspect()}\n----------------------"
+          Morea.log.info "Created a ModulePage: \n#{module_page.inspect()}\n----------------------"
           site.pages << module_page
         elsif new_page.data['morea_type'] == 'outcome'
           site.config['morea_outcome_pages'] << new_page
+          site.pages << new_page
         elsif new_page.data['morea_type'] == "reading"
           site.config['morea_reading_pages'] << new_page
+          site.pages << new_page
         elsif new_page.data['morea_type'] == "experience"
           site.config['morea_experience_pages'] << new_page
+          site.pages << new_page
         elsif new_page.data['morea_type'] == "assessment"
           site.config['morea_assessment_pages'] << new_page
+          site.pages << new_page
         elsif new_page.data['morea_type'] == "prerequisite"
           site.config['morea_prerequisite_pages'] << new_page
+          site.pages << new_page
         elsif new_page.data['morea_type'] == "home"
           site.config['morea_home_page'] = new_page
+          site.pages << new_page
         elsif new_page.data['morea_type'] == "footer"
           site.config['morea_footer_page'] = new_page
+          site.pages << new_page
         elsif new_page.data['morea_type'] == "overview_modules"
           site.config['morea_overview_modules'] = new_page
+          site.pages << new_page
         elsif new_page.data['morea_type'] == "overview_outcomes"
           site.config['morea_overview_outcomes'] = new_page
+          site.pages << new_page
         elsif new_page.data['morea_type'] == "overview_readings"
           site.config['morea_overview_readings'] = new_page
+          site.pages << new_page
         elsif new_page.data['morea_type'] == "overview_experiences"
           site.config['morea_overview_experiences'] = new_page
+          site.pages << new_page
         elsif new_page.data['morea_type'] == "overview_assessments"
           site.config['morea_overview_assessments'] = new_page
+          site.pages << new_page
         end
       else
         @summary.unpublished_files += 1
@@ -534,8 +546,8 @@ module Morea
     # Instance variables are converted to strings and truncated at 50 chas.
     def inspect()
       contents = ''
-      self.instance_variables.map{|var| contents += "\n" + [var, Morea.truncate(self.instance_variable_get(var).to_s(), 50)].join(": ")}
-      "[MoreaPage #{self.name}" + contents + "\n]"
+      self.instance_variables.map{|var| contents += "\n" + [var, Morea.truncate(self.instance_variable_get(var).to_s(), 150)].join(": ")}
+      "\n---\n[MoreaPage #{self.name}" + contents + "\n---\n]"
     end
 
     # Prints a string listing warnings or errors if there were any, otherwise does nothing.
@@ -572,17 +584,18 @@ module Morea
       unless morea_page.data['morea_summary']
         morea_page.data['morea_summary'] = morea_page.output
       end
-      self.data['morea_page'] = morea_page
+      # self.data['morea_page'] = morea_page
       morea_page.data['module_page'] = self
       self.data['title'] = morea_page.data['title']
+      # self.render(site.layouts, site.site_payload)
     end
 
     # Return a pretty printed string containing all of this page's instance variables, one per line.
     # Instance variables are converted to strings and truncated at 50 chas.
     def inspect()
       contents = ''
-      self.instance_variables.map{|var| contents += "\n" + [var, Morea.truncate(self.instance_variable_get(var).to_s(), 5550)].join(": ")}
-      "[ModulePage #{self.name}" + contents + "\n]"
+      self.instance_variables.map{|var| contents += "\n" + [var, Morea.truncate(self.instance_variable_get(var).to_s(), 150)].join(": ")}
+      "\n---\n[ModulePage #{self.name}" + contents + "\n---\n]"
     end
   end
 

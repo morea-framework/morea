@@ -38,7 +38,38 @@ Deployment:
  * Check to see that the action completed successfully.
  * Check the url (username.github.io/reponame)
 
-Next debugging steps:
- * Get rid of overviews.
- * Check to see that content is correct for all pages.
- * Check to see that Morea pages are written to the correct place.
+What have we learned today:
+
+Having a MoreaPage and a ModulePage as separate things now seems problematic.
+
+The module page has this structure:
+
+```
+---
+[ModulePage index.html
+@site: #<Jekyll::Site:0x00007f935e501c68>
+@relative_path:
+@content: <div class="breadcrumb-bar bg-primary">
+  <div class="container">
+    <ol class="breadcrumb">
+      {% if site.morea_head_breadcrumb_link %}
+      <li...
+@data: {"layout"=>"default", "morea_page"=>
+---
+[MoreaPage module-ethics.md
+@site: #<Jekyll::Site:0x00007f935e501c68>
+@relative_path:
+@content: <p>Ethics: A...
+@base: /Users/philipjohnson/github/morea-framework/morea
+@dir: modules/ethics
+@name: index.html
+@path: /Users/philipjohnson/github/morea-framework/morea/ethics/index.html
+@ext: .html
+@basename: index
+---
+],
+```
+
+It has a morea_page data field where the content is `<p>Ethics...`. Also, unlike regular MoreaPages, there's no output field (maybe because we don't call render?
+
+There is a fundamental question here: why is the textual content of the experience-ethics-technical-essay.md field being output into the modules/ethics/index.html file?
