@@ -27,6 +27,11 @@ module Morea
     @log
   end
 
+  # Define the truncate method
+  def self.truncate(string, max)
+    string.length > max ? "#{string[0...max]}..." : string
+  end
+
   class MoreaGenerator < Jekyll::Generator
     attr_accessor :summary
 
@@ -135,8 +140,7 @@ module Morea
       site.config['morea_assessment_pages'] = site.config['morea_assessment_pages'].sort_by {|page| page.data['morea_sort_order']}
     end
 
-    # Prepend site.baseurl to reading pages and prerequisites containing a morea_url that does not start with http.
-    # TODO: What if the external site contains the string "morea"!  This seems brittle to me.  Why not check directly for lack of http?
+    # Prepend site.baseurl to the morea_url value of pages whose URL appears to require them
     def fix_morea_urls(site)
       site.config['morea_reading_pages'].each do |reading_page|
         reading_url = reading_page.data['morea_url']
@@ -344,6 +348,7 @@ module Morea
           site.config['morea_module_pages'] << new_page
           Morea.log.info "Adding #{file_name} to morea_module_pages"
           module_page = ModulePage.new(site, site.source, new_page.data['morea_id'], new_page)
+          Morea.log.info "MODULE PAGE: \n#{module_page.inspect()}\n----------------------"
           site.pages << module_page
         elsif new_page.data['morea_type'] == 'outcome'
           site.config['morea_outcome_pages'] << new_page
@@ -482,15 +487,13 @@ module Morea
       @site = site
       read_yaml(File.join(site.source, morea_dir, subdir), file_name)
       @base = site.source
-      #@dir = morea_dir + "/" + subdir
       @dir = morea_dir + subdir
-      # puts "MoreaPage#Initialize subdir: #{subdir} file_name: #{file_name} morea_dir: #{morea_dir} dir: #{@dir}"
-      #@dir = "modules" + "/" + subdir
       @name = file_name
       @missing_required = []
       @missing_optional = []
       @undefined_id = []
       @duplicate_id = false
+      @path = site.in_source_dir(@base, @dir, @name)
       self.data['referencing_modules'] = []
 
       # Provide defaults
@@ -527,15 +530,11 @@ module Morea
       !(self.data.has_key?('published') && self.data['published'] == false)
     end
 
-    def truncate(string, max)
-      string.length > max ? "#{string[0...max]}..." : string
-    end
-
     # Return a pretty printed string containing all of this page's instance variables, one per line.
     # Instance variables are converted to strings and truncated at 50 chas.
     def inspect()
       contents = ''
-      self.instance_variables.map{|var| contents += "\n" + [var, truncate(self.instance_variable_get(var).to_s(), 50)].join(": ")}
+      self.instance_variables.map{|var| contents += "\n" + [var, Morea.truncate(self.instance_variable_get(var).to_s(), 50)].join(": ")}
       "[MoreaPage #{self.name}" + contents + "\n]"
     end
 
@@ -567,17 +566,23 @@ module Morea
       @base = base
       @dir = "modules/" + morea_page.data['morea_id']
       @name = 'index.html'
-
+      @path = site.in_source_dir(base, dir, @name)
       self.process(@name)
-
       # Default morea_summary to the markdown page content if not specified already.
       unless morea_page.data['morea_summary']
         morea_page.data['morea_summary'] = morea_page.output
       end
-
       self.data['morea_page'] = morea_page
       morea_page.data['module_page'] = self
       self.data['title'] = morea_page.data['title']
+    end
+
+    # Return a pretty printed string containing all of this page's instance variables, one per line.
+    # Instance variables are converted to strings and truncated at 50 chas.
+    def inspect()
+      contents = ''
+      self.instance_variables.map{|var| contents += "\n" + [var, Morea.truncate(self.instance_variable_get(var).to_s(), 5550)].join(": ")}
+      "[ModulePage #{self.name}" + contents + "\n]"
     end
   end
 
