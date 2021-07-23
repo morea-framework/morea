@@ -10,7 +10,7 @@ morea_readings:
 morea_experiences:
  - experience-ethics-technical-essay
 morea_assessments:
-morea_icon_url: /morea/example-ethics/ethics.png
+morea_icon_url: /morea/ethics/ethics.png
 morea_type: module
 morea_sort_order: 125
 morea_start_date: "2021-04-30"

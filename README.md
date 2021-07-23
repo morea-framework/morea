@@ -73,3 +73,37 @@ The module page has this structure:
 It has a morea_page data field where the content is `<p>Ethics...`. Also, unlike regular MoreaPages, there's no output field (maybe because we don't call render?
 
 There is a fundamental question here: why is the textual content of the experience-ethics-technical-essay.md field being output into the modules/ethics/index.html file?
+
+Documentation:
+  * https://www.rubydoc.info/gems/jekyll/4.2.0/Jekyll/Page
+
+Does MoreaPage return a new Page, but MoreaModule does not from #initialize()
+
+Looks like what changed is the calculation of relative_path.  We should try setting it manually in MoreaPage.
+We should print the state of ALL pages just prior to rendering. Provide a custom "inspector" that shows all fields of all pages. Call it the PageInspector that returns a formatted string.
+
+We want the initializer for MoreaPage and ModulePage to be as close to Page as possible.
+
+The essential question:
+  * How do we initialize the state of a Jekyll::Page so that when it is rendered, the right thing happens?
+  * We do this via the initialize() method, which needs to mimic the real one as much as possible.
+  * We also need a way to detect whether or not we're doing it right. To do that, we need a PageInspector method that shows the state of all pages in site.pages (that helps us compare our pages to regular pages.)
+
+We're getting somewhere:
+  * Can run with either 4.1 or 4.2.  Probably within same directory:
+    - delete Gemfile.lock.
+    - edit Gemfile
+    - run bundle install
+    - bundle exec jekyll ....
+
+With 4.1, the morea module page does not have a relative_path variable. But in 4.2 it does.
+
+1. Confirm can run 4.1 or 4.2 in same directory.
+2. Checkpoint morea.
+3. Run 4.1, compare output for experience and module.
+
+Output comparison:
+
+* 4.1: 18 and 11 instance variables, increased to 21 and 12 in 4.2.
+* relative_path instance var empty in 4.2 for both experience and module.
+* 4.2: module has a "@renderer" instance var and no @output, experience has the @output but no @renderer.

@@ -35,13 +35,26 @@ module Morea
   class MoreaGenerator < Jekyll::Generator
     attr_accessor :summary
 
-    # Return a hash containing only the config variables starting with 'morea_'
+    # Emit a debugging log message containing the site.config variables starting with 'morea_'
     # Used for debugging because it makes it easy to track changes to morea variables during processing.
     def logMoreaConfig()
       keys = @config.keys
       moreaKeys = keys.select { |key| key.start_with?('morea_')}
       moreaConfig = @config.slice(*moreaKeys.sort)
       Morea.log.debug "MOREA SITE CONFIG: \n#{moreaConfig.pretty_inspect()}".green
+    end
+
+    # Emit a debugging log message containing the state variables and values of a Jekyll:Page.
+    def logJekyllPage(page)
+      Morea.log.debug "\n<Jekyll::Page #{page.dir}#{page.name} Instance vars: #{page.instance_variables.length()}------>".green
+      page.instance_variables.sort.each do |var|
+        if ((var.to_s == "@content") || (var.to_s == "@output"))
+          Morea.log.debug "#{var}: #{Morea.truncate(page.instance_variable_get(var), 50)}"
+        else
+          Morea.log.debug [var, page.instance_variable_get(var)].join(": ")
+        end
+      end
+      Morea.log.debug "<End Jekyll Page----->".green
     end
 
     # Set up the site.config variable with initial values.
@@ -81,6 +94,7 @@ module Morea
     # Entry point for this plugin.
     def generate(site)
       Morea.log.info "Starting Morea page processing..."
+      Morea.log.debug ".\n.\n.\n.\n.\n.\n".green
       @config = site.config
       configSite()
       @summary = MoreaGeneratorSummary.new(site)
@@ -94,17 +108,20 @@ module Morea
           @summary.total_files += 1
           if File.extname(file_name) == '.md'
             @summary.morea_files += 1
-            Morea.log.info "In generate, processing file: #{subdir}#{file_name} (Morea)"
+            # Morea.log.info "In generate, processing file: #{subdir}#{file_name} (Morea)"
             processMoreaFile(site, subdir, file_name, @config['morea_dir'])
           else
             @summary.non_morea_files += 1
-            Morea.log.info "In generate, processing file: #{subdir}#{file_name} (non-Morea)"
+            # Morea.log.info "In generate, processing file: #{subdir}#{file_name} (non-Morea)"
             processNonMoreaFile(site, subdir, file_name, @config['morea_dir'])
           end
         end
       end
 
-      puts "Finished processing files. Site Pages:\n" + site.pages.pretty_inspect()
+      puts "Finished processing files."
+      site.pages.each do |page|
+        logJekyllPage(page)
+      end
 
       # Now that all Morea files are read in, do analyses that require access to all files.
       check_for_undeclared_morea_id_references(site)
@@ -338,7 +355,7 @@ module Morea
 
     def processMoreaFile(site, subdir, file_name, morea_dir)
       new_page = MoreaPage.new(site, subdir, file_name, morea_dir)
-      Morea.log.info "Created a MoreaPage:\n#{new_page.inspect()}\n-------------------------------"
+      # Morea.log.info "Created a MoreaPage:\n#{new_page.inspect()}\n-------------------------------"
       validate(new_page, site)
       # Note that even pages with errors are going to try to be published.
       if new_page.published?
@@ -346,9 +363,9 @@ module Morea
         site.config['morea_page_table'][new_page.data['morea_id']] = new_page
         if new_page.data['morea_type'] == 'module'
           site.config['morea_module_pages'] << new_page
-          Morea.log.info "Adding #{file_name} to morea_module_pages"
+          # Morea.log.info "Adding #{file_name} to morea_module_pages"
           module_page = ModulePage.new(site, site.source, new_page.data['morea_id'], new_page)
-          Morea.log.info "Created a ModulePage: \n#{module_page.inspect()}\n----------------------"
+          # Morea.log.info "Created a ModulePage: \n#{module_page.inspect()}\n----------------------"
           site.pages << module_page
         elsif new_page.data['morea_type'] == 'outcome'
           site.config['morea_outcome_pages'] << new_page
