@@ -107,3 +107,9 @@ Output comparison:
 * 4.1: 18 and 11 instance variables, increased to 21 and 12 in 4.2.
 * relative_path instance var empty in 4.2 for both experience and module.
 * 4.2: module has a "@renderer" instance var and no @output, experience has the @output but no @renderer.
+
+Next step:
+  * Update ModulePage#initialize.
+  * Revert processMoreaFile to original version.
+  * Run to see what happens.
+  * Potentially add relative_dir instance var value, although that does not seem like the problem anymore.

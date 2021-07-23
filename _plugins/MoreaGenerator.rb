@@ -512,7 +512,41 @@ module Morea
   class MoreaPage < Jekyll::Page
     attr_accessor :missing_required, :missing_optional, :duplicate_id, :undefined_id
 
+    # Initialize a new page
+    # This mimics the structure of Jekyll::Page#initialize as much as possible.
+    # Ordering issues means that calling super is unlikely to work.
+    # If problems on upgrade, check to see if Jekyll::Page#initialize has changed
     def initialize(site, subdir, file_name, morea_dir)
+      # Start with initialization straight from Jekyll::Page#initialize
+      @site = site
+      @base = site.source
+      @dir = morea_dir + subdir
+      @name = file_name
+      @path = site.in_source_dir(@base, @dir, @name)
+      process(file_name)
+      read_yaml(File.join(site.source, morea_dir, subdir), file_name)
+
+      # Now add Morea-specific initializations
+      @missing_required = []
+      @missing_optional = []
+      @undefined_id = []
+      @duplicate_id = false
+      # Provide defaults
+      if (self.data['morea_type'] == 'experience') || (self.data['morea_type'] == 'reading')
+        self.data['layout'] ||= 'page'
+        self.data['topdiv'] ||= 'container'
+      end
+      self.data['referencing_modules'] ||= []
+      self.data['morea_prerequisites'] ||= []
+      self.data['morea_related_outcomes'] ||= []
+      self.data['morea_outcomes_assessed'] ||= []
+      self.data['morea_referencing_assessments'] ||= []
+
+      ## Finish by calling hooks (copied from Jekyll::Page#initialize)
+      Jekyll::Hooks.trigger :pages, :post_init, self
+    end
+
+    def initializeOLD(site, subdir, file_name, morea_dir)
       @site = site
       read_yaml(File.join(site.source, morea_dir, subdir), file_name)
       @base = site.source
@@ -527,7 +561,7 @@ module Morea
 
       # Provide defaults
       if (self.data['morea_type'] == 'experience') || (self.data['morea_type'] == 'reading')
-          unless self.data['layout']
+        unless self.data['layout']
           self.data['layout'] = 'page'
         end
         unless self.data['topdiv']
