@@ -108,11 +108,9 @@ module Morea
           @summary.total_files += 1
           if File.extname(file_name) == '.md'
             @summary.morea_files += 1
-            # Morea.log.info "In generate, processing file: #{subdir}#{file_name} (Morea)"
             processMoreaFile(site, subdir, file_name, @config['morea_dir'])
           else
             @summary.non_morea_files += 1
-            # Morea.log.info "In generate, processing file: #{subdir}#{file_name} (non-Morea)"
             processNonMoreaFile(site, subdir, file_name, @config['morea_dir'])
           end
         end
@@ -353,56 +351,45 @@ module Morea
       end
     end
 
+    # Generate Jekyll::Pages and add to site.pages.
+    # Note that two pages are created per module:
+    #   1. morea/<module-name>/module-<module-name>.md (results from MoreaPage.new).
+    #   2. modules/<module-name>/index.html (results from ModulePage.new).
     def processMoreaFile(site, subdir, file_name, morea_dir)
       new_page = MoreaPage.new(site, subdir, file_name, morea_dir)
-      # Morea.log.info "Created a MoreaPage:\n#{new_page.inspect()}\n-------------------------------"
       validate(new_page, site)
-      # Note that even pages with errors are going to try to be published.
       if new_page.published?
         @summary.published_files += 1
+        site.pages << new_page
         site.config['morea_page_table'][new_page.data['morea_id']] = new_page
         if new_page.data['morea_type'] == 'module'
           site.config['morea_module_pages'] << new_page
-          # Morea.log.info "Adding #{file_name} to morea_module_pages"
           module_page = ModulePage.new(site, site.source, new_page.data['morea_id'], new_page)
-          # Morea.log.info "Created a ModulePage: \n#{module_page.inspect()}\n----------------------"
           site.pages << module_page
         elsif new_page.data['morea_type'] == 'outcome'
           site.config['morea_outcome_pages'] << new_page
-          site.pages << new_page
         elsif new_page.data['morea_type'] == "reading"
           site.config['morea_reading_pages'] << new_page
-          site.pages << new_page
         elsif new_page.data['morea_type'] == "experience"
           site.config['morea_experience_pages'] << new_page
-          site.pages << new_page
         elsif new_page.data['morea_type'] == "assessment"
           site.config['morea_assessment_pages'] << new_page
-          site.pages << new_page
         elsif new_page.data['morea_type'] == "prerequisite"
           site.config['morea_prerequisite_pages'] << new_page
-          site.pages << new_page
         elsif new_page.data['morea_type'] == "home"
           site.config['morea_home_page'] = new_page
-          site.pages << new_page
         elsif new_page.data['morea_type'] == "footer"
           site.config['morea_footer_page'] = new_page
-          site.pages << new_page
         elsif new_page.data['morea_type'] == "overview_modules"
           site.config['morea_overview_modules'] = new_page
-          site.pages << new_page
         elsif new_page.data['morea_type'] == "overview_outcomes"
           site.config['morea_overview_outcomes'] = new_page
-          site.pages << new_page
         elsif new_page.data['morea_type'] == "overview_readings"
           site.config['morea_overview_readings'] = new_page
-          site.pages << new_page
         elsif new_page.data['morea_type'] == "overview_experiences"
           site.config['morea_overview_experiences'] = new_page
-          site.pages << new_page
         elsif new_page.data['morea_type'] == "overview_assessments"
           site.config['morea_overview_assessments'] = new_page
-          site.pages << new_page
         end
       else
         @summary.unpublished_files += 1
@@ -527,6 +514,7 @@ module Morea
       read_yaml(File.join(site.source, morea_dir, subdir), file_name)
 
       # Now add Morea-specific initializations
+      @jekyll_page_subclass = 'MoreaPage'
       @missing_required = []
       @missing_optional = []
       @undefined_id = []
@@ -546,59 +534,10 @@ module Morea
       Jekyll::Hooks.trigger :pages, :post_init, self
     end
 
-    def initializeOLD(site, subdir, file_name, morea_dir)
-      @site = site
-      read_yaml(File.join(site.source, morea_dir, subdir), file_name)
-      @base = site.source
-      @dir = morea_dir + subdir
-      @name = file_name
-      @missing_required = []
-      @missing_optional = []
-      @undefined_id = []
-      @duplicate_id = false
-      @path = site.in_source_dir(@base, @dir, @name)
-      self.data['referencing_modules'] = []
-
-      # Provide defaults
-      if (self.data['morea_type'] == 'experience') || (self.data['morea_type'] == 'reading')
-        unless self.data['layout']
-          self.data['layout'] = 'page'
-        end
-        unless self.data['topdiv']
-          self.data['topdiv'] = 'container'
-        end
-      end
-
-      unless self.data['morea_prerequisites']
-        self.data['morea_prerequisites'] = []
-      end
-      unless self.data['morea_related_outcomes']
-        self.data['morea_related_outcomes'] = []
-      end
-      unless self.data['morea_outcomes_assessed']
-        self.data['morea_outcomes_assessed'] = []
-      end
-      unless self.data['morea_referencing_assessments']
-        self.data['morea_referencing_assessments'] = []
-      end
-      process(file_name)
-      # puts "About to render: file: #{@name} payload: #{site.site_payload}"
-      self.render(site.layouts, site.site_payload)
-
-    end
-
     # Whether the file is published or not, as indicated in YAML front-matter
     # Ruby Newbie Alert: copied this from Convertible cause 'include Convertible' didn't work for me.
     def published?
       !(self.data.has_key?('published') && self.data['published'] == false)
-    end
-
-    # Return a pretty printed string containing all of this page's instance variables, one per line.
-    # Instance variables are converted to strings and truncated at 50 chas.
-    def inspect()
-      contents = ''
-      self.instance_variables.map{|var| contents += "\n" + [var, Morea.truncate(self.instance_variable_get(var).to_s(), 150)].join(": ")}
-      "\n---\n[MoreaPage #{self.name}" + contents + "\n---\n]"
     end
 
     # Prints a string listing warnings or errors if there were any, otherwise does nothing.
@@ -639,14 +578,6 @@ module Morea
       morea_page.data['module_page'] = self
       self.data['title'] = morea_page.data['title']
       # self.render(site.layouts, site.site_payload)
-    end
-
-    # Return a pretty printed string containing all of this page's instance variables, one per line.
-    # Instance variables are converted to strings and truncated at 50 chas.
-    def inspect()
-      contents = ''
-      self.instance_variables.map{|var| contents += "\n" + [var, Morea.truncate(self.instance_variable_get(var).to_s(), 150)].join(": ")}
-      "\n---\n[ModulePage #{self.name}" + contents + "\n---\n]"
     end
   end
 
