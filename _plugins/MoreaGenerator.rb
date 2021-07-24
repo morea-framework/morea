@@ -119,7 +119,7 @@ module Morea
 
       Morea.log.info "Finished Morea file processing."
       site.pages.each do |page|
-        logJekyllPage(page)
+        # logJekyllPage(page)
       end
 
       # Now that all Morea files are read in, do analyses that require access to all files.
@@ -162,7 +162,8 @@ module Morea
       site.config['morea_reading_pages'].each do |reading_page|
         reading_url = reading_page.data['morea_url']
         if reading_url.match(/^\/morea/)
-          reading_page.data['morea_url'] = site.baseurl + reading_url
+          # This 'fix' is no longer needed in Morea 2.0
+          # reading_page.data['morea_url'] = site.baseurl + reading_url
         end
       end
       site.config['morea_experience_pages'].each do |experience_page|
