@@ -119,7 +119,7 @@ module Morea
 
       Morea.log.info "Finished Morea file processing."
       site.pages.each do |page|
-        # logJekyllPage(page)
+        logJekyllPage(page)
       end
 
       # Now that all Morea files are read in, do analyses that require access to all files.

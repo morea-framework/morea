@@ -26,6 +26,7 @@ This repository contains the code for Version 2.0 of the Morea Framework.
  - [ ] Include more include files into template, document in docusaurus.
  - [ ] Remove scrollIfAnchor.js if possible? (core.html).
  - [ ] Deployed template at: https://morea-framework.github.io/morea/index.html
+ - [ ] Morea module summaries are not being displayed
 
 
 ## To check site for HTML link errors etc.
