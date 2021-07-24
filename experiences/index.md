@@ -39,15 +39,17 @@ title: Experiences
     {% for page_id in module.morea_experiences %}
       {% assign experience = site.morea_page_table[page_id] %}
        <div class="col-sm-3">
-         <a href="{{ experience.morea_url }}" class="thumbnail">
-           <h4>{{ experience.title }}</h4>
+         <div class="card h-100">
+           <div class="card-body">
+             <a href="{{ experience.morea_url }}" class="card-link"><h4 class="card-title">{{ experience.title }}</h4></a>
              {{ experience.morea_summary | markdownify }}
-             <p>
+           </div>
+           <div style="border-top-color: transparent" class="card-footer bg-body">
              {% for label in experience.morea_labels %}
-               <span class="badge">{{ label }}</span>
+               <span class="badge bg-primary">{{ label }}</span>
              {% endfor %}
-             </p>
-         </a>
+           </div>
+         </div>
        </div>
        {% if forloop.index == 4 %}
          </div><div class="row">

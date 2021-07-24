@@ -9,6 +9,7 @@ This repository contains the code for Version 2.0 of the Morea Framework.
   * To run site locally, invoke with standard jekyll command: `bundle exec jekyll serve --baseurl '' -q`
   * config.yml file provides flexible output support via log levels.
   * GitHub Action used to automatically deploy site upon commit.
+  * Ability to check site for broken links.
 
 ## How to configure deployment for a new site:
  * Edit config.yml to make sure baseurl is the repo name.
