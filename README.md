@@ -27,3 +27,8 @@ This repository contains the code for Version 2.0 of the Morea Framework.
  - [ ] Deployed template at: https://morea-framework.github.io/morea/index.html
 
 
+## To check site for HTML link errors etc.
+
+```
+$ bundle exec jekyll build --baseurl ''
+$

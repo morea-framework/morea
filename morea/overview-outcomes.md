@@ -9,7 +9,7 @@ This page collects together all of the "outcomes" associated with individual mod
 
 ### Course-level outcomes
 
-Students mastering the material in this course will achieve the following [Student learning outcomes for the ICS undergraduate degree program](http://www.ics.hawaii.edu/academics/undergraduate-degree-programs/student-learning-outcomes-undergraduate/)
+Students mastering the material in this course will achieve the following student learning outcomes for the ICS undergraduate degree program:
 
   * [A] Students can apply knowledge of computing and mathematics appropriate to the discipline.
   * [B] Students can analyze a problem, and identify and define the computing requirements appropriate to its solution.

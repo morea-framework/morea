@@ -12,7 +12,7 @@ morea_labels:
 
 # To whom are software engineers obligated?
 
-(Adapted with permission from [An Introduction to Software Engineering Ethics](http://www.scu.edu/ethics/practicing/focusareas/technology/software-engineering-ethics.html) by Shannon Vallor and Arvind Narayanan.)
+(Adapted with permission from "An Introduction to Software Engineering Ethics" by Shannon Vallor and Arvind Narayanan.)
 
 *Before starting this experience, please read [What do we mean when we talk about ethics?](reading-se-ethics-intro.html).*
 

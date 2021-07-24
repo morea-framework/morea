@@ -27,7 +27,7 @@ title: Modules
         <div class="col-sm-3">
         {% if module.morea_coming_soon %}
           <div class="card h-100">
-            <img src="{{ site.baseurl }}{{ module.morea_icon_url }}" width="100" class="card-img-top">
+            <img alt="{{module.title}}" src="{{ site.baseurl }}{{ module.morea_icon_url }}" width="100" class="card-img-top">
             <div class="card-body">
               <h3 class="card-title">{{ forloop.index }}. {{ module.title }}</h3>
               {{ module.morea_summary | markdownify }}
@@ -43,7 +43,7 @@ title: Modules
           </div>
         {% else %}
           <div class="card h-100">
-            <img src="{{ site.baseurl }}{{ module.morea_icon_url }}" width="100" class="card-img-top">
+            <img alt="{{module.title}}" src="{{ site.baseurl }}{{ module.morea_icon_url }}" width="100" class="card-img-top">
             <div class="card-body">
               <h3 class="card-title">{{ forloop.index }}. {{ module.title }}</h3>
               {{ module.morea_summary | markdownify }}

@@ -33,7 +33,7 @@ ICS 314 is a fast-paced immersion into significant software engineering concepts
 
   * **Open source software engineering.** You will learn some of the fundamental issues involved in successfully developing open source software, as well as the many professional benefits of developing open source software as a student.
 
-  * **Athletic software engineering**. ICS 314 implements an educational technique called [athletic software engineering](http://philipmjohnson.org/essays/ase-2017.html), which relies heavily on [WODs (Workouts of the Day)]({{ site.baseurl }}/morea/introduction/reading-athletic-software-engineering.html) to help you acquire mastery of the concepts in this course.
+  * **Athletic software engineering**. ICS 314 implements an educational technique called [athletic software engineering](http://philipmjohnson.org/essays/ase-2017.html), which relies heavily on WODs (Workouts of the Day) to help you acquire mastery of the concepts in this course.
 
 The course grounds these thematic elements by covering the skills necessary to quickly build two-tier web applications with a modern look-and-feel.  Many computer science and computer engineering projects benefit from a web-based user interface, and this class will help you to create a nice one regardless of your "design" background.
 
@@ -113,4 +113,4 @@ By default, grading will use the standard cutoffs of 90% (A), 80% (B), 70% (C), 
 
 ## Academic Dishonesty
 
-All occurrences of academic dishonesty will result in a grade of 0 for the assignment or exam, and in a memo in your ICS department file describing the incident. Should there be more than one memo of this type in your file, the incident will be referred to the Dean of Students. Disciplinary sanctions range from a warning to expulsion from the university, as seen at: [http://www.catalog.hawaii.edu/about-uh/campus-policies1.htm](http://www.catalog.hawaii.edu/about-uh/campus-policies1.htm).
+All occurrences of academic dishonesty will result in a grade of 0 for the assignment or exam, and in a memo in your ICS department file describing the incident. Should there be more than one memo of this type in your file, the incident will be referred to the Dean of Students. Disciplinary sanctions range from a warning to expulsion from the university.

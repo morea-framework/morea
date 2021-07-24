@@ -12,7 +12,7 @@ morea_labels:
 
 # Case study: Privacy
 
-(Adapted with permission from [An Introduction to Software Engineering Ethics](http://www.scu.edu/ethics/practicing/focusareas/technology/software-engineering-ethics.html) by Shannon Vallor and Arvind Narayanan.)
+(Adapted with permission from "An Introduction to Software Engineering Ethics" by Shannon Vallor and Arvind Narayanan.)
 
 *Before starting this experience, please go through all of the "Foundations" readings and experiences.*
 

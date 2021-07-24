@@ -33,9 +33,9 @@ Since you can watch the screencasts at a time and place of your own choosing,
 it is tempting to watch them while also doing other activities: watching TV,
 texting, talking to friends, playing online games, reading FaceBook. However,
 your goal is not to simply have *watched* the material, but to have
-actually *learned* the material, and  there is [mounting scientific evidence showing
+actually *learned* the material, and  there is mounting scientific evidence showing
 that multi-tasking impairs learning
-ability](http://www.facultyfocus.com/articles/teaching-professor-blog/multitasking-confronting-students-with-the-facts/). 
+ability.
 
 For these reasons, it is in your best
 interest to block all other activities while watching the screencast. Since

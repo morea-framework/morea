@@ -17,13 +17,13 @@ Students should have at least two semesters of prior programming experience or t
 
 ## Pedagogy
 
-ICS 199 is structured as a sequential series of [modules](modules), each taking approximately a week to complete. Each module has the following structure:
+ICS 199 is structured as a sequential series of [modules](/modules), each taking approximately a week to complete. Each module has the following structure:
 
-  * [Prerequisites](prerequisites), describing skills you should have prior to starting the module.
-  * [Learning outcomes](outcomes), describing the major goals for the module.
-  * [Readings and other online resources](readings), providing background material.
-  * [Experiential learning activities](experiences), providing a structured set of challenges enabling you to acquire mastery of material.
-  * [Assessments](assessments), which help you determine if you have acquired mastery of the material.
+  * [Prerequisites](/prerequisites), describing skills you should have prior to starting the module.
+  * [Learning outcomes](/outcomes), describing the major goals for the module.
+  * [Readings and other online resources](/readings), providing background material.
+  * [Experiential learning activities](/experiences), providing a structured set of challenges enabling you to acquire mastery of material.
+  * [Assessments](/assessments), which help you determine if you have acquired mastery of the material.
 
 ## About the instructor
 

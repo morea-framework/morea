@@ -11,7 +11,6 @@ morea_readings:
   - reading-screencast-intro
   - reading-grading
   - reading-how-to-watch-screencasts-the-smart-way
-  - reading-dress-code
   - reading-syllabus
 morea_experiences:
   - experience-learn-the-command-line

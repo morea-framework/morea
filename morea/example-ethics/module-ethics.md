@@ -19,7 +19,6 @@ morea_experiences:
  - experience-se-ethics-how
  - experience-se-ethics-case-study-harrassment
  - experience-se-ethics-case-study-privacy
- - experience-se-ethics-case-study-autonomous-cars
  - experience-se-ethics-case-study-shameful-code
  - experience-se-ethics-case-study-facebook
  - experience-se-ethics-case-minnesota-linux

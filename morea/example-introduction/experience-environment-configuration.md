@@ -17,7 +17,7 @@ software engineering environment on your computer.
 
 ### Task 1: Obtain appropriate hardware
 
-See the [Laptop Requirements](reading-laptops.html) page for details.
+You must have an appropriate laptop.
 
 ### Task 2: Install an appropriate operating system
 

@@ -11,7 +11,7 @@ morea_labels:
 
 # What do we mean when we talk about ethics?
 
-(Adapted with permission from [An Introduction to Software Engineering Ethics](http://www.scu.edu/ethics/practicing/focusareas/technology/software-engineering-ethics.html) by Shannon Vallor and Arvind Narayanan.)
+(Adapted with permission from "An Introduction to Software Engineering Ethics" by Shannon Vallor and Arvind Narayanan.)
 
 
 Ethics in the broadest sense refers to the concern that humans have always had for
