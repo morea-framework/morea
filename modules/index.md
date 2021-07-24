@@ -24,7 +24,7 @@ title: Modules
   
   <div class="row">
      {% for module in site.morea_module_pages %}
-        <div class="col-sm-3">
+        <div class="col-md-6 col-lg-3">
           <div class="card h-100">
             <img alt="{{module.title}}" src="{{ site.baseurl }}{{ module.morea_icon_url }}" width="100" class="card-img-top">
             <div class="card-body">

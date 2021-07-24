@@ -33,7 +33,7 @@ title: Readings
     <div class="row">
     {% for page_id in module.morea_readings %}
       {% assign reading = site.morea_page_table[page_id] %}
-       <div class="col-sm-3">
+       <div class="col-md-6 col-lg-3">
          <div class="card h-100">
            <div class="card-body">
              <a href="{{ reading.morea_url }}" class="card-link"><h4 class="card-title">{{ reading.title }}</h4></a>

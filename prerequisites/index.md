@@ -28,7 +28,7 @@ title: Prerequisites
     <div class="row">
     {% for page_id in module.morea_prerequisites %}
       {% assign prereq = site.morea_page_table[page_id] %}
-       <div class="col-sm-3">
+       <div class="col-md-6 col-lg-3">
          <a href= "{{ prereq.morea_url }}" class="thumbnail">
            <img src="{{ prereq.morea_icon_url }}" width="100" class="img-circle img-responsive">
            <div class="caption">

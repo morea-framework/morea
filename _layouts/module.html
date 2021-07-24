@@ -27,7 +27,7 @@ layout: default
     <div class="row">
     {% for page_id in page.morea_page.morea_prerequisites %}
     {% assign module = site.morea_page_table[page_id] %}
-      <div class="col-sm-3">
+      <div class="col-md-6 col-lg-3">
         <a href= "{{ module.morea_url }}" class="thumbnail">
         <img src="{{ module.morea_icon_url }}" width="100" class="img-circle img-responsive">
         <div class="caption">
@@ -81,7 +81,7 @@ layout: default
     <div class="row">
       {% for page_id in page.morea_page.morea_readings %}
         {% assign reading = site.morea_page_table[page_id] %}
-        <div class="col-sm-3">
+        <div class="col-md-6 col-lg-3">
           <div class="card h-100">
             <div class="card-body">
               <a href="{{ reading.morea_url }}" class="card-link"><h4 class="card-title">{{ reading.title }}</h4></a>
@@ -121,7 +121,7 @@ layout: default
     <div class="row">
       {% for page_id in page.morea_page.morea_experiences %}
         {% assign experience = site.morea_page_table[page_id] %}
-        <div class="col-sm-3">
+        <div class="col-md-6 col-lg-3">
           <div class="card h-100">
             <div class="card-body">
               <a href="{{ experience.morea_url }}" class="card-link"><h4 class="card-title">{{ experience.title }}</h4></a>

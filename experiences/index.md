@@ -38,7 +38,7 @@ title: Experiences
     <div class="row">
     {% for page_id in module.morea_experiences %}
       {% assign experience = site.morea_page_table[page_id] %}
-       <div class="col-sm-3">
+       <div class="col-md-6 col-lg-3">
          <div class="card h-100">
            <div class="card-body">
              <a href="{{ experience.morea_url }}" class="card-link"><h4 class="card-title">{{ experience.title }}</h4></a>
