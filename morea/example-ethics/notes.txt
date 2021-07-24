@@ -1,0 +1,19 @@
+chapter 1
+- what is the difference between personal and professional ethics? why are both necessary for a software engineer?
+
+* ethics module
+- http://www.acm.org/about/code-of-ethics
+- https://www.cs.washington.edu/lab/ethics-and-computing
+- http://www.infoworld.com/article/2607452/application-development/12-ethical-dilemmas-gnawing-at-developers-today.html
+- http://ethics.unl.edu/ethics_resources/online/computer_sciences.shtml
+- http://www3.cs.stonybrook.edu/~jgao/CSE302-spring09/chapter1.pdf
+- https://www.youtube.com/watch?v=oS1msOavTR0
+
+Lying on Software Projects" IEEE Software, Nov/Dec 2008:
+-  https://users.csc.calpoly.edu/~djanzen/courses/508W09/papers/lying.pdf
+- Experience: what are reasons that a software engineer might lie about a project?  Do you feel any of these reasons are valid?  If so, how would you modify the ACM code of ethics, which states "The honest computing professional will not make deliberately false or deceptive claims"?
+
+Software engineering ethical dilemmas:
+http://www.scu.edu/ethics/practicing/focusareas/technology/resources/Students.pdf
+-- also good scenario on big data and ethics (google street view)
+-- maybe cut this up into sections.
