@@ -8,10 +8,6 @@ mathjax: true
 timezone: Pacific/Honolulu # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 baseurl: /morea
 exclude: [morea]
-build_verbose: true
-log_level: 2
-logger_factory:
-  Morea: debug    #possible values: `debug`, `info`, `warn`, `error`
 morea_theme: spacelab5
 morea_navbar_items:
   - Prerequisites
@@ -21,6 +17,14 @@ morea_navbar_items:
   - Experiences
   - Assessments
   - Schedule
+
+logger_factory:
+  # Possible Morea logger values:
+  #  error (fatal errors only. combine with -q on command line for least amount of output). The default.
+  #  warn  (error + missing optional YAML matter.)
+  #  info  (error + warn + summary of processing steps)
+  #` debug (all of the above plus internal state information, for developers only)
+  Morea: info
 
 # The following properties are optional.
 # See the User Guide (http://morea-framework.github.io/userguide.html) for more info.

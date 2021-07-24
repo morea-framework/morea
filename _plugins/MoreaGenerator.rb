@@ -13,7 +13,7 @@
 #   ModuleInfoFile. Generates the module-info.js file for use in the review site.
 #
 #   Logging color conventions:
-#     `debug`: green, `info`: black `warn`: brown, `error`: red
+#     error: red, warn: blue, info: black, debug: green
 #     Possible colors: black, red, green, brown, blue, magenta, cyan, gray
 
 require 'pp'
@@ -27,7 +27,7 @@ module Morea
     @log
   end
 
-  # Define the truncate method
+  # Define the truncate method. Used for debugging output only.
   def self.truncate(string, max)
     string.length > max ? "#{string[0...max]}..." : string
   end
@@ -41,7 +41,7 @@ module Morea
       keys = @config.keys
       moreaKeys = keys.select { |key| key.start_with?('morea_')}
       moreaConfig = @config.slice(*moreaKeys.sort)
-      Morea.log.debug "MOREA SITE CONFIG: \n#{moreaConfig.pretty_inspect()}".green
+      Morea.log.debug "site.config: \n#{moreaConfig.pretty_inspect()}".green
     end
 
     # Emit a debugging log message containing the state variables and values of a Jekyll:Page.
@@ -93,7 +93,7 @@ module Morea
 
     # Entry point for this plugin.
     def generate(site)
-      Morea.log.info "Starting Morea page processing..."
+      Morea.log.info "Starting Morea file processing..."
       Morea.log.debug ".\n.\n.\n.\n.\n.\n".green
       @config = site.config
       configSite()
@@ -106,6 +106,7 @@ module Morea
           relative_file_path = relative_file_path[(site.source.size + @config['morea_dir'].size + 1)..relative_file_path.size]
           subdir = extract_directory(relative_file_path)
           @summary.total_files += 1
+          Morea.log.info "Processing file #{subdir}#{file_name}"
           if File.extname(file_name) == '.md'
             @summary.morea_files += 1
             processMoreaFile(site, subdir, file_name, @config['morea_dir'])
@@ -116,7 +117,7 @@ module Morea
         end
       end
 
-      puts "Finished processing files."
+      Morea.log.info "Finished Morea file processing."
       site.pages.each do |page|
         logJekyllPage(page)
       end
@@ -405,11 +406,6 @@ module Morea
       end
     end
 
-    # Print out variables associated with obj. For debugging.
-    def print_obj_info(obj)
-      obj.instance_variables.map{|var| puts [var, obj.instance_variable_get(var)].join(":")}
-    end
-
     def validate(morea_page, site)
       # Check for required tags: morea_id, morea_type, and title.
       if !morea_page.data['morea_id']
@@ -561,23 +557,27 @@ module Morea
   end
 
   # Module pages are dynamically generated, one per MoreaPage with morea_type = module.
+  # This page is the one that users see in modules/<module-name>/index.html.
+  # However, the actual data to be displayed in this page is found in the associated MoreaPage, passed as morea_page.
   class ModulePage < Jekyll::Page
     def initialize(site, base, dir, morea_page)
       @site = site
-      self.read_yaml(File.join(base, '_layouts'), 'module.html')
       @base = base
       @dir = "modules/" + morea_page.data['morea_id']
       @name = 'index.html'
+      self.read_yaml(File.join(base, '_layouts'), 'module.html') # must read YAML before setting @path
       @path = site.in_source_dir(base, dir, @name)
-      self.process(@name)
-      # Default morea_summary to the markdown page content if not specified already.
-      unless morea_page.data['morea_summary']
-        morea_page.data['morea_summary'] = morea_page.output
-      end
-      # self.data['morea_page'] = morea_page
-      morea_page.data['module_page'] = self
+      process(@name)
+
+      # Now do morea-specific initializations.
+      morea_page.data['morea_summary'] ||= morea_page.output
       self.data['title'] = morea_page.data['title']
-      # self.render(site.layouts, site.site_payload)
+      # Link the MoreaPage to the ModulePage and vice-versa.
+      self.data['morea_page'] = morea_page
+      morea_page.data['module_page'] = self
+
+      ## Finish by calling hooks (copied from Jekyll::Page#initialize)
+      Jekyll::Hooks.trigger :pages, :post_init, self
     end
   end
 
@@ -589,9 +589,14 @@ module Morea
       @base = base
       @dir = dir
       @name = file_name
+      @path = site.in_source_dir(base, dir, @name)
+      process(@name)
 
-      self.process(@name)
+      ## Morea specific stuff.
       self.data['topdiv'] = 'container'
+
+      ## Finish by calling hooks (copied from Jekyll::Page#initialize)
+      Jekyll::Hooks.trigger :pages, :post_init, self
     end
   end
 
@@ -611,7 +616,7 @@ module Morea
     end
 
     def to_s
-      "  Summary:\n    #{@total_files} total, #{@published_files} published, #{@unpublished_files} unpublished, #{@morea_files} markdown, #{@non_morea_files} other\n    #{@site.config['morea_module_pages'].size} modules, #{@site.config['morea_outcome_pages'].size} outcomes, #{@site.config['morea_reading_pages'].size} readings, #{@site.config['morea_experience_pages'].size} experiences, #{@site.config['morea_assessment_pages'].size} assessments\n    #{@yaml_errors} errors, #{@yaml_warnings} warnings"
+      "Summary:\n  #{@total_files} total, #{@published_files} published, #{@unpublished_files} unpublished, #{@morea_files} markdown, #{@non_morea_files} other\n  #{@site.config['morea_module_pages'].size} modules, #{@site.config['morea_outcome_pages'].size} outcomes, #{@site.config['morea_reading_pages'].size} readings, #{@site.config['morea_experience_pages'].size} experiences, #{@site.config['morea_assessment_pages'].size} assessments\n  #{@yaml_errors} errors, #{@yaml_warnings} warnings"
     end
   end
 
@@ -682,7 +687,6 @@ module Morea
       module_file_contents = @site.config['morea_course'] + ' = {' + "\n"
       module_file_contents += get_module_json_string(@site)
       module_file_contents += "\n" + '};'
-      #puts "module file contents: \n" + module_file_contents
       File.open(@module_file_path, 'w') { |file| file.write(module_file_contents) }
       @site.static_files << Jekyll::StaticFile.new(@site, @site.source, '', @module_file_name)
     end
@@ -732,7 +736,7 @@ module Morea
         end
       end
       if (url == "")
-        puts "  Error: Could not find page or url corresponding to #{page_id}"
+        Morea.log.error "Error: Could not find page or url corresponding to #{page_id}".red
         site.config['morea_fatal_errors'] = true
       end
       if (url.end_with?("/"))
