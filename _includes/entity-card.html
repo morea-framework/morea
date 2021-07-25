@@ -1,8 +1,8 @@
 <!-- Internal fragment for displaying reading, experience cards. -->
-<div class="col-md-6 col-lg-3">
+<div class="col-md-6 col-lg-3" style="padding-bottom: 20px">
   <div class="card h-100">
     <div class="card-body">
-      <a href="{{ include.url }}" class="card-link"><h4 class="card-title">{{ include.title }}</h4></a>
+      <h4 class="card-title">{{ include.title }}</h4>
       {{ include.summary | markdownify }}
     </div>
     <div style="border-top-color: transparent" class="card-footer bg-body">
@@ -10,5 +10,6 @@
       <span class="badge bg-primary">{{ label }}</span>
       {% endfor %}
     </div>
+    <a href="{{ include.url }}" class="stretched-link"></a>
   </div>
 </div>

@@ -13,9 +13,11 @@ title: Modules
   
   <div class="row">
      {% for module in site.morea_module_pages %}
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-3" style="padding-bottom: 20px">
           <div class="card h-100">
-            <img alt="{{module.title}}" src="{{ site.baseurl }}{{ module.morea_icon_url }}" width="100" class="card-img-top">
+            <div class="text-center">
+              <img alt="{{module.title}}" src="{{ site.baseurl }}{{ module.morea_icon_url }}" class="card-img-top rounded-circle" style="max-width: 100px; padding-top: 2px">
+            </div>
             <div class="card-body">
               <h3 class="card-title">{{ forloop.index }}. {{ module.title }}</h3>
               {{ module.morea_summary | markdownify }}
@@ -30,9 +32,7 @@ title: Modules
                 <span class="btn btn-primary disabled">Coming soon...</span>
               </div>
             {% else %}
-              <div class="card-footer text-center">
-                <a href="{{ module.morea_id }}" class="btn btn-primary">Go to "{{ module.title}}""</a>
-              </div>
+                <a href="{{ module.morea_id }}" class="stretched-link"></a>
             {% endif %}
           </div>
         </div>
