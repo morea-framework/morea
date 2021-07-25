@@ -25,12 +25,13 @@ This repository contains the code for Version 2.0 of the Morea Framework.
  - [ ] Create "realistic" demo site: four modules, one per week, includes prereqs, sets schedule page start month.
  - [ ] Include more include files into template, document in docusaurus.
  - [ ] Remove scrollIfAnchor.js if possible? (core.html).
- - [ ] Deployed template at: https://morea-framework.github.io/morea/index.html
- - [ ] Morea module summaries are not being displayed
+
+Note: Deployed template at: https://morea-framework.github.io/morea/index.html
 
 
-## To check site for HTML link errors etc.
-
+## To check site for HTML link errors:
 ```
 $ bundle exec jekyll build --baseurl ''
-$
+$ bundle exec htmlproofer ./_site
+```
+

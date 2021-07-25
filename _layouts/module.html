@@ -1,19 +1,7 @@
 ---
 layout: default
 ---
-
-<div class="breadcrumb-bar bg-primary">
-  <div class="container">
-    <ol class="breadcrumb">
-      {% if site.morea_head_breadcrumb_link %}
-      <li><a href="{{ site.morea_head_breadcrumb_link }}">{{ site.morea_head_breadcrumb_label }}</a></li>
-      {% endif %}
-      <li><a href="{{ site.baseurl }}/">Home</a></li>
-      <li><a href="{{ site.baseurl }}/modules">Modules</a></li>
-      <li class="active">{{ page.title }}</li>
-    </ol>
-  </div>
-</div>
+{% include breadcrumb-3.html %}
 
 <div class="container">
   <h1><small>Module: </small> {{ page.morea_page.title }} </h1>
