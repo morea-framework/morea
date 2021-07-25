@@ -119,7 +119,9 @@ module Morea
 
       Morea.log.info "Finished Morea file processing."
       site.pages.each do |page|
-        logJekyllPage(page)
+        if page.instance_variables.include?(:@jekyll_page_subclass)
+          logJekyllPage(page)
+        end
       end
 
       # Now that all Morea files are read in, do analyses that require access to all files.
@@ -571,7 +573,8 @@ module Morea
       process(@name)
 
       # Now do morea-specific initializations.
-      morea_page.data['morea_summary'] ||= morea_page.output
+      @jekyll_page_subclass = 'ModulePage'
+      morea_page.data['morea_summary'] ||= morea_page.content
       self.data['title'] = morea_page.data['title']
       # Link the MoreaPage to the ModulePage and vice-versa.
       self.data['morea_page'] = morea_page
