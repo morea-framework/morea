@@ -1,6 +1,11 @@
-<!-- Internal fragment for displaying reading, experience cards. -->
-<div class="col-md-6 col-lg-3" style="padding-bottom: 20px">
+<!-- Internal fragment for displaying reading, experience, prereq cards. Prereqs have icons. -->
+<div class="col-md-6 col-lg-4" style="padding-bottom: 20px">
   <div class="card h-100">
+    {% if include.icon_url %}
+      <div class="text-center">
+        <img alt="{{include.title}}" src="{{ include.icon_url }}" class="card-img-top rounded-circle" style="max-width: 100px; padding-top: 2px">
+      </div>
+    {% endif %}
     <div class="card-body">
       <h4 class="card-title">{{ include.title }}</h4>
       {{ include.summary | markdownify }}

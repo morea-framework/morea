@@ -3,6 +3,8 @@ title: "Javascript: Basics"
 published: true
 morea_coming_soon: false
 morea_id: example-javascript
+morea_prerequisites:
+ - 211-oop
 morea_outcomes:
   - outcome-javascript-1
 morea_readings:
