@@ -30,4 +30,9 @@ Some comments regarding this assessment:
     * Reference to the Code of Ethics to support their claim.
     * Appropriate spelling and/or grammar.
 
+## Outcomes
+
+The following outcomes were assessed: {{ page.morea_outcomes_assessed_titles }}
+
+
 
