@@ -15,7 +15,7 @@ morea_readings:
 morea_experiences:
   - experience-smart-questions
 morea_assessments:
-  #- assessment-open-source-software
+  - assessment-open-source-software
 morea_type: module
 morea_icon_url: /morea/example-open-source-software/open-source-logo.png
 morea_labels:

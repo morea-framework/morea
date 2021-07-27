@@ -18,8 +18,7 @@ morea_experiences:
   - experience-javascript-1-technical-essay
   - experience-ctci
 morea_assessments:
-  # - assessment-javascript-1
-  # - assessment-javascript-1-technical-essay
+  - assessment-javascript-1
 morea_type: module
 morea_icon_url: /morea/example-javascript/javascript.png
 morea_start_date: "2021-07-12"

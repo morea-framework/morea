@@ -95,7 +95,9 @@ layout: default
       {% endfor %}
     </p>
     {% endunless %}
-      {{ assessment.content | markdownify }}
+      
+      {% capture assessment %}{{assessment.content}}{% endcapture %}
+      {{ assessment | markdownify }}
     {% endfor %}
 
   </div>

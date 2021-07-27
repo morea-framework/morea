@@ -7,6 +7,7 @@ moreaEventData = [
   {title: "E02: Introduce yourself", url: "/morea/example-introduction/experience-introduce-yourself.html", start: "2021-07-08T23:00"},
   {title: "E03: Learn the command line", url: "/morea/example-introduction/experience-learn-the-command-line.html", start: "2021-07-09T23:00"},
   {title: "Introduction to ICS 199", url: "/modules/example-introduction", start: "2021-07-06", end: "2021-07-12"},
+  {title: "A01: Assessment of simple Javascript skills", url: "/assessments#assessment-javascript-1", start: "2021-07-09T09:00"},
   {title: "E06: isUnique", url: "/morea/example-javascript/experience-ctci.html", start: "2021-07-16T23:00"},
   {title: "E04: Introduction to Javascript with FreeCodeCamp", url: "/morea/example-javascript/experience-interactive-javascript-1.html", start: "2021-07-12T23:00"},
   {title: "E05: Reflect on Javascript 1", url: "/morea/example-javascript/experience-javascript-1-technical-essay.html", start: "2021-07-15T23:00"},
