@@ -9,7 +9,17 @@
     <div class="card-body">
       <h4 class="card-title">{{ include.title }}</h4>
       {{ include.summary | markdownify }}
+
+    {% if include.outcomes %}
+      <p>
+        <em>Outcome(s) assessed:</em>
+        {% for outcome in include.outcomes %}
+          {{ outcome }}{% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+      </p>
+    {% endif %}
     </div>
+
     <div style="border-top-color: transparent" class="card-footer bg-body">
       {% for label in include.labels %}
       <span class="badge bg-primary">{{ label }}</span>

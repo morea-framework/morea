@@ -5,7 +5,7 @@ morea_id: experience-smart-questions
 morea_type: experience
 morea_summary: "Use Stack Overflow to find smart and not-smart questions"
 morea_sort_order: 2
-morea_start_date: "2021-07-21T23:00"
+morea_start_date: "2021-07-22T23:00"
 morea_labels:
   - "Technical Essay"
 ---

@@ -78,28 +78,12 @@ layout: default
 <div class="{% cycle 'section-background-1', 'section-background-2' %}">
   <div class="container">
     <h2>Assessments</h2>
-
+    <div class="row">
     {% for page_id in page.morea_page.morea_assessments %}
       {% assign assessment = site.morea_page_table[page_id] %}
-      <h3>{{ assessment.title }}</h3>
-      <p>
-        {% for label in assessment.morea_labels %}
-          <span class="badge">{{ label }}</span>
-        {% endfor %}
-      </p>
-    {% unless assessment.morea_related_outcomes.size == 0 %}
-    <p>
-      <em>Outcomes assessed:</em>
-      {% for outcome in assessment.morea_related_outcomes %}
-      <a href="/outcomes/#{{ outcome.morea_id }}">{{ outcome.title }}</a>{% unless forloop.last %}, {% endunless %}
-      {% endfor %}
-    </p>
-    {% endunless %}
-      
-      {% capture assessment %}{{assessment.content}}{% endcapture %}
-      {{ assessment | markdownify }}
+    {% include entity-card.html url=assessment.morea_url title=assessment.title summary=assessment.morea_summary labels=assessment.morea_labels outcomes=assessment.morea_outcomes_assessed_titles %}
     {% endfor %}
-
+    </div>
   </div>
 </div>
 {% endunless %}

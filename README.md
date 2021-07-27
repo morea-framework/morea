@@ -10,6 +10,7 @@ This repository contains the code for Version 2.0 of the Morea Framework.
   * config.yml file provides flexible output support via log levels.
   * GitHub Action used to automatically deploy site upon commit.
   * Ability to check site for broken links.
+  * Update to Jekyll 4.2, Bootstrap 5, FullCalendar 5.8, ChartJS 3.5
 
 ## How to configure deployment for a new site:
  * Edit config.yml to make sure baseurl is the repo name.
@@ -25,6 +26,7 @@ This repository contains the code for Version 2.0 of the Morea Framework.
  - [ ] Create "realistic" demo site: four modules, one per week, includes prereqs, sets schedule page start month.
  - [ ] Include more include files into template, document in docusaurus.
  - [ ] Remove scrollIfAnchor.js if possible? (core.html).
+ - [ ] Create links to outcomes assessed in Assessment cards and pages.
 
 Note: Deployed template at: https://morea-framework.github.io/morea/index.html
 

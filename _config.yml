@@ -24,7 +24,7 @@ logger_factory:
   #  warn  (error + missing optional YAML matter.)
   #  info  (error + warn + summary of processing steps)
   #` debug (all of the above plus internal state information, for developers only)
-  Morea: debug
+  Morea: error
 
 # The following properties are optional.
 # See the User Guide (http://morea-framework.github.io/userguide.html) for more info.

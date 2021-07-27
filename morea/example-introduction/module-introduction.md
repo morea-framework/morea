@@ -19,7 +19,7 @@ morea_assessments:
 morea_type: module
 morea_icon_url: /morea/example-introduction/introduction.jpg
 morea_start_date: "2021-07-06"
-morea_end_date: "2021-07-12"
+morea_end_date: "2021-07-10"
 morea_labels:
 morea_sort_order: 10
 ---

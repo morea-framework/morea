@@ -5,7 +5,7 @@ morea_id: experience-interactive-javascript-1
 morea_type: experience
 morea_summary: "Basic syntax: functions, for loops, while loops, if-then-else, arrays, objects"
 morea_sort_order: 1
-morea_start_date: "2021-07-12T23:00"
+morea_start_date: "2021-07-13T23:00"
 morea_labels:
 ---
 

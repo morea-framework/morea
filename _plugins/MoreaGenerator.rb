@@ -175,7 +175,10 @@ module Morea
         end
       end
       site.config['morea_assessment_pages'].each do |assessment_page|
-        assessment_page.data['morea_url'] = site.baseurl + "/assessments#" + assessment_page.data['morea_id']
+        assessment_url = assessment_page.data['morea_url']
+        if assessment_url.match(/^\/morea/)
+          assessment_page.data['morea_url'] = site.baseurl + assessment_url
+        end
       end
       site.config['morea_prerequisite_pages'].each do |prereq_page|
         prereq_url = prereq_page.data['morea_url']
@@ -247,6 +250,7 @@ module Morea
           if outcome
             unless assessment_page.data['morea_coming_soon']
               outcome.data['morea_referencing_assessments'] << assessment_page
+              assessment_page.data['morea_outcomes_assessed_titles'] << outcome.data['title']
             end
           end
         end
@@ -425,7 +429,7 @@ module Morea
       end
 
       # Check for required tags for experience and reading pages.
-      if (morea_page.data['morea_type'] == 'experience') || (morea_page.data['morea_type'] == 'reading')
+      if (morea_page.data['morea_type'] == 'experience') || (morea_page.data['morea_type'] == 'reading') || (morea_page.data['morea_type'] == 'assessment')
           if !morea_page.data['morea_summary']
           morea_page.missing_required << "morea_summary"
           @summary.yaml_errors += 1
@@ -519,7 +523,7 @@ module Morea
       @undefined_id = []
       @duplicate_id = false
       # Provide defaults
-      if (self.data['morea_type'] == 'experience') || (self.data['morea_type'] == 'reading')
+      if (self.data['morea_type'] == 'experience') || (self.data['morea_type'] == 'reading') || (self.data['morea_type'] == 'assessment')
         self.data['layout'] ||= 'page'
         self.data['topdiv'] ||= 'container'
       end
@@ -527,6 +531,7 @@ module Morea
       self.data['morea_prerequisites'] ||= []
       self.data['morea_related_outcomes'] ||= []
       self.data['morea_outcomes_assessed'] ||= []
+      self.data['morea_outcomes_assessed_titles'] ||= []
       self.data['morea_referencing_assessments'] ||= []
 
       ## Finish by calling hooks (copied from Jekyll::Page#initialize)
