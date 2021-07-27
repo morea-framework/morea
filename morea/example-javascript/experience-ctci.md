@@ -1,16 +1,16 @@
 ---
-title: "E02: isUnique (Cracking the Coding Interview, Problem 1)"
+title: "E06: isUnique"
 published: true
 morea_id: experience-ctci
 morea_type: experience
 morea_summary: "Solve the first CTCI problem"
 morea_sort_order: 1
-morea_start_date: "2021-01-19T23:30"
+morea_start_date: "2021-07-16T23:00"
 morea_labels:
   - Practice WOD
 ---
 
-# E02: isUnique (Cracking the Coding Interview, Problem 1)
+# E06: isUnique (Cracking the Coding Interview, Problem 1)
 
 [Cracking the Coding Interview](http://www.crackingthecodinginterview.com/) (CTCI) is widely regarded as a preeminent resource to prepare for modern software development position interviews at leading high tech companies.
 
@@ -55,4 +55,4 @@ Once you've finished trying to do it, watch me do it:
 
 ## Submission Instructions
 
-{% include submission-jsfiddle.html assignment="E08" %}
+{% include submission-jsfiddle.html assignment="E06" %}

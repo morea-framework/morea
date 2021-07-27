@@ -12,14 +12,14 @@ morea_readings:
   - reading-how-to-watch-screencasts-the-smart-way
   - reading-syllabus
 morea_experiences:
-  - experience-learn-the-command-line
   - experience-environment-configuration
   - experience-introduce-yourself
+  - experience-learn-the-command-line
 morea_assessments:
 morea_type: module
 morea_icon_url: /morea/example-introduction/introduction.jpg
-morea_start_date: "2021-01-12"
-morea_end_date: "2021-01-14"
+morea_start_date: "2021-07-06"
+morea_end_date: "2021-07-12"
 morea_labels:
 morea_sort_order: 10
 ---

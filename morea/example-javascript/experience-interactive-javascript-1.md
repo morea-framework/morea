@@ -1,15 +1,15 @@
 ---
-title: "E01: Introduction to Javascript with FreeCodeCamp"
+title: "E04: Introduction to Javascript with FreeCodeCamp"
 published: true
 morea_id: experience-interactive-javascript-1
 morea_type: experience
 morea_summary: "Basic syntax: functions, for loops, while loops, if-then-else, arrays, objects"
 morea_sort_order: 1
-morea_start_date: "2021-09-17T23:30"
+morea_start_date: "2021-07-12T23:00"
 morea_labels:
 ---
 
-# E01: Introduction to Javascript with FreeCodeCamp
+# E04: Introduction to Javascript with FreeCodeCamp
 
 In this experience, you will start getting familiar with the syntax of Javascript by practicing the creation of simple Javascript code using FreeCodeCamp.
 

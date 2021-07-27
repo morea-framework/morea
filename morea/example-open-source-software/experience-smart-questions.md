@@ -1,16 +1,16 @@
 ---
-title: "E11: Reflect on smart questions"
+title: "E07: Reflect on smart questions"
 published: true
 morea_id: experience-smart-questions
 morea_type: experience
 morea_summary: "Use Stack Overflow to find smart and not-smart questions"
 morea_sort_order: 2
-morea_start_date: "2021-01-28T23:30"
+morea_start_date: "2021-07-21T23:00"
 morea_labels:
   - "Technical Essay"
 ---
 
-# E11: Reflect on smart questions
+# E07: Reflect on smart questions
 
 In [How to ask questions the smart way](http://www.catb.org/esr/faqs/smart-questions.html), Eric Raymond provides guidelines for effective interaction with the open source community. If you haven't yet read this essay, please do so before proceeding.
 
@@ -34,7 +34,7 @@ Be sure all URLs in your essay are clickable. This requires learning [Markdown i
 
 ## Submission instructions
 
-{% include submission-essay.html assignment="E11" %}
+{% include submission-essay.html assignment="E07" %}
 
 
 

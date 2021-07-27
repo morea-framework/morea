@@ -13,7 +13,7 @@ title: Modules
   
   <div class="row">
      {% for module in site.morea_module_pages %}
-        <div class="col-md-6 col-lg-3" style="padding-bottom: 20px">
+        <div class="col-md-6 col-lg-4" style="padding-bottom: 20px">
           <div class="card h-100">
             <div class="text-center">
               <img alt="{{module.title}}" src="{{ site.baseurl }}{{ module.morea_icon_url }}" class="card-img-top rounded-circle" style="max-width: 100px; padding-top: 2px">

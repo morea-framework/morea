@@ -11,7 +11,6 @@ morea_readings:
   - reading-understanding-open-source-licensing
   - reading-choosealicense
   - reading-smart-questions
-  - reading-prime-directives
   - reading-cathedral-and-the-bazaar
 morea_experiences:
   - experience-smart-questions
@@ -21,8 +20,8 @@ morea_type: module
 morea_icon_url: /morea/example-open-source-software/open-source-logo.png
 morea_labels:
 morea_sort_order: 25
-morea_start_date: "2021-01-22"
-morea_end_date: "2021-01-29"
+morea_start_date: "2021-07-19"
+morea_end_date: "2021-07-26"
 ---
 
 How to participate effectively in open source software development.

@@ -7,13 +7,11 @@ published: true
 
 ## Welcome to ICS 199, Fall 2021
 
-ICS 199 is a four week introduction to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), which will enable you to experience programming concepts including higher-order functions, closures, and functional programming idioms (map, reduce, filter).
+ICS 199 is a four week overview of selected topics in computer science, including Javascript, Open Source Software, and Ethics.
 
 ## Who should take this course
 
-This course is intended for undergraduates in computer science or computer engineering who have a working knowledge of at least one programming language and who want to learn Javascript, by far [the most popular programming language](https://www.zdnet.com/article/programming-language-popularity-javascript-leads-5-million-new-developers-since-2017/).
-
-Students should have at least two semesters of prior programming experience or the equivalent.
+This course is intended for undergraduates in computer science or computer engineering who have a working knowledge of at least one programming language and who want to get a taste of important topics in the field.
 
 ## Pedagogy
 

@@ -1,16 +1,16 @@
 ---
-title: "What are the professional codes of software engineering ethics?"
+title: "E08: What are the professional codes of software engineering ethics?"
 published: true
 morea_id: experience-se-ethics-codes
 morea_summary: "How do professional codes help us to be ethical in our working lives?"
 morea_type: experience
-#morea_start_date: "2015-09-20T23:30"
+morea_start_date: "2021-07-26T23:00"
 morea_sort_order: 1
 morea_labels:
  - "Foundations: 2"
 ---
 
-# What are the professional codes of software engineering ethics?
+# E08: What are the professional codes of software engineering ethics?
 
 (Adapted with permission from "An Introduction to Software Engineering Ethics" by Shannon Vallor and Arvind Narayanan.)
 

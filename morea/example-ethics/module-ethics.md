@@ -12,15 +12,14 @@ morea_readings:
  - reading-acm-se-code
 morea_experiences:
  - experience-se-ethics-codes
- - experience-se-ethics-harm
  - experience-se-ethics-good
- - experience-se-ethics-case-minnesota-linux
+ - experience-se-ethics-harm
 morea_assessments:
 morea_icon_url: /morea/example-ethics/ethics.png
 morea_type: module
 morea_sort_order: 125
-morea_start_date: "2021-04-30"
-morea_end_date: "2021-05-05"
+morea_start_date: "2021-07-26"
+morea_end_date: "2021-07-30"
 ---
 
 Ethics: A group of moral principles or values that define or direct us to the right choice.

@@ -1,16 +1,16 @@
 ---
-title: "Doing good as a software engineer"
+title: "E09: Doing good as a software engineer"
 published: true
 morea_id: experience-se-ethics-good
 morea_summary: "How can software engineers contribute to the good life for others?"
 morea_type: experience
-#morea_start_date: "2015-09-20T23:30"
+morea_start_date: "2021-07-27T23:00"
 morea_sort_order: 1
 morea_labels:
  - "Foundations: 4"
 ---
 
-# How do software engineers contribute to the good life for others?
+# E09: How do software engineers contribute to the good life for others?
 
 (Adapted with permission from "An Introduction to Software Engineering Ethics" by Shannon Vallor and Arvind Narayanan.)
 

@@ -1,16 +1,16 @@
 ---
-title: "Doing harm as a software engineer"
+title: "E10: Doing harm as a software engineer"
 published: true
 morea_id: experience-se-ethics-harm
 morea_summary: "What kinds of harm can software engineers cause? What kinds can they prevent?"
 morea_type: experience
-#morea_start_date: "2015-09-20T23:30"
+morea_start_date: "2021-07-28T23:00"
 morea_sort_order: 1
 morea_labels:
  - "Foundations: 3"
 ---
 
-# Harm in software engineering
+# E10: Harm in software engineering
 
 (Adapted with permission from "An Introduction to Software Engineering Ethics" by Shannon Vallor and Arvind Narayanan.)
 
