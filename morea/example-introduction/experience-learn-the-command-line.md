@@ -10,7 +10,7 @@ morea_labels:
   - Optional
 ---
 
-# E00: Learn to use the command line
+# E03: Learn to use the command line
 
 Some of you may not be familiar with the command line.  If that applies to you, please consider investing a few hours into the free [Code Academy course "Learn the Command Line"](https://www.codecademy.com/courses/learn-the-command-line).
 
