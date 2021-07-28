@@ -177,7 +177,8 @@ module Morea
       site.config['morea_assessment_pages'].each do |assessment_page|
         assessment_url = assessment_page.data['morea_url']
         if assessment_url.match(/^\/morea/)
-          assessment_page.data['morea_url'] = site.baseurl + assessment_url
+          # Not needed in Morea 2.0
+          # assessment_page.data['morea_url'] = site.baseurl + assessment_url
         end
       end
       site.config['morea_prerequisite_pages'].each do |prereq_page|
