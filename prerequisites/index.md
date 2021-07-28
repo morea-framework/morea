@@ -5,7 +5,7 @@ title: Prerequisites
 {% include breadcrumb-2.html %}
 
 <div class="container">
-  <h1>Prerequisites <small>in module order</small></h1>
+  <h1>Prerequisites</h1>
 </div>
 
 {% for module in site.morea_module_pages %}

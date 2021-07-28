@@ -45,13 +45,7 @@
 </head>
 <body>
 
-<style>
-  body {
-    padding-top: 60px;
-  }
-</style>
-
-<div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+<div class="navbar navbar-expand-lg fixed-top bg-light">
   <div class="container">
     <a class="navbar-brand" href="{{ site.baseurl }}/index.html"> {{ site.name }} </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,7 +83,7 @@
 <script src="{{ site.baseurl }}/js/scrollIfAnchor.js"></script>
 -->
 
-<footer class="footer">
+<footer class="footer footer-background" style="padding-top: 1em; padding-bottom: 1em">
   <div class="container text-center">
     {% if site.morea_footer_page %}
     {{ site.morea_footer_page.content | markdownify }}

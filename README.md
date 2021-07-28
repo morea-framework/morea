@@ -32,7 +32,6 @@ $ bundle exec htmlproofer ./_site
 ```
 
 ## Version 2.0 Next Steps
- - [ ] Fix schedule page URL bugs.
  - [ ] Rebuild custom Bootswatch themes.
  - [ ] Rebuild documentation using docusaurus.
 
