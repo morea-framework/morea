@@ -171,7 +171,7 @@ module Morea
       site.config['morea_experience_pages'].each do |experience_page|
         experience_url = experience_page.data['morea_url']
         if experience_url.match(/^\/morea/)
-          experience_page.data['morea_url'] = site.baseurl + experience_url
+          # experience_page.data['morea_url'] = site.baseurl + experience_url
         end
       end
       site.config['morea_assessment_pages'].each do |assessment_page|
@@ -673,7 +673,7 @@ module Morea
       if (morea_page.data['morea_type'] == 'module')
         url = "#{site.baseurl}/modules/#{morea_page.data['morea_id']}"
       else  # otherwise the baseurl is included. Weird.
-        url = "#{morea_page.data['morea_url']}"
+        url = "#{site.baseurl}#{morea_page.url}"
       end
       return url
     end

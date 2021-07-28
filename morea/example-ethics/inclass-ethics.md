@@ -12,7 +12,7 @@ morea_labels:
 
 Divide up into groups. The instructor will assign your group to argue as either "delete facebook" or "don't delete facebook".
 
-For the first 10 minutes, review the [Facebook Case Study](experience-se-ethics-case-study-facebook.html) and the articles in it to provide evidence for your position. 
+For the first 10 minutes, review the Facebook Case Study and the articles in it to provide evidence for your position.
 
 For the second 10 minutes, work together in your group to develop reasons for your assigned position to delete facebook or not delete facebook. Justify your position by reference to the ACM Code of Ethics or more general ethical principles ([avoiding harm](experience-se-ethics-harm.html) and [doing good](experience-se-ethics-good.html)).
 

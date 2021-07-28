@@ -19,21 +19,21 @@ This repository contains the code for Version 2.0 of the Morea Framework.
  * Check to see that the action completed successfully.
  * Check the url (username.github.io/reponame)
 
-## Version 2.0 To Do List
- - [ ] Rebuild documentation using docusaurus.
- - [ ] Fix markup to use Bootstrap 5.
- - [ ] Rebuild custom Bootswatch themes.
- - [ ] Create "realistic" demo site: four modules, one per week, includes prereqs, sets schedule page start month.
- - [ ] Include more include files into template, document in docusaurus.
- - [ ] Remove scrollIfAnchor.js if possible? (core.html).
+## Post release To Do:
  - [ ] Create links to outcomes assessed in Assessment cards and pages.
+ - [ ] Remove scrollIfAnchor.js if possible? (core.html).
 
 Note: Deployed template at: https://morea-framework.github.io/morea/index.html
-
 
 ## To check site for HTML link errors:
 ```
 $ bundle exec jekyll build --baseurl ''
 $ bundle exec htmlproofer ./_site
 ```
+
+## Version 2.0 Next Steps
+ - [ ] Fix schedule page URL bugs.
+ - [ ] Rebuild custom Bootswatch themes.
+ - [ ] Rebuild documentation using docusaurus.
+
 

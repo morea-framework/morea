@@ -45,7 +45,7 @@ title: Learning Outcomes
         <em>Assessed by:</em>
         {% for assessment in outcome.morea_referencing_assessments %}
           {% unless assessment.referencing_modules.size == 0 %}
-            <a href="../assessments/#{{ assessment.morea_id }}">{{ assessment.title }}</a>{% unless forloop.last %}, {% endunless %}
+            <a href="..{{ assessment.url }}">{{ assessment.title }}</a>{% unless forloop.last %}, {% endunless %}
           {% endunless %}
         {% endfor %}
         </p>
