@@ -14,7 +14,7 @@ This repository contains the code for Version 2.0 of the Morea Framework.
 
 ## How to configure deployment for a new site:
  * Edit config.yml to make sure baseurl is the repo name.
- * Settings | Pages, enable github pages.
+ * Settings | Pages, enable github pages, set the source to gh-pages, enable https.
  * Push the repo.
  * Check to see that the action completed successfully.
  * Check the url (username.github.io/reponame)
@@ -31,8 +31,11 @@ $ bundle exec jekyll build --baseurl ''
 $ bundle exec htmlproofer ./_site
 ```
 
+## Migration
+ - [ ] Update _includes directory with any custom include files.
+ - [ ] assessments now require the morea_summary field in YAML.
+
 ## Version 2.0 Next Steps
- - [ ] Rebuild custom Bootswatch themes.
  - [ ] Rebuild documentation using docusaurus.
 
 
