@@ -5,7 +5,7 @@ title: Modules
 {% include breadcrumb-2.html %}
 
 <div class="container">
-  <h1>Modules</h1>
+  <h1>Modules <small class="header-small">Topics covered in this class</small></h1>
   
   {% if site.morea_overview_modules %}
     {{ site.morea_overview_modules.content | markdownify }}

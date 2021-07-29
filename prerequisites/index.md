@@ -5,8 +5,15 @@ title: Prerequisites
 {% include breadcrumb-2.html %}
 
 <div class="container">
-  <h1>Prerequisites</h1>
+  <h1>Prerequisites <small class="header-small">in module order</small></h1>
 </div>
+
+{% if site.morea_overview_prerequisites %}
+<div class="container">
+ {{ site.morea_overview_prerequisites.content | markdownify }}
+</div>
+{% endif %}
+
 
 {% for module in site.morea_module_pages %}
 {% if module.morea_coming_soon != true and module.morea_prerequisites.size > 0 %}

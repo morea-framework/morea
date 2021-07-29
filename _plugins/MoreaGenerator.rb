@@ -270,6 +270,14 @@ module Morea
           page.data['morea_labels'] << "#{(Time.parse(page.data['morea_start_date'])).strftime("%d %b %I:%M %p")}"
         end
       end
+      site.config['morea_module_pages'].each do |page|
+        if page.data['morea_start_date']
+          page.data['morea_start_date_string'] = "#{(Time.parse(page.data['morea_start_date'])).strftime("%a %d %b")}"
+        end
+        if page.data['morea_end_date']
+          page.data['morea_end_date_string'] = "#{(Time.parse(page.data['morea_end_date'])).strftime("%a %d %b")}"
+        end
+      end
     end
 
 
@@ -399,6 +407,8 @@ module Morea
           site.config['morea_overview_experiences'] = new_page
         elsif new_page.data['morea_type'] == "overview_assessments"
           site.config['morea_overview_assessments'] = new_page
+        elsif new_page.data['morea_type'] == "overview_prerequisites"
+          site.config['morea_overview_prerequisites'] = new_page
         end
       else
         @summary.unpublished_files += 1
