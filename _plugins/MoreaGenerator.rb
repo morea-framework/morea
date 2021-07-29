@@ -89,7 +89,7 @@ module Morea
         end
       end
       # Set the navbar background depending on the theme.
-      if ["spacelab"].include? @config['morea_theme'].to_s
+      if ["spacelab", "cerulean"].include? @config['morea_theme'].to_s
         @config['morea_theme_navbar_bg'] = 'bg-light'
       else
         @config['morea_theme_navbar_bg'] = 'bg-dark'
