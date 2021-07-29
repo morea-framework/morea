@@ -5,4 +5,4 @@ morea_type: overview_modules
 published: true
 ---
 
-This page presents the "modules". Click on a module card to go to its page.
+For any module not marked as "Coming Soon", click on it to go to a page containing details.
