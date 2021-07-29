@@ -5,7 +5,7 @@ title: Learning Outcomes
 {% include breadcrumb-2.html %}
 
 <div class="container">
-  <h1>Learning Outcomes <small class="header-small">in module order</small></h1>
+  <h1>Learning Outcomes <small class="header-small">What you will know</small></h1>
 </div>
 
 {% if site.morea_overview_outcomes %}

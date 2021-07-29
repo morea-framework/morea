@@ -5,7 +5,7 @@ title: Experiences
 {% include breadcrumb-2.html %}
 
 <div class="container">
-  <h1>Experiential Learning <small class="header-small">in module order</small></h1>
+  <h1>Experiential Learning <small class="header-small">"Active" learning opportunities</small></h1>
 </div>
 
 {% if site.morea_overview_experiences %}

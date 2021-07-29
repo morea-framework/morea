@@ -37,11 +37,6 @@ h1, h2, h3 {
   margin-top: .20em;
 }
 
-/* Move body of page below navbar. */
-body {
-  padding-top: 48px;
-}
-
 small {
   font-size: .7em
 }

@@ -5,7 +5,7 @@ title: Readings
 {% include breadcrumb-2.html %}
 
 <div class="container">
-  <h1>Readings and other resources <small class="header-small">in module order</small></h1>
+  <h1>Readings <small class="header-small">"Passive" learning opportunities</small></h1>
 </div>
 
 {% if site.morea_overview_readings %}

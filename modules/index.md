@@ -32,9 +32,11 @@ title: Modules
                 <span>Coming soon...</span>
               </div>
             {% else %}
-              <div class="card-footer text-center">
-                {{module.morea_start_date_string}} - {{module.morea_end_date_string}}
-              </div>
+              {% if module.morea_start_date_string %}
+                <div class="card-footer text-center">
+                  {{module.morea_start_date_string}} - {{module.morea_end_date_string}}
+                </div>
+              {% endif %}
               <a href="{{ module.morea_id }}" class="stretched-link"></a>
             {% endif %}
           </div>

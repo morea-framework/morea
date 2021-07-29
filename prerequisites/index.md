@@ -5,7 +5,7 @@ title: Prerequisites
 {% include breadcrumb-2.html %}
 
 <div class="container">
-  <h1>Prerequisites <small class="header-small">in module order</small></h1>
+  <h1>Prerequisites <small class="header-small">Important material from other courses</small></h1>
 </div>
 
 {% if site.morea_overview_prerequisites %}
