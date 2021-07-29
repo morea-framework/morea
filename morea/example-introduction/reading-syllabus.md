@@ -1,7 +1,7 @@
 ---
 morea_id: reading-syllabus
 morea_type: reading
-title: "ICS 314 Syllabus"
+title: "ICS 199 Syllabus"
 published: True
 morea_summary: "Basic information about the class"
 morea_sort_order: 10
@@ -9,11 +9,13 @@ morea_labels:
 ---
 # Syllabus
 
-*Title*: ICS 314: Software Engineering
-<br>*Website*: http://courses.ics.hawaii.edu/ics314f20
+*Title*: ICS 199: Selected Topics in Computer Science
+<br>*Website*: http://courses.ics.hawaii.edu/ics199
 <br>*Prerequisites*: ICS 211, ICS 241, or equivalent
 
 ## Description
+
+(The remainder of this page is actually the syllabus for ICS 314.)
 
 ICS 314 is a fast-paced immersion into significant software engineering concepts and technologies.  It incorporates the following themes:
 
