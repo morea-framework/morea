@@ -22,6 +22,7 @@ This repository contains the code for Version 2.0 of the Morea Framework.
 ## Post release To Do:
  - [ ] Create links to outcomes assessed in Assessment cards and pages.
  - [ ] Remove scrollIfAnchor.js if possible? (core.html).
+ - [ ] Experiences from unpublished modules still appear in schedule
 
 Note: Deployed template at: https://morea-framework.github.io/morea/index.html
 
@@ -34,8 +35,5 @@ $ bundle exec htmlproofer ./_site
 ## Migration
  - [ ] Update _includes directory with any custom include files.
  - [ ] assessments now require the morea_summary field in YAML.
-
-## Version 2.0 Next Steps
- - [ ] Rebuild documentation using docusaurus.
 
 
