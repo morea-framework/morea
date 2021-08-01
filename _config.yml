@@ -8,7 +8,7 @@ mathjax: true
 timezone: Pacific/Honolulu # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 baseurl: /morea
 exclude: [morea]
-morea_theme: darkly
+morea_theme: spacelab
 morea_navbar_items:
   - Prerequisites
   - Modules
