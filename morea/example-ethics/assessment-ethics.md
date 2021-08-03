@@ -9,9 +9,6 @@ morea_type: assessment
 morea_start_date: "2021-07-30T09:00"
 morea_sort_order: 1
 morea_labels:
-morea_chartjs_data: "[]"
-morea_chartjs_labels: '["Excellent", "Satisfactory", "Unsatisfactory"]'
-morea_chartjs_caption:
 ---
 
 # A03: Assess your ability to reason about ethical issues in software development
