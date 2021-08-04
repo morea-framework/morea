@@ -650,7 +650,7 @@ module Morea
   class ScheduleInfoFile
     def initialize(site)
       @site = site
-      @schedule_file_dir = @site.config['source']
+      @schedule_file_dir = @site.config['destination']
       @schedule_file_name = 'schedule-info.js'
       @schedule_file_path= @schedule_file_dir + '/schedule/' + @schedule_file_name
     end
