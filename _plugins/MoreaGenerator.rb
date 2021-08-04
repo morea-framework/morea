@@ -657,13 +657,14 @@ module Morea
     end
 
     # Write a file declaring a global variable called moreaEventData containing an array of calendar events.
+    # Write it directly to the _site directory in order to avoid infinite regeneration
     def write_schedule_info_file
       schedule_file_contents = 'moreaEventData = '
       schedule_file_contents += get_schedule_events(@site)
       #puts "schedule file contents: \n" + schedule_file_contents
       FileUtils.mkdir_p @schedule_file_dir + '/schedule'
       File.open(@schedule_file_path, 'w') { |file| file.write(schedule_file_contents) }
-      @site.static_files << Jekyll::StaticFile.new(@site, @site.source, 'schedule/', @schedule_file_name)
+      # @site.static_files << Jekyll::StaticFile.new(@site, @site.source, 'schedule/', @schedule_file_name)
     end
 
     # Returns a JS array of object literals containing event data in FullCalendar syntax.
