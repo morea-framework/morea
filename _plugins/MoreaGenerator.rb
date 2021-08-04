@@ -17,6 +17,7 @@
 #     Possible colors: black, red, green, brown, blue, magenta, cyan, gray
 
 require 'pp'
+require 'fileutils'
 
 module Morea
 
@@ -660,6 +661,7 @@ module Morea
       schedule_file_contents = 'moreaEventData = '
       schedule_file_contents += get_schedule_events(@site)
       #puts "schedule file contents: \n" + schedule_file_contents
+      FileUtils.mkdir_p @schedule_file_dir + '/schedule'
       File.open(@schedule_file_path, 'w') { |file| file.write(schedule_file_contents) }
       @site.static_files << Jekyll::StaticFile.new(@site, @site.source, 'schedule/', @schedule_file_name)
     end
