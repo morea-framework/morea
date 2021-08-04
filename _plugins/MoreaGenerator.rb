@@ -33,7 +33,7 @@ module Morea
   end
 
   class MoreaGenerator < Jekyll::Generator
-    attr_accessor :summary
+    attr_accessor :summary, :config
 
     # Emit a debugging log message containing the site.config variables starting with 'morea_'
     # Used for debugging because it makes it easy to track changes to morea variables during processing.
@@ -78,7 +78,7 @@ module Morea
       if (@config['morea_course'] == nil)
         @config['morea_course'] = ''
       else
-        @config['morea_course'] = site.config['morea_course'].to_s
+        @config['morea_course'] = @config['morea_course'].to_s
       end
       if (@config['morea_domain'] == nil)
         @config['morea_domain'] = ''
@@ -501,7 +501,7 @@ module Morea
         end
         if !morea_page.data['morea_sort_order']
           # morea_page.missing_optional << "morea_sort_order (set to 0)"
-          # morea_page.data['morea_sort_order'] = 0
+          morea_page.data['morea_sort_order'] = 0
           # @summary.yaml_warnings += 1
         end
       end
