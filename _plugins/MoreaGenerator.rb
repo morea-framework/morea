@@ -279,10 +279,10 @@ module Morea
       end
       site.config['morea_module_pages'].each do |page|
         if page.data['morea_start_date']
-          page.data['morea_start_date_string'] = "#{(Time.parse(page.data['morea_start_date'])).strftime("%A, %B %-d")}"
+          page.data['morea_start_date_string'] = "#{(Time.parse(page.data['morea_start_date'])).strftime("%a, %b %-d")}"
         end
         if page.data['morea_end_date']
-          page.data['morea_end_date_string'] = "#{(Time.parse(page.data['morea_end_date'])).strftime("%A, %B %-d")}"
+          page.data['morea_end_date_string'] = "#{(Time.parse(page.data['morea_end_date'])).strftime("%a, %b %-d")}"
         end
       end
     end
