@@ -93,7 +93,7 @@ module Morea
       if ["darkly"].include? @config['morea_theme'].to_s
         @config['morea_theme_navbar_bg'] = 'navbar-dark bg-dark'
       else
-        @config['morea_theme_navbar_bg'] = 'bg-light'
+        @config['morea_theme_navbar_bg'] = 'navbar-light bg-light'
       end
       # logMoreaConfig()
     end
