@@ -23,7 +23,7 @@ title: Modules
               {{ module.morea_summary | markdownify }}
               <p>
               {% for label in module.morea_labels %}
-                <span class="badge">{{ label }}</span>
+                <span class="badge bg-primary">{{ label }}</span>
               {% endfor %}
               </p>
             </div>
