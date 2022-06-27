@@ -1,5 +1,10 @@
 /* Use this file to make simple customizations to your site theme. */
 
+/* Make link anchors aware of sticky navbar */
+:target {
+  scroll-margin-top: 60px;
+}
+
 /* Make the YouTube Videos responsive. */
 .video-container {
     position: relative;
@@ -40,4 +45,3 @@ h1, h2, h3 {
 small {
   font-size: .7em
 }
-
