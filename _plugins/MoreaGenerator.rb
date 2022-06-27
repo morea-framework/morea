@@ -166,26 +166,26 @@ module Morea
       site.config['morea_assessment_pages'] = site.config['morea_assessment_pages'].sort_by {|page| page.data['morea_sort_order']}
     end
 
-    # Prepend site.baseurl to the morea_url value of pages whose URL appears to require them
+    # Prepend site.baseurl to the morea_url value of pages whose URL is relative (i.e. starts with /morea).
+    # See https://github.com/morea-framework/morea/issues/14
+    # Note that calling the template repo "morea" makes testing this within the template way more difficult.
     def fix_morea_urls(site)
       site.config['morea_reading_pages'].each do |reading_page|
         reading_url = reading_page.data['morea_url']
-        if reading_url.match(/^\/morea/)
+        if (reading_url.match(/^\/morea/))
           reading_page.data['morea_url'] = site.baseurl + reading_url
         end
       end
       site.config['morea_experience_pages'].each do |experience_page|
         experience_url = experience_page.data['morea_url']
         if experience_url.match(/^\/morea/)
-          # Not needed in Morea 2.0?
-          # experience_page.data['morea_url'] = site.baseurl + experience_url
+          experience_page.data['morea_url'] = site.baseurl + experience_url
         end
       end
       site.config['morea_assessment_pages'].each do |assessment_page|
         assessment_url = assessment_page.data['morea_url']
         if assessment_url.match(/^\/morea/)
-          # Not needed in Morea 2.0?
-          # assessment_page.data['morea_url'] = site.baseurl + assessment_url
+          assessment_page.data['morea_url'] = site.baseurl + assessment_url
         end
       end
       site.config['morea_prerequisite_pages'].each do |prereq_page|
@@ -454,13 +454,15 @@ module Morea
         end
         if !morea_page.data['morea_url']
           # When not supplied we automatically generate the relative URL to the page.
-          # Note we include the baseurl so that for readings and experiences, this link is absolute.
           # We may or may not need a / separator depending upon the underlying version of Jekyll.
           slasher = '/'
           if (morea_page.dir.end_with? '/') || (morea_page.basename.start_with? '/')
             slasher = ''
           end
-          morea_page.data['morea_url'] ="#{site.baseurl}#{morea_page.dir}#{slasher}#{morea_page.basename}.html"
+          # We will add the baseurl later in fix_morea_urls.
+          # See https://github.com/morea-framework/morea/issues/14
+          # morea_page.data['morea_url'] ="#{site.baseurl}#{morea_page.dir}#{slasher}#{morea_page.basename}.html"
+          morea_page.data['morea_url'] ="#{morea_page.dir}#{slasher}#{morea_page.basename}.html"
         end
       end
 
@@ -775,4 +777,3 @@ module Morea
     end
   end
 end
-
