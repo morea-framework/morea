@@ -18,4 +18,4 @@ For the second 10 minutes, work together in your group to develop reasons for yo
 
 Once groups have developed their positions, we will have an in-class debate. 
 
-{% include bit.ly.html url="http://bit.ly/35w0Fzv" %}
+{% include bit.ly.html url="https://bit.ly/35w0Fzv" %}

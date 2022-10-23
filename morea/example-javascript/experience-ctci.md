@@ -12,9 +12,9 @@ morea_labels:
 
 # E05: isUnique (Cracking the Coding Interview, Problem 1)
 
-[Cracking the Coding Interview](http://www.crackingthecodinginterview.com/) (CTCI) is widely regarded as a preeminent resource to prepare for modern software development position interviews at leading high tech companies.
+[Cracking the Coding Interview](https://www.crackingthecodinginterview.com/) (CTCI) is widely regarded as a preeminent resource to prepare for modern software development position interviews at leading high tech companies.
 
-The goal of this experience is to continue to get familiar with writing very simple Javascript code using [JSFiddle](http://jsfiddle.net), and to get you acquainted with the "Workout of the Day" (WOD) pedagogical technique used in this course.
+The goal of this experience is to continue to get familiar with writing very simple Javascript code using [JSFiddle](https://jsfiddle.net), and to get you acquainted with the "Workout of the Day" (WOD) pedagogical technique used in this course.
 
 To do this, you will solve the very first problem in CTCI, called "isUnique":
 

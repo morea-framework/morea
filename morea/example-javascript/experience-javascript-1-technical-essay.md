@@ -24,7 +24,7 @@ Here's an example GitHub gist:
 
 ## MathJax Example
 
-This section demonstrates the use of [MathJax](http://www.mathjax.org) for rendering mathematical notation in markdown files.
+This section demonstrates the use of [MathJax](https://www.mathjax.org) for rendering mathematical notation in markdown files.
 
 For example, the following markdoswn:
 
@@ -51,8 +51,3 @@ Produces the following block:
 ## Submission Instructions
 
 {% include submission-essay.html assignment="E06" %}
-
-
-
-
-

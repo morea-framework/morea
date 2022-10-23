@@ -12,13 +12,13 @@ morea_labels:
 
 # E07: Reflect on smart questions
 
-In [How to ask questions the smart way](http://www.catb.org/esr/faqs/smart-questions.html), Eric Raymond provides guidelines for effective interaction with the open source community. If you haven't yet read this essay, please do so before proceeding.
+In [How to ask questions the smart way](https://wiki.c2.com/?HowToAskQuestionsTheSmartWay), Eric Raymond provides guidelines for effective interaction with the open source community. If you haven't yet read this essay, please do so before proceeding.
 
 Communication is one of the most important software engineering skills to develop, and asking questions the "smart way" is one of the most important communication skills of all for a software engineer.
 
 For this experience, you will use StackOverflow to provide examples of the positive outcomes that can potentially occur when software engineers follow the guidelines, and the negative outcomes that can potentially occur when software engineers don't.
 
-First, search [StackOverflow](http://stackoverflow.com/) for a question submitted by a developer that demonstrates the "smart way".  Such a question should follow the precepts established by Raymond.  In addition, the answers provided by the community should demonstrate that asking a question the smart way leads to both efficient and effective help.
+First, search [StackOverflow](https://stackoverflow.com/) for a question submitted by a developer that demonstrates the "smart way".  Such a question should follow the precepts established by Raymond.  In addition, the answers provided by the community should demonstrate that asking a question the smart way leads to both efficient and effective help.
 
 Next, you will search for a question submitted by a different developer that demonstrates the "not smart way". In other words, this question violates the principles established by Raymond.  In addition, the answers provided by the community should demonstrate that asking a question in a "not smart" way does not lead to both effective and efficient help
 
@@ -28,16 +28,10 @@ Write a technical essay that discusses why smart questions are important for sma
 
 Be sure that your essay includes a textual summary of both the "smart" and "not so smart" questions, as well as a link to the StackOverFlow pages where they are located.  **Don't just put the URL to the questions and force the reader to visit StackOverFlow to read the question there, then switch back to your essay to continue.** Your essay should contain enough detail about the two questions so that the reader doesn't need to visit StackOverFlow to make sense of your essay.
 
-Be sure all URLs in your essay are clickable. This requires learning [Markdown in TechFolios](https://techfolios.github.io/userguide.html#7.1Formattext).
+Be sure all URLs in your essay are clickable. This requires learning [Markdown in TechFolios](https://techfolios.github.io/).
 
 **If you have previously taken this class, you must find new questions and answers to analyze.**
 
 ## Submission instructions
 
 {% include submission-essay.html assignment="E07" %}
-
-
-
-
-
-

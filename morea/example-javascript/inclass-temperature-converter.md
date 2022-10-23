@@ -46,8 +46,4 @@ Ready? Let's begin:
 
   10. Raise your hands to let me know that both of you have finished.
 
-{% include bit.ly.html url="http://bit.ly/2LdHu8u" %}
-
-
-
-
+{% include bit.ly.html url="https://bit.ly/2LdHu8u" %}

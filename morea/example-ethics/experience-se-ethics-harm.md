@@ -57,7 +57,7 @@ won’t be attending college in the Fall.
 #### Questions for discussion:
 
   
-  1. Clearly harm has occurred, but does this scenario represent unethical behavior on the part of a software engineer?  Come up with one example of a "software glitch" which does not result from unethical behavior on the part of a software engineer, and one that does.  Justify your examples by reference to either the [ACM Code of Ethics](http://www.acm.org/about/code-of-ethics) or the [Software Engineering Code of Ethics and Professional Practice](http://www.acm.org/about/se-code). 
+  1. Clearly harm has occurred, but does this scenario represent unethical behavior on the part of a software engineer?  Come up with one example of a "software glitch" which does not result from unethical behavior on the part of a software engineer, and one that does.  Justify your examples by reference to either the [ACM Code of Ethics](https://www.acm.org/about/code-of-ethics) or the [Software Engineering Code of Ethics and Professional Practice](https://www.acm.org/about/se-code). 
   
   
   
@@ -98,7 +98,7 @@ Karen and her friends.</p>
      
   3. What actions could the people behind Errand Whiz take to prevent
      these harms? Are they ethically obligated to prevent them? Why or why not?
-     Justify by reference to either the [ACM Code of Ethics](http://www.acm.org/about/code-of-ethics) or the [Software Engineering Code of Ethics and Professional Practice](https://www.computer.org/web/education/code-of-ethics). 
+     Justify by reference to either the [ACM Code of Ethics](https://www.acm.org/about/code-of-ethics) or the [Software Engineering Code of Ethics and Professional Practice](https://www.computer.org/web/education/code-of-ethics). 
      
 ## Conclusion
 

@@ -9,7 +9,7 @@ morea_sort_order: 6
 
 # MathJax Example
 
-This page demonstrates the use of [MathJax](http://www.mathjax.org) for rendering mathematical notation in markdown files.
+This page demonstrates the use of [MathJax](https://www.mathjax.org) for rendering mathematical notation in markdown files.
 
 For example, the following markdoswn:
 
@@ -32,7 +32,3 @@ You can also create a block of math using the `\\[` delimiter. For example, the 
 Produces the following block:
 
 \\[ \frac{1}{n^{2}} \\]
-
-
-
-

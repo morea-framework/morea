@@ -46,4 +46,4 @@ fairness and intellectual vigor to a larger system of justice.
   2. What kinds of character traits, qualities, behaviors and/or habits do
      you think mark the kinds of people who tend to contribute most in these ways?
      
-  3. Which sections of the [ACM Code of Ethics](http://www.acm.org/about/code-of-ethics) or the [Software Engineering Code of Ethics and Professional Practice](https://www.computer.org/web/education/code-of-ethics) indicate the need to do good as opposed to merely avoiding harm?
+  3. Which sections of the [ACM Code of Ethics](https://www.acm.org/about/code-of-ethics) or the [Software Engineering Code of Ethics and Professional Practice](https://www.computer.org/web/education/code-of-ethics) indicate the need to do good as opposed to merely avoiding harm?

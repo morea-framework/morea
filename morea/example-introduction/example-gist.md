@@ -9,7 +9,7 @@ morea_sort_order: 6
 
 # GitHub Gist Example
 
-This page demonstrates the use of [GitHub Gists](http://www.mathjax.org) for including code snippets in markdown files.
+This page demonstrates the use of [GitHub Gists](https://www.mathjax.org) for including code snippets in markdown files.
 
 The following markdown:
 
@@ -20,4 +20,3 @@ The following markdown:
 produces this gist:
 
 {% gist philipmjohnson/5288814 %}
-

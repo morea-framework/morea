@@ -17,7 +17,7 @@ morea_labels:
 *Before starting this experience, please read [What do we mean when we talk about ethics?](reading-se-ethics-intro.html).*
 
 Each professional society of engineers adopts and enforces its own codes of practice,
-including codes for ethical practice; for computer science in general, the standard is the [ACM Code of Ethics](http://www.acm.org/about/code-of-ethics). ACM also publishes a code specific for software engineering: the [Software Engineering Code of Ethics and Professional Practice](https://www.computer.org/web/education/code-of-ethics). 
+including codes for ethical practice; for computer science in general, the standard is the [ACM Code of Ethics](https://www.acm.org/about/code-of-ethics). ACM also publishes a code specific for software engineering: the [Software Engineering Code of Ethics and Professional Practice](https://www.computer.org/web/education/code-of-ethics). 
 
 These codes are not meant to serve as formal checklists or exhaustive accounts of how to
 be an ethical engineer in any given situation; the latter can only be determined through
@@ -46,6 +46,6 @@ but because not doing so would violate their personal professional standards.”
 
 #### Questions for discussion:
 
-  1. Read over the [ACM Code of Ethics](http://www.acm.org/about/code-of-ethics) and the [Software Engineering Code of Ethics and Professional Practice](http://www.acm.org/about/se-code). Which code do you think is more helpful to you?  Why?
+  1. Read over the [ACM Code of Ethics](https://www.acm.org/about/code-of-ethics) and the [Software Engineering Code of Ethics and Professional Practice](https://www.acm.org/about/se-code). Which code do you think is more helpful to you?  Why?
   
   2. To reiterate: the codes do not "constitute an algorithmic Turing machine that solves ethical problems." They are written by  humans, and so they may themselves contain "bugs".  Take a moment to consider the potential shortcomings of these code. Are there ethical obligations you adhere to that are not listed in these codes?  Do you find shortcomings with any of the ethical standards listed in the codes? 

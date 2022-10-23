@@ -10,7 +10,7 @@ morea_sort_order: 7
 # How to watch screencasts the smart way
 
 A very significant essay in hacker culture is “[How to ask questions the smart
-way](http://www.catb.org/esr/faqs/smart-questions.html)“, which provides
+way](https://wiki.c2.com/?HowToAskQuestionsTheSmartWay)“, which provides
 important tips on how to utilize the online community efficiently and
 effectively. This page provides tips on how to watch screencasts the smart
 way. This issue is important, because this class uses a “flipped” pedagogy, in
@@ -55,7 +55,7 @@ material is always accessible online.
 However, to maximize the efficiency
 with which you learn the material, you should take notes on the screencast,
 because [note taking stabilizes information for retrieval at a later
-date](http://wac.colostate.edu/journal/vol16/boch.pdf). 
+date](https://wac.colostate.edu/journal/vol16/boch.pdf). 
 
 Put another way, your
 ultimate goal is to not have to re-watch the lecture every time you need the
@@ -103,11 +103,11 @@ Click on each image to display it full size, and notice how much sharper the
 
 ### 1080p
 
-<a href="http://ics314f13.files.wordpress.com/2013/08/screencast-1080.png"><img class="wp-image-243  " alt="screencast-1080" src="http://ics314f13.files.wordpress.com/2013/08/screencast-1080.png?w=300" width="300" height="178" />
+<a href="https://ics314f13.files.wordpress.com/2013/08/screencast-1080.png"><img class="wp-image-243  " alt="screencast-1080" src="https://ics314f13.files.wordpress.com/2013/08/screencast-1080.png?w=300" width="300" height="178" />
 
 ### 720p
 
-<a href="http://ics314f13.files.wordpress.com/2013/08/screencast-720.png"><img class="wp-image-244  " alt="720p" src="http://ics314f13.files.wordpress.com/2013/08/screencast-720.png?w=300" width="300" height="188" /></a>
+<a href="https://ics314f13.files.wordpress.com/2013/08/screencast-720.png"><img class="wp-image-244  " alt="720p" src="https://ics314f13.files.wordpress.com/2013/08/screencast-720.png?w=300" width="300" height="188" /></a>
 
 
 I have noticed that, at least with the Chrome
@@ -121,8 +121,3 @@ Firefox.
 
 If you have other tips for watching screencasts the smart way, please email
 me.
-
-
-
-
-
