@@ -1,6 +1,6 @@
 ---
 title: "CHANGE ME"
-published: true
+published: false
 morea_id: reading-CHANGE-ME
 morea_summary: "CHANGE ME"
 morea_url: https://github.com/airbnb/javascript
