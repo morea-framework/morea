@@ -5,7 +5,6 @@ morea_id: reading-CHANGE-ME
 morea_summary: "CHANGE ME"
 morea_url: https://github.com/airbnb/javascript
 morea_type: reading
-morea_sort_order: 2
 morea_labels:
 ---
 
