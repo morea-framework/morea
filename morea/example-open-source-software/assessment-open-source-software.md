@@ -6,7 +6,9 @@ morea_summary: Can you explain what, why, where, and how?
 morea_outcomes_assessed:
  - outcome-oss
 morea_type: assessment
-morea_start_date: "2021-07-23T09:00"
+morea_start_date:  
+   "Section 01": "2021-07-23T09:00"
+   "Section 02": "2021-07-23T09:00"
 morea_sort_order: 1
 morea_labels:
 morea_chartjs_data: '[20, 10, 4]'

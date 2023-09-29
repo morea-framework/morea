@@ -14,8 +14,12 @@ morea_assessments:
   # - assessment-CHANGE-ME
 morea_type: module
 morea_icon_url: /morea/CHANGE-ME/CHANGE-ME.png
-morea_start_date: "2021-07-12"
-morea_end_date: "2021-07-16"
+morea_start_date:  
+   "Section 01": "2021-07-12"
+   "Section 02": "2021-07-12"
+morea_end_date:  
+   "Section 01": "2021-07-16"
+   "Section 02": "2021-07-16"
 morea_labels:
 morea_sort_order: 21
 ---

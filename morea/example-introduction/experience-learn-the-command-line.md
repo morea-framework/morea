@@ -4,7 +4,9 @@ published: true
 morea_id: experience-learn-the-command-line
 morea_type: experience
 morea_summary: "Learn how to use the command line."
-morea_start_date: "2021-07-09T23:00"
+morea_start_date:  
+   "Section 01": "2021-07-09T23:00"
+   "Section 02": "2021-07-09T23:00"
 morea_sort_order: 2
 morea_labels:
   - Optional

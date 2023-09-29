@@ -274,15 +274,21 @@ module Morea
           if page.data['morea_labels'] == nil
             page.data['morea_labels'] = []
           end
-          page.data['morea_labels'] << "#{(Time.parse(page.data['morea_start_date'])).strftime("%d %b %I:%M %p")}"
+          page.data['morea_start_date'].each do |section, date|
+            page.data['morea_labels'] << "#{section}:#{(Time.parse(date)).strftime("%d %b %I:%M %p")}"
+          end
         end
       end
       site.config['morea_module_pages'].each do |page|
         if page.data['morea_start_date']
-          page.data['morea_start_date_string'] = "#{(Time.parse(page.data['morea_start_date'])).strftime("%a, %b %-d")}"
+          page.data['morea_start_date'].each do |section, date|
+            page.data['morea_start_date_string'] = "#{(Time.parse(date)).strftime("%a, %b %-d")}"
+          end
         end
         if page.data['morea_end_date']
-          page.data['morea_end_date_string'] = "#{(Time.parse(page.data['morea_end_date'])).strftime("%a, %b %-d")}"
+          page.data['morea_end_date'].each do |section, date|
+            page.data['morea_end_date_string'] = "#{(Time.parse(date)).strftime("%a, %b %-d")}"
+          end
         end
       end
     end
@@ -676,12 +682,14 @@ module Morea
       events = "["
       site.config['morea_page_table'].each do |morea_id, morea_page|
         if morea_page.data.has_key?('morea_start_date')
-          event = "\n  {title: #{morea_page.data['title'].inspect}, url: #{get_event_url(morea_page, site).inspect}, start: #{morea_page.data['morea_start_date'].inspect}"
-          if morea_page.data.has_key?('morea_end_date')
-            event += ", end: #{morea_page.data['morea_end_date'].inspect}"
+          morea_page.data['morea_start_date'].each do |section, date|
+            event = "\n  {section: \"#{section}\", title: #{morea_page.data['title'].inspect}, url: #{get_event_url(morea_page, site).inspect}, start: #{date.inspect}"
+            if morea_page.data.has_key?('morea_end_date')
+              event += ", end: #{morea_page.data['morea_end_date'][section].inspect}"
+            end
+            event += "},"
+            events += event
           end
-          event += "},"
-          events += event
         end
       end
       if (events.end_with?(","))

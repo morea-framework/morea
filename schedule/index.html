@@ -21,12 +21,14 @@ title: Schedule
 <script src="schedule-info.js"></script>
 
 <script>
-  var holidayData = {color: 'green',
+  var holidayData = {
+    color: 'green',
     events: [
-      {title: "Classes start", start: "2021-07-06"},
-      {title: "Holiday: Independence Day (Observed)", start: "2021-07-05"},
-      {title: "Classes end", start: "2021-07-30"},
-    ]};
+      { title: "Classes start", start: "2021-07-06" },
+      { title: "Holiday: Independence Day (Observed)", start: "2021-07-05" },
+      { title: "Classes end", start: "2021-07-30" },
+    ]
+  };
 </script>
 
 <div style="margin-bottom: 10px" class="container">
@@ -36,25 +38,29 @@ title: Schedule
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  function setCalendar() {
+    console.log($("#sectionSelect").val());
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
       eventColor: '#446e9b',
       initialDate: '2021-07-01',
-      eventSources: [{events: moreaEventData}, holidayData]
+      eventSources: [{ events: moreaEventData }, holidayData]
     });
     calendar.render();
-  });
+  }
+
+  document.addEventListener('DOMContentLoaded', setCalendar);
   // Add course section select options
-    var selectBox = $("#sectionSelect");
-    // for backward compatability, remove the selector if there is no array of course sections
-    if(moreaCourseSections === null) {
-      selectBox.remove();
-    }
-    $.each(moreaCourseSections, function(index, value) {
-        selectBox.append($("<option></option>")
-            .attr("value", value)
-            .text(value));
-    });
+  let selectBox = $("#sectionSelect");
+  // for backward compatibility, remove the selector if there is no array of course sections
+  if (moreaCourseSections === null) {
+    selectBox.remove();
+  }
+  $.each(moreaCourseSections, function (index, value) {
+    selectBox.append($("<option></option>")
+      .attr("value", value)
+      .text(value));
+  });
+  selectBox.change(setCalendar);
 </script>

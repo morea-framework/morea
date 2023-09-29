@@ -5,7 +5,9 @@ morea_id: experience-ctci
 morea_type: experience
 morea_summary: "Solve the first CTCI problem"
 morea_sort_order: 1
-morea_start_date: "2021-07-14T23:00"
+morea_start_date:  
+   "Section 01": "2021-07-14T23:00"
+   "Section 02": "2021-07-14T23:00"
 morea_labels:
   - Practice WOD
 ---

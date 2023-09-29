@@ -5,7 +5,9 @@ morea_id: experience-javascript-1-technical-essay
 morea_type: experience
 morea_summary: "Write a technical essay summarizing your learning about Javascript."
 morea_sort_order: 6
-morea_start_date: "2021-07-15T23:00"
+morea_start_date:  
+   "Section 01": "2021-07-15T23:00"
+   "Section 02": "2021-07-15T23:00"
 morea_labels:
   - Technical Essay
 ---

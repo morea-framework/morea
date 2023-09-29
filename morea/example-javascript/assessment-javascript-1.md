@@ -7,7 +7,9 @@ morea_outcomes_assessed:
  - outcome-javascript-1
 morea_type: assessment
 morea_labels:
-morea_start_date: "2021-07-16T09:00"
+morea_start_date:  
+   "Section 01": "2021-07-16T09:00"
+   "Section 02": "2021-07-16T09:00"
 morea_sort_order: 2
 morea_chartjs_data: '[4, 7, 14]'
 morea_chartjs_labels: '["Excellent", "Satisfactory", "Unsatisfactory"]'

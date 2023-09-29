@@ -5,7 +5,9 @@ morea_id: experience-introduce-yourself
 morea_type: experience
 morea_summary: "Get started with the ICS 314 Discord server"
 morea_sort_order: 3
-morea_start_date: "2021-07-08T23:00"
+morea_start_date:  
+   "Section 01": "2021-07-08T23:00"
+   "Section 02": "2021-07-08T23:00"
 morea_labels:
 ---
 

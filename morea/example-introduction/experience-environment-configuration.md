@@ -5,7 +5,9 @@ morea_id: experience-environment-configuration
 morea_type: experience
 morea_summary: "Learn how to configure your development environment."
 morea_sort_order: 2
-morea_start_date: "2021-07-07T23:00"
+morea_start_date:  
+   "Section 01": "2021-07-07T23:00"
+   "Section 02": "2021-07-07T23:00"
 morea_labels:
 ---
 

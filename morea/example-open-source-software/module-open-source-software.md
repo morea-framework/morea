@@ -20,8 +20,12 @@ morea_type: module
 morea_icon_url: /morea/example-open-source-software/open-source-logo.png
 morea_labels:
 morea_sort_order: 25
-morea_start_date: "2021-07-19"
-morea_end_date: "2021-07-23T23:00"
+morea_start_date:  
+   "Section 01": "2021-07-19"
+   "Section 02": "2021-07-19"
+morea_end_date:  
+   "Section 01": "2021-07-23T23:00"
+   "Section 02": "2021-07-23T23:00"
 ---
 
 How to participate effectively in open source software development.
