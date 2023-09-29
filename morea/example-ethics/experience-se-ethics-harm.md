@@ -6,7 +6,7 @@ morea_summary: "What kinds of harm can software engineers cause? What kinds can 
 morea_type: experience
 morea_start_date:  
    "Section 01": "2021-07-28T23:00"
-   "Section 02": "2021-07-28T23:00"
+   "Section 02": "2021-07-29T23:00"
 morea_sort_order: 1
 morea_labels:
  - "Foundations: 3"

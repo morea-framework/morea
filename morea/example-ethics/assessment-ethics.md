@@ -8,7 +8,7 @@ morea_outcomes_assessed:
 morea_type: assessment
 morea_start_date:  
    "Section 01": "2021-07-30T09:00"
-   "Section 02": "2021-07-30T09:00"
+   "Section 02": "2021-08-01T09:00"
 morea_sort_order: 12
 morea_labels:
 ---

@@ -6,7 +6,7 @@ morea_summary: "How do professional codes help us to be ethical in our working l
 morea_type: experience
 morea_start_date:  
    "Section 01": "2021-07-26T23:00"
-   "Section 02": "2021-07-26T23:00"
+   "Section 02": "2021-07-27T23:00"
 morea_sort_order: 1
 morea_labels:
  - "Foundations: 2"
