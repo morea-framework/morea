@@ -48,6 +48,10 @@ title: Schedule
   });
   // Add course section select options
     var selectBox = $("#sectionSelect");
+    // for backward compatability, remove the selector if there is no array of course sections
+    if(moreaCourseSections === null) {
+      selectBox.remove();
+    }
     $.each(moreaCourseSections, function(index, value) {
         selectBox.append($("<option></option>")
             .attr("value", value)
