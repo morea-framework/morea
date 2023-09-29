@@ -274,12 +274,19 @@ module Morea
           if page.data['morea_labels'] == nil
             page.data['morea_labels'] = []
           end
-          page.data['morea_start_date'].each do |section, date|
-            page.data['morea_labels'] << "#{section}:#{(Time.parse(date)).strftime("%d %b %I:%M %p")}"
+          if page.data['morea_start_date'].is_a?(Hash)
+            # Add a date label for each section.
+            page.data['morea_start_date'].each do |section, date|
+              page.data['morea_labels'] << "#{section}: #{(Time.parse(date)).strftime("%d %b %I:%M %p")}"
+            end
+          else
+            # Add a single date label when there are not multiple sections for backward compatibility.
+            page.data['morea_labels'] << "#{(Time.parse(page.data['morea_start_date'])).strftime("%d %b %I:%M %p")}"
           end
         end
       end
       site.config['morea_module_pages'].each do |page|
+        # Not sure how to handle morea_start_date_string and morea_end_date_string multiple sections. Just use the dates for last section for now.
         if page.data['morea_start_date']
           page.data['morea_start_date'].each do |section, date|
             page.data['morea_start_date_string'] = "#{(Time.parse(date)).strftime("%a, %b %-d")}"
@@ -682,10 +689,22 @@ module Morea
       events = "["
       site.config['morea_page_table'].each do |morea_id, morea_page|
         if morea_page.data.has_key?('morea_start_date')
-          morea_page.data['morea_start_date'].each do |section, date|
+          if (morea_page.data['morea_start_date'].is_a?(Hash))
+            start_dates = morea_page.data['morea_start_date']
+            if morea_page.data.has_key?('morea_end_date')
+              end_dates = morea_page.data['morea_end_date']
+            end
+          else
+            start_dates = { "none" => morea_page.data['morea_start_date'] }
+            if morea_page.data.has_key?('morea_end_date')
+              end_dates = { "none" => morea_page.data['morea_end_date'] }
+            end
+          end
+          # Create an event each for section in morea_start_date. The section is used to select the events to display on the calendar. 
+          start_dates.each do |section, date|
             event = "\n  {section: \"#{section}\", title: #{morea_page.data['title'].inspect}, url: #{get_event_url(morea_page, site).inspect}, start: #{date.inspect}"
             if morea_page.data.has_key?('morea_end_date')
-              event += ", end: #{morea_page.data['morea_end_date'][section].inspect}"
+              event += ", end: #{end_dates[section].inspect}"
             end
             event += "},"
             events += event

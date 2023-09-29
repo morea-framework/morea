@@ -21,10 +21,10 @@ morea_type: module
 morea_sort_order: 125
 morea_start_date:  
    "Section 01": "2021-07-26"
-   "Section 02": "2021-07-26"
+   "Section 02": "2021-07-27"
 morea_end_date:  
    "Section 01": "2021-07-30T23:00"
-   "Section 02": "2021-07-30T23:00"
+   "Section 02": "2021-08-01T23:00"
 ---
 
 Ethics: A group of moral principles or values that define or direct us to the right choice.
