@@ -31,6 +31,7 @@ title: Schedule
 
 <div style="margin-bottom: 10px" class="container">
   <h1>Schedule</h1>
+  <select id="sectionSelect"></select>
   <div id='calendar'></div>
 </div>
 
@@ -45,4 +46,11 @@ title: Schedule
     });
     calendar.render();
   });
+  // Add course section select options
+    var selectBox = $("#sectionSelect");
+    $.each(moreaCourseSections, function(index, value) {
+        selectBox.append($("<option></option>")
+            .attr("value", value)
+            .text(value));
+    });
 </script>

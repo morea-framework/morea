@@ -16,6 +16,9 @@ morea_navbar_items:
   - Schedule
 logger_factory:
   Morea: error
+course_sections:
+  - "Section 01"
+  - "Section 02"
 
 # MOREA PORTAL: The following fields are only needed if this site is part of a "Morea Portal".
 # morea_course: ics311

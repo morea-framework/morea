@@ -658,11 +658,13 @@ module Morea
       @schedule_file_path= @schedule_file_dir + '/schedule/' + @schedule_file_name
     end
 
-    # Write a file declaring a global variable called moreaEventData containing an array of calendar events.
+    # Write a file declaring a global variable called moreaEventData containing an array of calendar events. Add a global variable called moreaCourseSections with course sections used to select multiple calendars.
     # Write it directly to the _site directory in order to avoid infinite regeneration
     def write_schedule_info_file
       schedule_file_contents = 'moreaEventData = '
       schedule_file_contents += get_schedule_events(@site)
+      schedule_file_contents += "\nmoreaCourseSections = "
+      schedule_file_contents += @site.config['course_sections'].to_json
       #puts "schedule file contents: \n" + schedule_file_contents
       FileUtils.mkdir_p @schedule_file_dir + '/schedule'
       File.open(@schedule_file_path, 'w') { |file| file.write(schedule_file_contents) }
