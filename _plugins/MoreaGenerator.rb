@@ -288,18 +288,25 @@ module Morea
       site.config['morea_module_pages'].each do |page|
         # Not sure how to handle morea_start_date_string and morea_end_date_string multiple sections. Just use the dates for last section for now.
         if page.data['morea_start_date']
-          page.data['morea_start_date'].each do |section, date|
-            page.data['morea_start_date_string'] = "#{(Time.parse(date)).strftime("%a, %b %-d")}"
+          if (page.data['morea_start_date'].is_a?(Hash))
+            page.data['morea_start_date'].each do |section, date|
+              page.data['morea_start_date_string'] = "#{(Time.parse(date)).strftime("%a, %b %-d")}"
+            end
+          else
+            page.data['morea_start_date_string'] = "#{(Time.parse(page.data['morea_start_date'])).strftime("%a, %b %-d")}"
           end
         end
         if page.data['morea_end_date']
-          page.data['morea_end_date'].each do |section, date|
-            page.data['morea_end_date_string'] = "#{(Time.parse(date)).strftime("%a, %b %-d")}"
+          if (page.data['morea_start_date'].is_a?(Hash))
+            page.data['morea_end_date'].each do |section, date|
+              page.data['morea_end_date_string'] = "#{(Time.parse(date)).strftime("%a, %b %-d")}"
+            end
+          else
+            page.data['morea_end_date_string'] = "#{(Time.parse(page.data['morea_end_date'])).strftime("%a, %b %-d")}"
           end
         end
       end
     end
-
 
     def print_morea_problems(site)
       site.config['morea_page_table'].each do |morea_id, morea_page|
