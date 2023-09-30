@@ -15,6 +15,27 @@ title: Schedule
 -->
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css">
+<style>
+  #modal_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+
+  #modal_content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 10000;
+  }
+</style>
 <script src="//cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js"></script>
 
 <!-- This script defines the moreaEventData variable containing an array of events from Morea pages. -->
@@ -33,7 +54,13 @@ title: Schedule
 
 <div style="margin-bottom: 10px" class="container">
   <h1>Schedule</h1>
-  <select id="sectionSelect"></select>
+  <div id="modal_overlay">
+    <div id="modal_content">
+      <select id="sectionSelect">
+        <option value="none">Please Select a Section</option>
+      </select>
+    </div>
+  </div>
   <div id='calendar'></div>
 </div>
 
@@ -65,12 +92,26 @@ title: Schedule
       // Set the default option of the select element
       if (localStorage.getItem('defaultSection') !== null) {
         selectBox.val(localStorage.getItem('defaultSection'));
+        $('#sectionSelect option[value="none"]').remove();
+        selectBox.off('click');
+        $('#modal_overlay').attr('id', '');
+        $('#modal_content').attr('id', '');
+      } else {
+        // No section has been selected yet, so do not display the calendar until a section is       
+        selectBox.on('click', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+        });
       }
     });
     // When the user changes the section, update the calendar and store the section in session storage so it always starts with this section
     selectBox.change(() => {
       setCalendar();
       localStorage.setItem('defaultSection', selectBox.val());
-      });
+      $('#sectionSelect option[value="none"]').remove();
+      selectBox.off('click');
+      $('#modal_overlay').attr('id', '');
+      $('#modal_content').attr('id', '');
+    });
   }
 </script>
