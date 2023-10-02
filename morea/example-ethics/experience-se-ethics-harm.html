@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> ICS 199 | E10: Doing harm as a software engineer </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="/morea/css/themes/spacelab/bootstrap.min.css">
+  <link rel="stylesheet" href="/morea/css/style.css">
+  <link rel="stylesheet" href="/morea/css/syntax.css">
+  <link rel="shortcut icon" href="/morea/favicon.ico" type="image/x-icon" />
+  <link href="/morea/css/fontawesome/css/fontawesome.css" rel="stylesheet">
+  <link href="/morea/css/fontawesome/css/brands.css" rel="stylesheet">
+  <link href="/morea/css/fontawesome/css/solid.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+
+  
+
+  <!-- Load JQuery, then use it to attach the class 'active' to navbar item currently displayed. -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script>
+    $(window).on('load', function () {
+      $('.nav-item').find('a[href="' + location.pathname + '"]').addClass('active');
+    });
+  </script>
+
+</head>
+<body>
+
+<div class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/morea/index.html"> ICS 199 </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav">
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/prerequisites/">Prerequisites</a></li>
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/modules/">Modules</a></li>
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/outcomes/">Outcomes</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/readings/">Readings</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/experiences/">Experiences</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/assessments/">Assessments</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/schedule/">Schedule</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Internal fragment for displaying the breadcrumb bar -->
+<div class="breadcrumb-background" style="padding-top: 1em; padding-bottom: .01em">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        
+        <li class="breadcrumb-item"><a href="/morea/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/morea/modules">Modules</a></li>
+        <li class="breadcrumb-item"><a href="/morea/modules/ethics">Ethics in Software Engineering</a></li>
+        <li class="breadcrumb-item active">E10: Doing harm as a software engineer</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+
+<div class="container">
+  <h1 id="e10-harm-in-software-engineering">E10: Harm in software engineering</h1>
+
+<p>(Adapted with permission from “An Introduction to Software Engineering Ethics” by Shannon Vallor and Arvind Narayanan.)</p>
+
+<p><em>Before starting this experience, please read <a href="reading-se-ethics-intro.html">What do we mean when we talk about ethics?</a>.</em></p>
+
+<p>We noted above that failures of critical software systems can result in catastrophic loss
+of life or injury to the public. If such failures result, directly or indirectly, from software
+engineers’ choices to ignore their professional obligations, then these harms are clearly
+the consequences of unethical professional behavior. Those responsible each bear the
+moral weight of this avoidable human suffering, whether or not this also results in legal,
+criminal or professional punishment.</p>
+
+<p>But what other kinds of harms do software engineers have an ethical duty to consider, and
+to try to prevent? Consider the following scenario:</p>
+
+<h2 id="case-study-1-college-for-sarah">Case Study 1: College for Sarah</h2>
+
+<blockquote>
+<p>Mike is a father of 3, and in order to save for their college educations, he has
+been working two jobs since his kids were born. His daughter Sarah has
+worked as hard as she can in high school to get high grades and SAT scores;
+as a result of her hard work she has been accepted to a prestigious IvyLeague
+college, and the deposit for her first year is due today. If the deposit
+goes unpaid, Sarah loses her spot in the freshman class. Mike paid the bill
+last week, but today he gets an email from the college admissions office
+saying that his payment was rejected for insufficient funds by his bank, and
+if he does not make the payment by the end of the day, Sarah will lose her
+place and be unable to attend in the Fall. </p>
+
+<p>Panicked, Mike calls the bank – he
+had more than enough money in his savings to cover the bill, so he cannot
+understand what has happened. The bank confirms that his account had
+plenty of funds the day before, but cannot tell him why the funds are gone
+now or why the payment was rejected. They tell him there must be some
+‘software glitch’ involved and that they will open an investigation, but that
+it will take weeks to resolve. They will only restore the funds in his account
+once the investigation is completed and the cause found. Mike has no other
+way to get the money for the deposit on such short notice, and has to tell
+Sarah that he couldn’t cover the bill despite his earlier promise, and that she
+won’t be attending college in the Fall.
+</p>
+</blockquote>
+
+<h4 id="questions-for-discussion">Questions for discussion:</h4>
+
+<ol>
+  <li>Clearly harm has occurred, but does this scenario represent unethical behavior on the part of a software engineer?  Come up with one example of a “software glitch” which does not result from unethical behavior on the part of a software engineer, and one that does.  Justify your examples by reference to either the <a href="https://www.acm.org/about/code-of-ethics">ACM Code of Ethics</a> or the <a href="https://www.acm.org/about/se-code">Software Engineering Code of Ethics and Professional Practice</a>.</li>
+</ol>
+
+<h2 id="case-study-2-errand-whiz">Case Study 2: Errand Whiz</h2>
+
+<blockquote>
+<p>Karen is a young lawyer at a prestigious firm with an incredibly hectic and
+stressful schedule, who needs to organize what little free time she has more
+efficiently. She has just downloaded a new app called Errand Whiz onto her
+iPhone; this app merges information from Karen’s to-do list, information on
+her purchasing habits from retail stores she shops at, and GPS software to
+produce the most efficient map and directions for running errands on her days
+off. Based on what it knows about what she needs to purchase and her general
+shopping habits, it tells Karen what locations of her favorite stores to visit on
+a given day, in what order and by what routes – this way she can get her
+errands done in the least amount of time, traveling the least number of miles.</p>
+
+<p>To accomplish this, the app aggregates information not only about where she
+lives and shops, but also tracks what she typically buys in each store, how
+much she buys, what she typically pays for each item. This collected data is
+not stored on Karen’s phone, but on a separate server that the app links to
+when it needs to create a shopping map. The app encourages users to log in
+via Facebook, as the developers have made a deal with Facebook to sell this
+data to third-party advertisers, for the purpose of targeting Facebook ads to
+Karen and her friends.</p>
+</blockquote>
+
+<h4 id="questions-for-discussion-1">Questions for discussion:</h4>
+
+<ol>
+  <li>
+    <p>In what ways could Karen potentially be harmed by this app,
+depending on how it is designed and how her shopping data is handled and used?
+Identify a few harmful scenarios you can think of, and the types of harm she could
+suffer in each.</p>
+  </li>
+  <li>
+    <p>Which if any of these harms could result from ethical failings on
+the part of the people who developed Errand Whiz? How, specifically?</p>
+  </li>
+  <li>
+    <p>What actions could the people behind Errand Whiz take to prevent
+these harms? Are they ethically obligated to prevent them? Why or why not?
+Justify by reference to either the <a href="https://www.acm.org/about/code-of-ethics">ACM Code of Ethics</a> or the <a href="https://www.computer.org/web/education/code-of-ethics">Software Engineering Code of Ethics and Professional Practice</a>.</p>
+  </li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Ideally, these scenarios have helped to broaden your understanding of the ethical scope
+of software engineering. In considering and protecting the ‘health, safety and welfare’ of
+the public, we must not limit our thinking to those contexts in which our design choices
+or coding practices have the potential to cause someone’s death, or cause them direct
+physical injury. The harms that people can suffer as a result of failures by software engineers to
+consider their ethical obligation to the public are far more numerous and more complex than we
+might think.</p>
+
+</div>
+
+
+
+
+<!-- Maybe find a different way?
+<script src="/morea/js/scrollIfAnchor.js"></script>
+-->
+
+<footer class="footer footer-background" style="padding-top: 1em; padding-bottom: 1em">
+  <div class="container text-center">
+    
+    <p>Philip Johnson | Information and Computer Sciences | University of Hawaii <br />
+johnson@hawaii.edu<br /></p>
+
+
+    
+    <p style="margin: 0">Powered by the <a class="footer-link" href="https://morea-framework.github.io/">Morea Framework</a> (Theme: spacelab)<br>
+      Last update on: <span>2023-10-01 14:27:54 -1000</span></p>
+
+    <p style="margin: 0">
+      
+      1 prerequisites |
+      
+      4 modules
+      
+      | 4 outcomes
+      
+      
+      | 20 readings
+      
+      
+      | 18 experiences
+      
+      
+      | 3 assessments
+      
+    </p>
+  </div>
+</footer>
+
+
+<!-- Load Bootstrap JavaScript components -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+<!-- Add anchors to pages. -->
+<script>anchors.add();</script>
+
+
+</body>
+</html>

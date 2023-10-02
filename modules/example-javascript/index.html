@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> ICS 199 | Javascript: Basics </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="/morea/css/themes/spacelab/bootstrap.min.css">
+  <link rel="stylesheet" href="/morea/css/style.css">
+  <link rel="stylesheet" href="/morea/css/syntax.css">
+  <link rel="shortcut icon" href="/morea/favicon.ico" type="image/x-icon" />
+  <link href="/morea/css/fontawesome/css/fontawesome.css" rel="stylesheet">
+  <link href="/morea/css/fontawesome/css/brands.css" rel="stylesheet">
+  <link href="/morea/css/fontawesome/css/solid.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+
+  
+
+  <!-- Load JQuery, then use it to attach the class 'active' to navbar item currently displayed. -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script>
+    $(window).on('load', function () {
+      $('.nav-item').find('a[href="' + location.pathname + '"]').addClass('active');
+    });
+  </script>
+
+</head>
+<body>
+
+<div class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/morea/index.html"> ICS 199 </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav">
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/prerequisites/">Prerequisites</a></li>
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/modules/">Modules</a></li>
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/outcomes/">Outcomes</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/readings/">Readings</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/experiences/">Experiences</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/assessments/">Assessments</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/schedule/">Schedule</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- Internal fragment for displaying the breadcrumb bar -->
+<div class="breadcrumb-background" style="padding-top: 1em; padding-bottom: .01em">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        
+        <li class="breadcrumb-item"><a href="/morea/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/morea/modules">Modules</a></li>
+        <li class="breadcrumb-item active">Javascript: Basics</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+
+<div class="container">
+  <h1><small class="header-small">Module: </small> Javascript: Basics </h1>
+  <p><p>Basic Javascript coding: variables, expressions, conditionals, loops, functions, arrays, objects.</p>
+</p>
+  
+    <p>Dates: Mon, Jul 12 - Fri, Jul 16</p>
+  
+</div>
+
+
+<div class="section-background-1">
+  <div class="container">
+    <h2>Prerequisite Modules</h2>
+    <div class="row">
+    
+    
+      <!-- Internal fragment for displaying reading, experience, prereq cards. Prereqs have icons. -->
+<div class="col-md-6 col-lg-4" style="padding-bottom: 20px">
+  <div class="card h-100">
+    
+      <div class="text-center">
+        <img alt="OOP and Class Hierarchies" src="https://courses.ics.hawaii.edu/ReviewICS211/morea/030.oop/oop.jpg" class="card-img-top rounded-circle" style="max-width: 100px; padding-top: 2px">
+      </div>
+    
+    <div class="card-body">
+      <h4 class="card-title">OOP and Class Hierarchies</h4>
+      <p>Object-oriented programming and Java Class Hierarchy.</p>
+
+
+    
+    </div>
+
+    <div style="border-top-color: transparent" class="card-footer bg-body">
+      
+      <span class="badge bg-primary">ICS 211</span>
+      
+    </div>
+    <a href="https://courses.ics.hawaii.edu/ReviewICS211/modules/oop" class="stretched-link"></a>
+  </div>
+</div>
+    
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="section-background-2">
+  <div class="container">
+    <h2>Learning Outcomes</h2>
+
+    
+      
+      <h3>Competent with elementary Javascript</h3>
+      <p>
+        
+      </p>
+      <ul>
+  <li>You can use basic Javascript constructs: variables, functions, conditionals, loops, arrays, objects.</li>
+  <li>You can implement object orientation using the ES6 class construct.</li>
+  <li>You can use the Underscore library to program in a functional manner.</li>
+</ul>
+
+    
+
+  </div>
+</div>
+
+
+
+
+
+<div class="section-background-1">
+  <div class="container">
+  <h2>Readings</h2>
+
+    <div class="row">
+      
+        
+        <!-- Internal fragment for displaying reading, experience, prereq cards. Prereqs have icons. -->
+<div class="col-md-6 col-lg-4" style="padding-bottom: 20px">
+  <div class="card h-100">
+    
+    <div class="card-body">
+      <h4 class="card-title">Guided tour of the Javascript 1 module</h4>
+      <p>Why, what, how, and when you will learn about Javascript, Phase 1.</p>
+
+
+    
+    </div>
+
+    <div style="border-top-color: transparent" class="card-footer bg-body">
+      
+      <span class="badge bg-primary">Screencast</span>
+      
+      <span class="badge bg-primary">6 min</span>
+      
+    </div>
+    <a href="/morea/morea/example-javascript/reading-screencast-guided-tour-javascript-1.html" class="stretched-link"></a>
+  </div>
+</div>
+      
+        
+        <!-- Internal fragment for displaying reading, experience, prereq cards. Prereqs have icons. -->
+<div class="col-md-6 col-lg-4" style="padding-bottom: 20px">
+  <div class="card h-100">
+    
+    <div class="card-body">
+      <h4 class="card-title">7 reasons why Javascript is better than Java and C++</h4>
+      <p>Why you want to learn Javascript (even if you don’t do web app development)</p>
+
+
+    
+    </div>
+
+    <div style="border-top-color: transparent" class="card-footer bg-body">
+      
+      <span class="badge bg-primary">Screencast</span>
+      
+      <span class="badge bg-primary">13 min</span>
+      
+    </div>
+    <a href="/morea/morea/example-javascript/reading-screencast-7-reasons-why-javascript-is-better.html" class="stretched-link"></a>
+  </div>
+</div>
+      
+        
+        <!-- Internal fragment for displaying reading, experience, prereq cards. Prereqs have icons. -->
+<div class="col-md-6 col-lg-4" style="padding-bottom: 20px">
+  <div class="card h-100">
+    
+    <div class="card-body">
+      <h4 class="card-title">Introduction to JSFiddle</h4>
+      <p>Quick introduction to the JSFiddle Javascript environment</p>
+
+
+    
+    </div>
+
+    <div style="border-top-color: transparent" class="card-footer bg-body">
+      
+      <span class="badge bg-primary">Screencast</span>
+      
+      <span class="badge bg-primary">8 min</span>
+      
+    </div>
+    <a href="/morea/morea/example-javascript/reading-screencast-jsfiddle.html" class="stretched-link"></a>
+  </div>
+</div>
+      
+        
+        <!-- Internal fragment for displaying reading, experience, prereq cards. Prereqs have icons. -->
+<div class="col-md-6 col-lg-4" style="padding-bottom: 20px">
+  <div class="card h-100">
+    
+    <div class="card-body">
+      <h4 class="card-title">AirBnB Javascript Style Guide</h4>
+      <p>Javascript style guidelines for ICS 314</p>
+
+
+    
+    </div>
+
+    <div style="border-top-color: transparent" class="card-footer bg-body">
+      
+      <span class="badge bg-primary">Reference</span>
+      
+    </div>
+    <a href="https://github.com/airbnb/javascript" class="stretched-link"></a>
+  </div>
+</div>
+      
+        
+        <!-- Internal fragment for displaying reading, experience, prereq cards. Prereqs have icons. -->
+<div class="col-md-6 col-lg-4" style="padding-bottom: 20px">
+  <div class="card h-100">
+    
+    <div class="card-body">
+      <h4 class="card-title">ES6: for-of, for-in</h4>
+      <p>How to iterate over arrays and objects in ES6</p>
+
+
+    
+    </div>
+
+    <div style="border-top-color: transparent" class="card-footer bg-body">
+      
+    </div>
+    <a href="https://github.com/metagrover/ES6-for-humans#10-forof-vs-forin" class="stretched-link"></a>
+  </div>
+</div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="section-background-2">
+  <div class="container">
+  <h2>Experiential Learning</h2>
+    <div class="row">
+      
+        
+        <!-- Internal fragment for displaying reading, experience, prereq cards. Prereqs have icons. -->
+<div class="col-md-6 col-lg-4" style="padding-bottom: 20px">
+  <div class="card h-100">
+    
+    <div class="card-body">
+      <h4 class="card-title">E04: Introduction to Javascript with FreeCodeCamp</h4>
+      <p>Basic syntax: functions, for loops, while loops, if-then-else, arrays, objects</p>
+
+
+    
+    </div>
+
+    <div style="border-top-color: transparent" class="card-footer bg-body">
+      
+      <span class="badge bg-primary">13 Jul 11:00 PM</span>
+      
+    </div>
+    <a href="/morea/morea/example-javascript/experience-interactive-javascript-1.html" class="stretched-link"></a>
+  </div>
+</div>
+      
+        
+        <!-- Internal fragment for displaying reading, experience, prereq cards. Prereqs have icons. -->
+<div class="col-md-6 col-lg-4" style="padding-bottom: 20px">
+  <div class="card h-100">
+    
+    <div class="card-body">
+      <h4 class="card-title">E06: Reflect on Javascript 1</h4>
+      <p>Write a technical essay summarizing your learning about Javascript.</p>
+
+
+    
+    </div>
+
+    <div style="border-top-color: transparent" class="card-footer bg-body">
+      
+      <span class="badge bg-primary">Technical Essay</span>
+      
+      <span class="badge bg-primary">15 Jul 11:00 PM</span>
+      
+    </div>
+    <a href="/morea/morea/example-javascript/experience-javascript-1-technical-essay.html" class="stretched-link"></a>
+  </div>
+</div>
+      
+        
+        <!-- Internal fragment for displaying reading, experience, prereq cards. Prereqs have icons. -->
+<div class="col-md-6 col-lg-4" style="padding-bottom: 20px">
+  <div class="card h-100">
+    
+    <div class="card-body">
+      <h4 class="card-title">E05: isUnique</h4>
+      <p>Solve the first CTCI problem</p>
+
+
+    
+    </div>
+
+    <div style="border-top-color: transparent" class="card-footer bg-body">
+      
+      <span class="badge bg-primary">Practice WOD</span>
+      
+      <span class="badge bg-primary">14 Jul 11:00 PM</span>
+      
+    </div>
+    <a href="/morea/morea/example-javascript/experience-ctci.html" class="stretched-link"></a>
+  </div>
+</div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="section-background-1">
+  <div class="container">
+    <h2>Assessments</h2>
+    <div class="row">
+    
+      
+    <!-- Internal fragment for displaying reading, experience, prereq cards. Prereqs have icons. -->
+<div class="col-md-6 col-lg-4" style="padding-bottom: 20px">
+  <div class="card h-100">
+    
+    <div class="card-body">
+      <h4 class="card-title">A01: Assessment of simple Javascript skills</h4>
+      <p>Loops? Conditionals? JSFiddle?</p>
+
+
+    
+      <p>
+        <em>Outcome(s) assessed:</em>
+        
+          Competent with elementary Javascript
+        
+      </p>
+    
+    </div>
+
+    <div style="border-top-color: transparent" class="card-footer bg-body">
+      
+      <span class="badge bg-primary">16 Jul 09:00 AM</span>
+      
+    </div>
+    <a href="/morea/morea/example-javascript/assessment-javascript-1.html" class="stretched-link"></a>
+  </div>
+</div>
+    
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Maybe find a different way?
+<script src="/morea/js/scrollIfAnchor.js"></script>
+-->
+
+<footer class="footer footer-background" style="padding-top: 1em; padding-bottom: 1em">
+  <div class="container text-center">
+    
+    <p>Philip Johnson | Information and Computer Sciences | University of Hawaii <br />
+johnson@hawaii.edu<br /></p>
+
+
+    
+    <p style="margin: 0">Powered by the <a class="footer-link" href="https://morea-framework.github.io/">Morea Framework</a> (Theme: spacelab)<br>
+      Last update on: <span>2023-10-01 14:27:54 -1000</span></p>
+
+    <p style="margin: 0">
+      
+      1 prerequisites |
+      
+      4 modules
+      
+      | 4 outcomes
+      
+      
+      | 20 readings
+      
+      
+      | 18 experiences
+      
+      
+      | 3 assessments
+      
+    </p>
+  </div>
+</footer>
+
+
+<!-- Load Bootstrap JavaScript components -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+<!-- Add anchors to pages. -->
+<script>anchors.add();</script>
+
+
+</body>
+</html>

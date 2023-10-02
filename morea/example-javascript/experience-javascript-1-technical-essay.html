@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> ICS 199 | E06: Reflect on Javascript 1 </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="/morea/css/themes/spacelab/bootstrap.min.css">
+  <link rel="stylesheet" href="/morea/css/style.css">
+  <link rel="stylesheet" href="/morea/css/syntax.css">
+  <link rel="shortcut icon" href="/morea/favicon.ico" type="image/x-icon" />
+  <link href="/morea/css/fontawesome/css/fontawesome.css" rel="stylesheet">
+  <link href="/morea/css/fontawesome/css/brands.css" rel="stylesheet">
+  <link href="/morea/css/fontawesome/css/solid.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+
+  
+
+  <!-- Load JQuery, then use it to attach the class 'active' to navbar item currently displayed. -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script>
+    $(window).on('load', function () {
+      $('.nav-item').find('a[href="' + location.pathname + '"]').addClass('active');
+    });
+  </script>
+
+</head>
+<body>
+
+<div class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/morea/index.html"> ICS 199 </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav">
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/prerequisites/">Prerequisites</a></li>
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/modules/">Modules</a></li>
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/outcomes/">Outcomes</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/readings/">Readings</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/experiences/">Experiences</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/assessments/">Assessments</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/schedule/">Schedule</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Internal fragment for displaying the breadcrumb bar -->
+<div class="breadcrumb-background" style="padding-top: 1em; padding-bottom: .01em">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        
+        <li class="breadcrumb-item"><a href="/morea/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/morea/modules">Modules</a></li>
+        <li class="breadcrumb-item"><a href="/morea/modules/example-javascript">Javascript: Basics</a></li>
+        <li class="breadcrumb-item active">E06: Reflect on Javascript 1</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+
+<div class="container">
+  <h1 id="e06-reflect-on-javascript-1">E06: Reflect on Javascript 1</h1>
+
+<p>So. What do you think about Javascript so far? If you’re a complete newbie, how does it compare to other programming languages that you know? If you have prior experience, did you learn new things from this module, perhaps with respect to ES6? Do you think Javascript is a good or bad programming language from a software engineering perspective?</p>
+
+<p>What about athletic software engineering? Did you find the practice WODs to be useful? What do you think about this style of learning? Is it stressful? Is it enjoyable? Do you think it will work for you?</p>
+
+<h1 id="github-gist-example">GitHub Gist Example</h1>
+
+<p>Here’s an example GitHub gist:</p>
+
+<noscript><pre>import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import play.test.FakeApplication;
+import static play.test.Helpers.fakeApplication;
+import static play.test.Helpers.inMemoryDatabase;
+import static play.test.Helpers.start;
+import static play.test.Helpers.stop;
+
+public class ModelTest {
+  private FakeApplication application;
+
+  @Before
+  public void startApp() {
+    application = fakeApplication(inMemoryDatabase());
+    start(application);
+  }
+
+  @After
+  public void stopApp() {
+    stop(application);
+  }
+
+  @Test
+  public void testModel() {
+    // put test code here
+  }
+}</pre></noscript>
+<script src="https://gist.github.com/philipmjohnson/5288814.js"> </script>
+
+<h2 id="mathjax-example">MathJax Example</h2>
+
+<p>This section demonstrates the use of <a href="https://www.mathjax.org">MathJax</a> for rendering mathematical notation in markdown files.</p>
+
+<p>For example, the following markdoswn:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>When \\(a \ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they are
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+</code></pre></div></div>
+
+<p>when rendered, produces the following text:</p>
+
+<p>When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+\(x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\)</p>
+
+<p>You can also create a block of math using the <code class="language-plaintext highlighter-rouge">\\[</code> delimiter. For example, the following markdown:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\\[ \frac{1}{n^{2}} \\]
+</code></pre></div></div>
+
+<p>Produces the following block:</p>
+
+<p>\[ \frac{1}{n^{2}} \]</p>
+
+<h2 id="submission-instructions">Submission Instructions</h2>
+
+<p>By the time and date indicated on the Schedule page, write a technical essay regarding this module. You can use the issues above as a starting point, but write a stand-alone essay: don’t just answer them like it’s a homework assignment! Once you’ve finished the essay submit it using Laulima.</p>
+
+<p>Please note the following:</p>
+
+<ul>
+  <li>
+    <p>Your submission should be a URL providing a direct link to your essay (not a link to the home page of your portfolio, nor a link to the essays directory page).  If the link does not work, you will not get credit for your essay.</p>
+  </li>
+  <li>
+    <p>An entry for your essay must also appear in the Essays page of your portfolio.  Check this before submission. If it is not listed, it’s probably because your YAML front matter is incorrect. See the <a href="https://techfolios.github.io/">Essay Content</a> section of the TechFolio documentation for details.</p>
+  </li>
+  <li>
+    <p>Be sure that your essay is ready for evaluation before submitting it via Laulima. I often click on the link as soon as I receive the submission. If the essay is empty or only partially complete when I click on the link, you might not receive credit.</p>
+  </li>
+  <li>
+    <p>Your essay must be original content, written during this semester reflecting your current views and writing style.  You cannot submit essays that you wrote previously for this assignment. The purpose of this assignment is for you to practice writing right now, this semester.</p>
+  </li>
+</ul>
+
+
+</div>
+
+
+
+
+<!-- Maybe find a different way?
+<script src="/morea/js/scrollIfAnchor.js"></script>
+-->
+
+<footer class="footer footer-background" style="padding-top: 1em; padding-bottom: 1em">
+  <div class="container text-center">
+    
+    <p>Philip Johnson | Information and Computer Sciences | University of Hawaii <br />
+johnson@hawaii.edu<br /></p>
+
+
+    
+    <p style="margin: 0">Powered by the <a class="footer-link" href="https://morea-framework.github.io/">Morea Framework</a> (Theme: spacelab)<br>
+      Last update on: <span>2023-10-01 14:27:54 -1000</span></p>
+
+    <p style="margin: 0">
+      
+      1 prerequisites |
+      
+      4 modules
+      
+      | 4 outcomes
+      
+      
+      | 20 readings
+      
+      
+      | 18 experiences
+      
+      
+      | 3 assessments
+      
+    </p>
+  </div>
+</footer>
+
+
+<!-- Load Bootstrap JavaScript components -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+<!-- Add anchors to pages. -->
+<script>anchors.add();</script>
+
+
+</body>
+</html>

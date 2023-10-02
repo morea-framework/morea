@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> ICS 199 | Admonitions/Callouts </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="/morea/css/themes/spacelab/bootstrap.min.css">
+  <link rel="stylesheet" href="/morea/css/style.css">
+  <link rel="stylesheet" href="/morea/css/syntax.css">
+  <link rel="shortcut icon" href="/morea/favicon.ico" type="image/x-icon" />
+  <link href="/morea/css/fontawesome/css/fontawesome.css" rel="stylesheet">
+  <link href="/morea/css/fontawesome/css/brands.css" rel="stylesheet">
+  <link href="/morea/css/fontawesome/css/solid.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js"></script>
+
+  
+
+  <!-- Load JQuery, then use it to attach the class 'active' to navbar item currently displayed. -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script>
+    $(window).on('load', function () {
+      $('.nav-item').find('a[href="' + location.pathname + '"]').addClass('active');
+    });
+  </script>
+
+</head>
+<body>
+
+<div class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/morea/index.html"> ICS 199 </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav">
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/prerequisites/">Prerequisites</a></li>
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/modules/">Modules</a></li>
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/outcomes/">Outcomes</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/readings/">Readings</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/experiences/">Experiences</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/assessments/">Assessments</a></li>
+        
+        
+        <li class="nav-item"><a class="nav-link" href="/morea/schedule/">Schedule</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Internal fragment for displaying the breadcrumb bar -->
+<div class="breadcrumb-background" style="padding-top: 1em; padding-bottom: .01em">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        
+        <li class="breadcrumb-item"><a href="/morea/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/morea/modules">Modules</a></li>
+        <li class="breadcrumb-item"><a href="/morea/modules/"></a></li>
+        <li class="breadcrumb-item active">Admonitions/Callouts</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+
+<div class="container">
+  <h1 id="admonitions-call-outs">Admonitions (Call outs)</h1>
+
+<p>Admonitions, otherwise known as “call outs”, are a very useful documentation pattern. In Morea, you can create admonitions in a few different ways by combining Bootstrap alerts, font awesome icons, and markdown. Here are a few examples to get you started.</p>
+
+<p>The approach below involves the following:</p>
+
+<ol>
+  <li>Create a div with the Bootstrap alert class, and decide what kind of alert (warning, danger, etc.) The alert type sets the background color (danger is red, success is green, etc.)</li>
+  <li>Set markdown equal to “1” (so that the interior of the div is parsed as markdown),</li>
+  <li>Use a font awesome icon appropriate to the type of admonition. If you don’t like the ones I use below, find your own at the <a href="https://fontawesome.com/search?">Font Awesome Icon Search Page</a>.</li>
+  <li>Make a bold faced title with a horizontal line underneath.</li>
+  <li>Add the body text as markdown underneath.</li>
+</ol>
+
+<h2 id="danger">Danger</h2>
+
+<p>Here’s one way to produce a “danger” admonition, which is in red.</p>
+
+<hr />
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-danger"</span> <span class="na">role=</span><span class="s">"alert"</span> <span class="na">markdown=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa-solid fa-circle-exclamation fa-xl"</span><span class="nt">&gt;&lt;/i&gt;</span> **Danger: the following is not recommended.**
+<span class="nt">&lt;hr/&gt;</span>
+
+You really don't want to do the following:
+  * Stay up too late.
+  * Get up too early.
+  * Drink coffee after lunch. 
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+<hr />
+
+<p>Which looks like this:</p>
+
+<div class="alert alert-danger" role="alert">
+  <p><i class="fa-solid fa-circle-exclamation fa-xl"></i> <strong>Danger: the following is not recommended.</strong></p>
+  <hr />
+
+  <p>You really don’t want to do the following:</p>
+  <ul>
+    <li>Stay up too late.</li>
+    <li>Get up too early.</li>
+    <li>Drink coffee after lunch.</li>
+  </ul>
+</div>
+
+<h2 id="warning">Warning</h2>
+
+<p>Less troublesome is a “warning”, which is in yellow.</p>
+
+<hr />
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-danger"</span> <span class="na">role=</span><span class="s">"alert"</span> <span class="na">markdown=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa-solid fa-circle-exclamation fa-xl"</span><span class="nt">&gt;&lt;/i&gt;</span> **Danger: the following is not recommended.**
+<span class="nt">&lt;hr/&gt;</span>
+
+You really don't want to do the following:
+  * Stay up too late.
+  * Get up too early.
+  * Drink coffee after lunch.
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+<hr />
+
+<p>Which looks like this:</p>
+
+<div class="alert alert-warning" role="alert">
+  <p><i class="fa-solid fa-triangle-exclamation fa-xl"></i> <strong>Warning: the following is not recommended.</strong></p>
+  <hr />
+
+  <p>Unless you know better, you might want to avoid the following:</p>
+  <ul>
+    <li>Stay up too late.</li>
+    <li>Get up too early.</li>
+    <li>Drink coffee after lunch.</li>
+  </ul>
+</div>
+
+<h2 id="success">Success</h2>
+
+<p>To convey something positive, you can use the success alert, which is green:</p>
+
+<hr />
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-success"</span> <span class="na">role=</span><span class="s">"alert"</span> <span class="na">markdown=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa-solid fa-circle-check fa-xl"</span><span class="nt">&gt;&lt;/i&gt;</span> **Well done!**
+<span class="nt">&lt;hr/&gt;</span>
+
+You did everthing right!
+  * Went to bed early.
+  * Got up late.
+  * Switched to water after lunch.
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+<hr />
+
+<p>Which looks like this:</p>
+
+<div class="alert alert-success" role="alert">
+  <p><i class="fa-solid fa-circle-check fa-xl"></i> <strong>Well done!</strong></p>
+  <hr />
+
+  <p>You did everthing right!</p>
+  <ul>
+    <li>Went to bed early.</li>
+    <li>Got up late.</li>
+    <li>Switched to water after lunch.</li>
+  </ul>
+</div>
+
+<h2 id="info">Info</h2>
+
+<p>Red, yellow, and green have connotations. A blue background is less judgemental:</p>
+
+<hr />
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-info"</span> <span class="na">role=</span><span class="s">"alert"</span> <span class="na">markdown=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa-solid fa-circle-info fa-xl"</span><span class="nt">&gt;&lt;/i&gt;</span> **For more information**
+<span class="nt">&lt;hr/&gt;</span>
+
+For more information, see the [Font Awesome Icon Search Page](https://fontawesome.com/search?)
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+<hr />
+
+<p>Which looks like this:</p>
+
+<div class="alert alert-info" role="alert">
+  <p><i class="fa-solid fa-circle-info fa-xl"></i> <strong>For more information</strong></p>
+  <hr />
+
+  <p>For more information, see the <a href="https://fontawesome.com/search?">Font Awesome Icon Search Page</a></p>
+</div>
+
+<h2 id="others">Others</h2>
+
+<p>For the complete set of Bootstrap alert types, see <a href="https://getbootstrap.com/docs/5.2/components/alerts/#content">Bootstrap Alert Documentation</a>.</p>
+
+</div>
+
+
+
+
+<!-- Maybe find a different way?
+<script src="/morea/js/scrollIfAnchor.js"></script>
+-->
+
+<footer class="footer footer-background" style="padding-top: 1em; padding-bottom: 1em">
+  <div class="container text-center">
+    
+    <p>Philip Johnson | Information and Computer Sciences | University of Hawaii <br />
+johnson@hawaii.edu<br /></p>
+
+
+    
+    <p style="margin: 0">Powered by the <a class="footer-link" href="https://morea-framework.github.io/">Morea Framework</a> (Theme: spacelab)<br>
+      Last update on: <span>2023-10-01 14:27:54 -1000</span></p>
+
+    <p style="margin: 0">
+      
+      1 prerequisites |
+      
+      4 modules
+      
+      | 4 outcomes
+      
+      
+      | 20 readings
+      
+      
+      | 18 experiences
+      
+      
+      | 3 assessments
+      
+    </p>
+  </div>
+</footer>
+
+
+<!-- Load Bootstrap JavaScript components -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+<!-- Add anchors to pages. -->
+<script>anchors.add();</script>
+
+
+</body>
+</html>
