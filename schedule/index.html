@@ -15,7 +15,9 @@ title: Schedule
 -->
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css">
+
 <style>
+  /* This is the CSS for the modal overlay that appears when the user has not selected a section. */
   #modal_overlay {
     position: fixed;
     top: 0;
@@ -41,6 +43,12 @@ title: Schedule
 <!-- This script defines the moreaEventData variable containing an array of events from Morea pages. -->
 <script src="schedule-info.js"></script>
 
+<!-- This script defines the moreaCourseSections variable containing an array of course sections normally defined in _config.yml but can be customized here. -->
+<script>
+  moreaCourseSections = {{ site.course_sections | jsonify }};
+</script>
+
+<!-- This script defines the holidayData variable containing an array of holidays. -->
 <script>
   var holidayData = {
     color: 'green',
@@ -52,6 +60,8 @@ title: Schedule
   };
 </script>
 
+<!-- This is the select box populated with the array of course_sections set in _config.yml. The selected option 
+is used to filter calender events displayed. -->
 <div style="margin-bottom: 10px" class="container">
   <h1>Schedule</h1>
   <div id="modal_overlay">
@@ -81,8 +91,11 @@ title: Schedule
   document.addEventListener('DOMContentLoaded', setCalendar);
   // Add course section select options
   let selectBox = $("#sectionSelect");
-  // For backward compatibility, remove the selector if there is no array of course sections defined.
+  // For backward compatibility, remove the selector if there is no array of course sections defined
   if (moreaCourseSections === null) {
+    modal_overlay
+    modal_overlay
+    $('#modal_overlay').remove();
     selectBox.remove();
   } else {
     $.each(moreaCourseSections, function (index, value) {
@@ -97,14 +110,14 @@ title: Schedule
         $('#modal_overlay').attr('id', '');
         $('#modal_content').attr('id', '');
       } else {
-        // No section has been selected yet, so do not display the calendar until a section is       
+        // No section has been selected yet, so model the selection box until a section is made       
         selectBox.on('click', function (event) {
           event.preventDefault();
           event.stopPropagation();
         });
       }
     });
-    // When the user changes the section, update the calendar and store the section in session storage so it always starts with this section
+    // When the user changes the section, update the calendar and store the section in local storage so it always starts with this section
     selectBox.change(() => {
       setCalendar();
       localStorage.setItem('defaultSection', selectBox.val());

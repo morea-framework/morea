@@ -4,9 +4,7 @@ published: true
 morea_id: experience-se-ethics-good
 morea_summary: "How can software engineers contribute to the good life for others?"
 morea_type: experience
-morea_start_date:  
-   "Section 01": "2021-07-27T23:00"
-   "Section 02": "2021-07-29T23:00"
+morea_start_date: "2021-07-27T23:00"
 morea_sort_order: 1
 morea_labels:
  - "Foundations: 4"

@@ -88,6 +88,9 @@ module Morea
         if @config['morea_domain'].end_with?("/")
           @config['morea_domain'].chop!
         end
+      end      
+      if (@config['course_sections'] == nil)
+        @config['course_sections'] = []
       end
       # Set the navbar background depending on the theme.
       if ["darkly"].include? @config['morea_theme'].to_s
@@ -280,29 +283,22 @@ module Morea
               page.data['morea_labels'] << "#{section}: #{(Time.parse(date)).strftime("%d %b %I:%M %p")}"
             end
           else
-            # Add a single date label when there are not multiple sections for backward compatibility.
+            # Add a single date label when there are no multiple sections for backward compatibility.
             page.data['morea_labels'] << "#{(Time.parse(page.data['morea_start_date'])).strftime("%d %b %I:%M %p")}"
           end
         end
       end
       site.config['morea_module_pages'].each do |page|
-        # Not sure how to handle morea_start_date_string and morea_end_date_string multiple sections. Just use the dates for last section for now.
         if page.data['morea_start_date']
+        # Collect start dates and end dates for multiple sections. 
           if (page.data['morea_start_date'].is_a?(Hash))
-            page.data['morea_start_date'].each do |section, date|
-              page.data['morea_start_date_string'] = "#{(Time.parse(date)).strftime("%a, %b %-d")}"
-            end
+            string_array = page.data['morea_start_date'].map { |section, date| 
+              "#{section}: #{(Time.parse(date)).strftime("%a, %b %-d")}#{page.data['morea_end_date'].has_key?(section)  ? " - #{(Time.parse(page.data['morea_end_date'][section])).strftime("%a, %b %-d")}" : ""}"
+            }
+            page.data['morea_start_end_date_string'] = string_array.join(", ")
+        # No multiple sections, so just define morea_start_end_date_string
           else
-            page.data['morea_start_date_string'] = "#{(Time.parse(page.data['morea_start_date'])).strftime("%a, %b %-d")}"
-          end
-        end
-        if page.data['morea_end_date']
-          if (page.data['morea_start_date'].is_a?(Hash))
-            page.data['morea_end_date'].each do |section, date|
-              page.data['morea_end_date_string'] = "#{(Time.parse(date)).strftime("%a, %b %-d")}"
-            end
-          else
-            page.data['morea_end_date_string'] = "#{(Time.parse(page.data['morea_end_date'])).strftime("%a, %b %-d")}"
+            page.data['morea_start_end_date_string'] = "#{(Time.parse(page.data['morea_start_date'])).strftime("%a, %b %-d")}#{page.data['morea_end_date'] ? " - #{(Time.parse(page.data['morea_end_date'])).strftime("%a, %b %-d")}" : ""}"
           end
         end
       end
@@ -678,13 +674,11 @@ module Morea
       @schedule_file_path= @schedule_file_dir + '/schedule/' + @schedule_file_name
     end
 
-    # Write a file declaring a global variable called moreaEventData containing an array of calendar events. Add a global variable called moreaCourseSections with course sections used to select multiple calendars.
+    # Write a file declaring a global variable called moreaEventData containing an array of calendar events. 
     # Write it directly to the _site directory in order to avoid infinite regeneration
     def write_schedule_info_file
       schedule_file_contents = 'moreaEventData = '
       schedule_file_contents += get_schedule_events(@site)
-      schedule_file_contents += "\nmoreaCourseSections = "
-      schedule_file_contents += @site.config['course_sections'].to_json
       #puts "schedule file contents: \n" + schedule_file_contents
       FileUtils.mkdir_p @schedule_file_dir + '/schedule'
       File.open(@schedule_file_path, 'w') { |file| file.write(schedule_file_contents) }
@@ -709,8 +703,12 @@ module Morea
           end
           # Create an event each for section in morea_start_date. The section is used to select the events to display on the calendar. 
           start_dates.each do |section, date|
+            if !site.config['course_sections'].include?(section) && section != "none"
+              site.config['course_sections'] << section
+              puts "\e[31m-- WARNING for morea_id: #{morea_page.data['morea_id']}--\nIn morea_start_time section #{section} is not defined in course_sections in _config.yml\e[0m"
+            end
             event = "\n  {section: \"#{section}\", title: #{morea_page.data['title'].inspect}, url: #{get_event_url(morea_page, site).inspect}, start: #{date.inspect}"
-            if morea_page.data.has_key?('morea_end_date')
+            if !end_dates.nil? && end_dates.has_key?(section)
               event += ", end: #{end_dates[section].inspect}"
             end
             event += "},"
