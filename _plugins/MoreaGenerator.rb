@@ -295,10 +295,13 @@ module Morea
             string_array = page.data['morea_start_date'].map { |section, date| 
               "#{section}: #{(Time.parse(date)).strftime("%a, %b %-d")}#{page.data['morea_end_date'].has_key?(section)  ? " - #{(Time.parse(page.data['morea_end_date'][section])).strftime("%a, %b %-d")}" : ""}"
             }
-            page.data['morea_start_end_date_string'] = string_array.join(", ")
+            page.data['morea_start_end_date_string'] = string_array.join("<br>")
         # No multiple sections, so just define morea_start_end_date_string
           else
-            page.data['morea_start_end_date_string'] = "#{(Time.parse(page.data['morea_start_date'])).strftime("%a, %b %-d")}#{page.data['morea_end_date'] ? " - #{(Time.parse(page.data['morea_end_date'])).strftime("%a, %b %-d")}" : ""}"
+            page.data['morea_start_date_string'] = "#{(Time.parse(page.data['morea_start_date'])).strftime("%a, %b %-d")}"
+            if page.data['morea_end_date']
+              page.data['morea_end_date_string'] = "#{(Time.parse(page.data['morea_end_date'])).strftime("%a, %b %-d")}"
+            end
           end
         end
       end
