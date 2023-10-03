@@ -76,8 +76,8 @@ is used to filter calender events displayed. -->
 
 <script>
   function setCalendar() {
-    // Get the events for the selected section. Events with "none" as the section appear in all calendars. For backward compatibility when no sections are defined for the start_date, the event section is set to "none". The moreaCourseSections === null check is for backward compatibility when no course sections are defined. 
-    let sectionEventData = moreaEventData.filter(obj => (obj.section === $("#sectionSelect").val() || obj.section === "none") || moreaCourseSections === null);
+    // Get the events for the selected section. Events with "none" as the section appear in all calendars. For backward compatibility when no sections are defined for the start_date, the event section is set to "none". The moreaCourseSections.length === 0 check is for backward compatibility when no course sections are defined. 
+    let sectionEventData = moreaEventData.filter(obj => (obj.section === $("#sectionSelect").val() || obj.section === "none") || moreaCourseSections.length === 0);
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
@@ -92,9 +92,7 @@ is used to filter calender events displayed. -->
   // Add course section select options
   let selectBox = $("#sectionSelect");
   // For backward compatibility, remove the selector if there is no array of course sections defined
-  if (moreaCourseSections === null) {
-    modal_overlay
-    modal_overlay
+  if (moreaCourseSections.length === 0) {
     $('#modal_overlay').remove();
     selectBox.remove();
   } else {
