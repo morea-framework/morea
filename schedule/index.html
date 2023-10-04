@@ -65,15 +65,16 @@ is used to filter calender events displayed. -->
 <div style="margin-bottom: 10px" class="container">
   <h1>Schedule</h1>
   <div id="modal_overlay">
-    <div id="modal_content">
-      <select id="sectionSelect">
-        <option value="none">Please Select a Section</option>
-      </select>
+    <div class="modal_content" id="modal_content">
+      <div id="form-group">
+        <select class="form-control" style="width:auto" id="sectionSelect">
+          <option value="none">Please Select a Section</option>
+        </select>
+      </div>
     </div>
   </div>
   <div id='calendar'></div>
 </div>
-
 <script>
   function setCalendar() {
     // Get the events for the selected section. Events with "none" as the section appear in all calendars. For backward compatibility when no sections are defined for the start_date, the event section is set to "none". The moreaCourseSections.length === 0 check is for backward compatibility when no course sections are defined. 
