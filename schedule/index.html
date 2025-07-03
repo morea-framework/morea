@@ -9,9 +9,7 @@ title: Schedule
   Documentation available at: http://fullcalendar.io/
 
   Things to do to configure your Schedule page:
-  (1) Edit the holidayData variable to include holidays appropriate for this semester.
-  (2) Delete the initialDate field in the FullCalendar constructor so that the calendar automatically
-      displays the current month.
+  (1) Edit the holidayData variable in /morea/holiday-info.js file  to include holidays appropriate for this semester.
 -->
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css">
@@ -19,15 +17,8 @@ title: Schedule
 
 <!-- This script defines the moreaEventData variable containing an array of events from Morea pages. -->
 <script src="schedule-info.js"></script>
-
-<script>
-  var holidayData = {color: 'green',
-    events: [
-      {title: "Classes start", start: "2021-07-06"},
-      {title: "Holiday: Independence Day (Observed)", start: "2021-07-05"},
-      {title: "Classes end", start: "2021-07-30"},
-    ]};
-</script>
+<!-- This script defines the holidayData variable containing an array of holidays. -->
+<script src="/morea/holiday-info.js"></script>
 
 <div style="margin-bottom: 10px" class="container">
   <h1>Schedule</h1>
@@ -40,7 +31,6 @@ title: Schedule
     var calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
       eventColor: '#446e9b',
-      initialDate: '2021-07-01',
       eventSources: [{events: moreaEventData}, holidayData]
     });
     calendar.render();
